@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/logo" />
 
     <EditText
@@ -31,7 +31,7 @@
         android:id="@+id/code_info_et"
         app:layout_constraintTop_toBottomOf="@id/code_logo"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="35dp"/>
 
     <ImageView
         android:id="@+id/codeP_validator"
