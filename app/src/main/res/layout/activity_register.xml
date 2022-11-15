@@ -90,7 +90,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:text="Create Order"
+        android:text="@string/create_or"
         android:textColor="@color/strings"
         android:backgroundTint="@color/buttons"
         android:id="@+id/register_create_btn"

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">ISIPark</string>
+    <string name="code">Code</string>
+    <string name="text">In case of error, use your institution card!</string>
+    <string name="back">Back</string>
+    <string name="f_pass">Forgot Password</string>
+    <string name="login">Login</string>
+    <string name="create_ac">Create Account</string>
+    <string name="profile">Profile</string>
+    <string name="suges">Suggestion</string>
+    <string name="park_sug">Park</string>
+    <string name="create_or">Create Order</string>
 </resources>
