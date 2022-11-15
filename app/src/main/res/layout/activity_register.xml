@@ -88,7 +88,7 @@
         android:layout_marginTop="40dp"/>
 
     <Button
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:text="@string/create_or"
         android:textColor="@color/strings"
