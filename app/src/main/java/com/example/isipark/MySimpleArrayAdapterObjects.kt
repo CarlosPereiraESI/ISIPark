@@ -1,4 +1,5 @@
 import android.content.Context
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,20 +34,42 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int, objects: Muta
         val motorcycle = rowView.findViewById<TextView>(R.id.motorcycle)
         val r_mob = rowView.findViewById<TextView>(R.id.reduce_mobility)
 
+
+
         val name = mValues[position].sector
         sector_name.text = name
 
         val norm = mValues[position].normal
-        normal.text = norm
+        if(norm == ""){
+            normal.visibility = View.GONE
+        } else {
+            normal.text = norm
+        }
+
 
         val eletr = mValues[position].eletric
-        eletric.text = eletr
+        if(eletr == ""){
+            eletric.visibility = View.GONE
+        } else {
+            eletric.text = eletr
+        }
+
 
         val motor = mValues[position].motorcycle
-        motorcycle.text = motor
+        if(motor == ""){
+            motorcycle.visibility = View.GONE
+        } else {
+            motorcycle.text = motor
+        }
+
 
         val rm = mValues[position].r_mobility
-        r_mob.text = rm
+        if(rm == ""){
+            r_mob.visibility = View.GONE
+        } else {
+            r_mob.text = rm
+        }
+
 
 
 
