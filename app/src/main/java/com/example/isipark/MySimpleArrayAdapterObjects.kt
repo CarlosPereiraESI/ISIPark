@@ -71,6 +71,9 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int, objects: Muta
         }
 
 
+
+
+
         return rowView
 
     }
