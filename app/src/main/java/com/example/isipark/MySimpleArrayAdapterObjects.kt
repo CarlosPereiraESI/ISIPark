@@ -48,6 +48,9 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int, objects: Muta
         val rm = mValues[position].r_mobility
         r_mob.text = rm
 
+
+
+
         return rowView
 
     }
