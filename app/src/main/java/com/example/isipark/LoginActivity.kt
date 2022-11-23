@@ -1,5 +1,6 @@
 package com.example.isipark
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.login_email_et)
         val password = findViewById<EditText>(R.id.login_password_et)
 
+
         register.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
@@ -30,6 +32,13 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
                 startActivity(intent)
             }
+
+            if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "1"){
+                val intent = Intent(this@LoginActivity, DashboardGestorActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
+
+    override fun onBackPressed() {}
 }

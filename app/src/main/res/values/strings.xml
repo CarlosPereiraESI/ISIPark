@@ -10,4 +10,5 @@
     <string name="suges">Suggestion</string>
     <string name="park_sug">Park</string>
     <string name="create_or">Create Order</string>
+    <string name="more_action">More Actions</string>
 </resources>
