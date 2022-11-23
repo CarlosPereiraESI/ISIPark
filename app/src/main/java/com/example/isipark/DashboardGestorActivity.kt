@@ -20,18 +20,10 @@ class DashboardGestorActivity : AppCompatActivity() {
 
 
     val values = mutableListOf<sector>(
-        sector(
-            "Sector T",
-            "Normal: 50",
-            "Eletric: 3",
-            "Motorcycle: 10",
-            "R.Mobility: 1"
-        ),
+        sector("Sector T", "Normal: 50", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"),
         sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"),
         sector("Sector G", "Normal: 10", "Eletric: 0", "Motorcycle: 1", "R.Mobility: 2")
     )
-
-
     val valuesN = mutableListOf<sector>(
         sector("Sector T", "Normal: 50", "", "", ""),
         sector("Sector D", "Normal: 20", "", "", ""),
@@ -59,7 +51,9 @@ class DashboardGestorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard_gestor)
 
 
+        //Options buttons
         val codeBtn = findViewById<Button>(R.id.dashboard_gestor_code_btn)
+        val moreOptions = findViewById<Button>(R.id.dashboard_gestor_more_btn)
 
         // Vehicle buttons
         val normalBtn = findViewById<ImageButton>(R.id.normal)
@@ -91,6 +85,11 @@ class DashboardGestorActivity : AppCompatActivity() {
 
         codeBtn.setOnClickListener {
             val intent = Intent(this@DashboardGestorActivity, CodeGestorActivity::class.java)
+            startActivity(intent)
+        }
+
+        moreOptions.setOnClickListener {
+            val intent = Intent(this, MoreOptionsActivity::class.java)
             startActivity(intent)
         }
 

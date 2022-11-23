@@ -11,4 +11,11 @@
     <string name="park_sug">Park</string>
     <string name="create_or">Create Order</string>
     <string name="more_action">More Actions</string>
+    <string name="parking_edit">Parking Edit</string>
+    <string name="new_entries">New Entries</string>
+    <string name="add_vehi">Add Vehicle</string>
+    <string name="special">Special Profiles</string>
+    <string name="report">Report Messages</string>
+    <string name="search">Search Users</string>
+    <string name="logout">Log Out</string>
 </resources>

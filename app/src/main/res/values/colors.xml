@@ -12,4 +12,5 @@
     <color name="text">#000000</color>
     <color name="strings">#007E05</color>
     <color name="buttons">#C6FFBD</color>
+    <color name="logout">#FD6B6B</color>
 </resources>
