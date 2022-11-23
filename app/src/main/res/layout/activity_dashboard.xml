@@ -148,7 +148,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
         android:scaleType="centerInside"
-        android:src="@drawable/wheelchair"/>
+        android:src="@drawable/eletric"/>
 
     <ImageButton
         android:layout_width="60dp"
@@ -160,6 +160,6 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
         android:scaleType="centerInside"
-        android:src="@drawable/eletric"/>
+        android:src="@drawable/wheelchair"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

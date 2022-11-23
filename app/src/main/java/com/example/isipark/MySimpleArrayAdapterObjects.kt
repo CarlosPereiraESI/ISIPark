@@ -70,10 +70,6 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int, objects: Muta
             r_mob.text = rm
         }
 
-
-
-
-
         return rowView
 
     }
