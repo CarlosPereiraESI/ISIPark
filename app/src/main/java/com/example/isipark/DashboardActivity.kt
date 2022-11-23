@@ -68,6 +68,7 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
     }
+
+    override fun onBackPressed() {}
 }
