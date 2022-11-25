@@ -30,17 +30,17 @@
 
 
     <EditText
+        android:id="@+id/login_email_et"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text=""
-        android:hint="  Email"
-        android:textColor="@color/text"
-        android:background="@color/buttons"
-        android:id="@+id/login_email_et"
-        app:layout_constraintTop_toTopOf="@id/login_logo"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="200dp" />
+        android:layout_marginTop="288dp"
+        android:background="@color/buttons"
+        android:hint="  Email"
+        android:text=""
+        android:textColor="@color/text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/login_logo" />
 
     <ImageView
         android:layout_width="30dp"

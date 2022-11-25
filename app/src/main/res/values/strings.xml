@@ -10,6 +10,7 @@
     <string name="suges">Suggestion</string>
     <string name="park_sug">Park</string>
     <string name="create_or">Create Order</string>
+
     <string name="more_action">More Actions</string>
     <string name="parking_edit">Parking Edit</string>
     <string name="new_entries">New Entries</string>
@@ -18,4 +19,11 @@
     <string name="report">Report Messages</string>
     <string name="search">Search Users</string>
     <string name="logout">Log Out</string>
+    
+    
+    <string name="add_vehicle">Add Vehicle</string>
+    <string name="add_vehicletype">Type</string>
+    <string name="add_vehicleRegistration">Registration</string>
+    <string name="add_vehicle_save">Save</string>
+
 </resources>
