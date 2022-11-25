@@ -70,6 +70,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="40dp"/>
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:text="ola"
+        android:id="@+id/exp"
+        app:layout_constraintTop_toBottomOf="@id/code_back_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 
 

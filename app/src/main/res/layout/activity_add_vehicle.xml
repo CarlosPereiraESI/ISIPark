@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".Add_VehicleActivity"
     android:background="@color/background">
 
     <ImageView
@@ -34,18 +35,19 @@
 
 
 
-        <EditText
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@+id/code_info_et"
-            android:id="@+id/type"
-            android:textStyle="bold"
-            android:text="@string/add_vehicletype"
-            android:textSize="8dp"
-            android:layout_marginStart="60dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="35dp"
-         />
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/code_info_et"
+        android:id="@+id/type"
+        android:textStyle="bold"
+        android:text="@string/add_vehicletype"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="35dp"
+        />
 
     <Spinner
         android:id="@+id/addvehicletype"
@@ -53,6 +55,7 @@
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:orientation="vertical"
+        android:backgroundTint="@color/white"
 
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@id/type"
@@ -60,23 +63,25 @@
         app:layout_constraintTop_toTopOf="@id/type" />
 
 
-    <EditText
+    <TextView
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="20dp"
         app:layout_constraintTop_toBottomOf="@+id/type"
         android:id="@+id/Registration"
         android:textStyle="bold"
         android:text="@string/add_vehicleRegistration"
-        android:textSize="8dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"
         android:layout_marginStart="60dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="35dp"
         />
 
-    <TextView
+    <EditText
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
+        android:textColor="@color/black"
         android:id="@+id/AddVehicleRegistration"
         app:layout_constraintBottom_toBottomOf="@id/Registration"
         app:layout_constraintStart_toEndOf="@id/Registration"
@@ -113,8 +118,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="140dp"
         />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
