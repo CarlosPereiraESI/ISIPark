@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class CodeActivity : AppCompatActivity() {
+class CodeGestorActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +16,7 @@ class CodeActivity : AppCompatActivity() {
 
 
         backBtn.setOnClickListener {
-            val intent = Intent(this@CodeActivity, DashboardActivity::class.java)
+            val intent = Intent(this@CodeGestorActivity, DashboardGestorActivity::class.java)
             startActivity(intent)
         }
     }

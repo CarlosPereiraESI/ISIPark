@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoreOptionsActivity"
+    android:background="@color/background">
+
+    <ImageView
+        android:id="@+id/more_option_logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:layout_width="410dp"
+        android:layout_height="60dp"
+        android:textColor="@color/text"
+        android:background="@color/white"
+        android:text="admin name"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:enabled="false"
+        android:id="@+id/name_admin_et"
+        app:layout_constraintTop_toBottomOf="@id/more_option_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/parking"
+        android:id="@+id/img_parking"
+        app:layout_constraintTop_toBottomOf="@id/name_admin_et"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/parking_edit"
+        android:textSize="18sp"
+        android:id="@+id/more_parking_btn"
+        app:layout_constraintTop_toBottomOf="@id/name_admin_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/new_profiles"
+        android:id="@+id/img_new"
+        app:layout_constraintTop_toBottomOf="@id/img_parking"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="38dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/new_entries"
+        android:textSize="18sp"
+        android:id="@+id/more_new_btn"
+        app:layout_constraintTop_toBottomOf="@id/more_parking_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/plus"
+        android:id="@+id/img_plus"
+        app:layout_constraintTop_toBottomOf="@id/img_new"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/add_vehi"
+        android:textSize="18sp"
+        android:id="@+id/more_addv_btn"
+        app:layout_constraintTop_toBottomOf="@id/more_new_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/special"
+        android:id="@+id/img_special"
+        app:layout_constraintTop_toBottomOf="@id/img_plus"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/special"
+        android:textSize="18sp"
+        android:id="@+id/more_special_btn"
+        app:layout_constraintTop_toBottomOf="@id/more_addv_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/report_message"
+        android:id="@+id/img_report"
+        app:layout_constraintTop_toBottomOf="@id/img_special"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/report"
+        android:textSize="18sp"
+        android:id="@+id/more_report_btn"
+        app:layout_constraintTop_toBottomOf="@id/more_special_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/search"
+        android:id="@+id/img_search"
+        app:layout_constraintTop_toBottomOf="@id/img_report"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/search"
+        android:textSize="18sp"
+        android:id="@+id/more_search_btn"
+        app:layout_constraintTop_toBottomOf="@id/more_report_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/logout"
+        android:textColor="@color/text"
+        android:id="@+id/more_logout_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="45dp"
+        android:backgroundTint="@color/logout"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/back"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:id="@+id/more_back_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/more_logout_btn"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="30dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
