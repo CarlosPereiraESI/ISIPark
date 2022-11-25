@@ -27,7 +27,18 @@
     <string name="add_vehicle_save">Save</string>
 
     <string name="send_noti">Send Notification</string>
+    <string name="sendNoti_for">For:</string>
+    <string name="sendNoti_all">All:</string>
+    <string name="sendNoti_messa">Message:</string>
+    <string name="sendNoti_send">Send</string>
+    <string name="sendNoti_back">Back</string>
 
+
+    <string name="report_titulo">Reports</string>
+    <string name="report_wron">Wrongly parked</string>
+    <string name="report_sect">Sector :</string>
+    <string name="report_regist">Registration:</string>
+    <string name="report_more">More:</string>
 
 
 </resources>
