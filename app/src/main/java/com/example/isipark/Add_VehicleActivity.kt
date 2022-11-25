@@ -18,17 +18,19 @@ class Add_VehicleActivity : AppCompatActivity() {
 
             // Button Save
             save.setOnClickListener{
-                val intent = Intent(this@Add_VehicleActivity,DashboardActivity::class.java)
+                val intent = Intent(this@Add_VehicleActivity,DashboardGestorActivity::class.java)
                 startActivity(intent)
             }
 
             //Button back
             back.setOnClickListener {
-                val intent = Intent(this@Add_VehicleActivity,CodeActivity::class.java)
+                val intent = Intent(this@Add_VehicleActivity,DashboardGestorActivity::class.java)
                 startActivity(intent)
             }
 
 
         }
+
+    override fun onBackPressed() {}
 
 }

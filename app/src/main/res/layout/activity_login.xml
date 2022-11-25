@@ -28,13 +28,12 @@
         android:layout_marginTop="110dp"
         android:layout_marginStart="20dp"/>
 
-
     <EditText
         android:id="@+id/login_email_et"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="200dp"
         android:background="@color/buttons"
         android:hint="  Email"
         android:text=""

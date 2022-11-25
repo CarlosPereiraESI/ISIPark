@@ -20,17 +20,6 @@ class CodeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //PARA APAGAR SO PARA TESTAR
-        val teste = findViewById<Button>(R.id.exp)
-
-        teste.setOnClickListener {
-            val intent = Intent(this@CodeActivity, Add_VehicleActivity::class.java)
-            startActivity(intent)
-
-        }
-
-
-
     }
 
     override fun onBackPressed() {}
