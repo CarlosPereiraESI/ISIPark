@@ -16,7 +16,7 @@
     <string name="new_entries">New Entries</string>
     <string name="add_vehi">Add Vehicle</string>
     <string name="special">Special Profiles</string>
-    <string name="report">Report Messages</string>
+    <string name="report">Reports Messages</string>
     <string name="search">Search Users</string>
     <string name="logout">Log Out</string>
 
@@ -25,5 +25,9 @@
     <string name="add_vehicletype">Type</string>
     <string name="add_vehicleRegistration">Registration</string>
     <string name="add_vehicle_save">Save</string>
+
+    <string name="send_noti">Send Notification</string>
+
+
 
 </resources>

@@ -33,10 +33,18 @@ class MoreOptionsActivity : AppCompatActivity() {
         }
 
         parkingEdit.setOnClickListener {  }
+
         newEntries.setOnClickListener {  }
-        addVehicle.setOnClickListener {  }
+
+        // Go to page Add Vehicle
+        addVehicle.setOnClickListener {
+            val intent = Intent(this, Add_VehicleActivity::class.java)
+            startActivity(intent)
+        }
         specialProfiles.setOnClickListener {  }
+
         reportMessage.setOnClickListener {  }
+
         searchUser.setOnClickListener {  }
     }
 
