@@ -1,16 +1,13 @@
-package com.example.isipark
+package com.example.isipark.Controller
 
-import MySimpleArrayAdapterObjects
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
-import androidx.annotation.RequiresApi
-import sector
+import com.example.isipark.R
+import com.example.isipark.Model.sector
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -50,7 +47,7 @@ class DashboardActivity : AppCompatActivity() {
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
 
         //--------------------------- Adapter ------------------------------
-        var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , values)
+        var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, values)
         listView.adapter = adapter
 
 
@@ -76,25 +73,25 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show normal places on dashboard
         normalBtn.setOnClickListener{
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesN)
+            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesN)
             listView.adapter = adapter
         }
 
         //Show motocycle places on dashboard
         motoBtn.setOnClickListener{
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesM)
+            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesM)
             listView.adapter = adapter
         }
 
         //Show eletric places on dashboard
         eletricBtn.setOnClickListener{
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesE)
+            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesE)
             listView.adapter = adapter
         }
 
         //Show reduce mobility places on dashboard
         rmobBtn.setOnClickListener{
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesR)
+            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesR)
             listView.adapter = adapter
         }
 

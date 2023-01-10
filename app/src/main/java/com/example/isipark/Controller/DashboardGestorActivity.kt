@@ -1,16 +1,13 @@
-package com.example.isipark
+package com.example.isipark.Controller
 
-import MySimpleArrayAdapterObjects
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
-import androidx.annotation.RequiresApi
-import sector
+import com.example.isipark.R
+import com.example.isipark.Model.sector
 
 class DashboardGestorActivity : AppCompatActivity() {
 

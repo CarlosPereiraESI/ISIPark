@@ -1,13 +1,13 @@
+package com.example.isipark.Controller
+
 import android.content.Context
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.isipark.R
-import java.util.Objects
-import sector
+import com.example.isipark.Model.sector
 
 
 class MySimpleArrayAdapterObjects(context: Context, resource: Int, objects: MutableList<sector>): ArrayAdapter<sector>(context, resource, objects){

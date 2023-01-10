@@ -1,9 +1,10 @@
-package com.example.isipark
+package com.example.isipark.Controller
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.isipark.R
 
 class Add_VehicleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,13 +19,13 @@ class Add_VehicleActivity : AppCompatActivity() {
 
             // Button Save
             save.setOnClickListener{
-                val intent = Intent(this@Add_VehicleActivity,DashboardGestorActivity::class.java)
+                val intent = Intent(this@Add_VehicleActivity, DashboardGestorActivity::class.java)
                 startActivity(intent)
             }
 
             //Button back
             back.setOnClickListener {
-                val intent = Intent(this@Add_VehicleActivity,DashboardGestorActivity::class.java)
+                val intent = Intent(this@Add_VehicleActivity, DashboardGestorActivity::class.java)
                 startActivity(intent)
             }
 
