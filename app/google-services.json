@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "225799228167",
+    "project_id": "isipark-d17a1",
+    "storage_bucket": "isipark-d17a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225799228167:android:b297b5531f296cb88853a2",
+        "android_client_info": {
+          "package_name": "com.example.isipark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225799228167-8ib8vuclh400fu5mb3va21h7kagphsn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASD0Ra7why2-lJd1N1KhkAHrIRgxNOwDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225799228167-8ib8vuclh400fu5mb3va21h7kagphsn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
