@@ -8,4 +8,5 @@ class ReportsMessagesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reports_messages)
     }
+    override fun onBackPressed() {}
 }

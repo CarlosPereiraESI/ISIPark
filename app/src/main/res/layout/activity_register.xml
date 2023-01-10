@@ -97,7 +97,8 @@
         app:layout_constraintTop_toBottomOf="@id/register_conf_password_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="80dp"
+        app:cornerRadius="25dp"/>
 
 
 

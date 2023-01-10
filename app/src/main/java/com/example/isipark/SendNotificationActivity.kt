@@ -8,4 +8,5 @@ class SendNotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_notification)
     }
+    override fun onBackPressed() {}
 }

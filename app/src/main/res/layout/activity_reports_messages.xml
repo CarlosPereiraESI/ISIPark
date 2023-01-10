@@ -43,7 +43,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/buttons"/>
+        android:backgroundTint="@color/buttons"
+        app:cornerRadius="25dp"/>
 
     <ListView
         android:layout_width="wrap_content"
@@ -64,6 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginBottom="40dp"
+        app:cornerRadius="25dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

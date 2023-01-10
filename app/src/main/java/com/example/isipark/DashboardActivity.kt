@@ -32,41 +32,72 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        //---------------------------- Buttons -------------------------------------
 
+        //Report button
+        val report = findViewById<ImageButton>(R.id.dashboard_report)
+
+        //Notification button
+        val notification = findViewById<ImageButton>(R.id.dashboard_notification)
+
+        //Code button
         val codeBtn = findViewById<Button>(R.id.dashboard_code_btn)
 
-        // Vehicle buttons
+        //Vehicle buttons
         val normalBtn = findViewById<ImageButton>(R.id.normal)
         val motoBtn = findViewById<ImageButton>(R.id.moto)
         val eletricBtn = findViewById<ImageButton>(R.id.eletric)
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
 
-
+        //--------------------------- Adapter ------------------------------
         var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , values)
         listView.adapter = adapter
 
 
+        // ------------------------- Click buttons ------------------------------------
+
+        //Show reports page
+        report.setOnClickListener{
+            val intent = Intent(this@DashboardActivity, ReportsActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Show notification page
+        notification.setOnClickListener{
+            val intent = Intent(this@DashboardActivity, NotificationActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Show code page
+        codeBtn.setOnClickListener {
+            val intent = Intent(this@DashboardActivity, CodeActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Show normal places on dashboard
         normalBtn.setOnClickListener{
             var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesN)
             listView.adapter = adapter
         }
+
+        //Show motocycle places on dashboard
         motoBtn.setOnClickListener{
             var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesM)
             listView.adapter = adapter
         }
+
+        //Show eletric places on dashboard
         eletricBtn.setOnClickListener{
             var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesE)
             listView.adapter = adapter
         }
+
+        //Show reduce mobility places on dashboard
         rmobBtn.setOnClickListener{
             var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash , valuesR)
             listView.adapter = adapter
         }
 
-        codeBtn.setOnClickListener {
-            val intent = Intent(this@DashboardActivity, CodeActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 
