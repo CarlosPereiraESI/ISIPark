@@ -36,7 +36,7 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int, objects: Muta
 
 
 
-        val name = mValues[position].sector
+        val name = mValues[position].setor
         sector_name.text = name
 
         val norm = mValues[position].normal
@@ -63,7 +63,7 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int, objects: Muta
         }
 
 
-        val rm = mValues[position].r_mobility
+        val rm = mValues[position].reduce_mob
         if(rm == ""){
             r_mob.visibility = View.GONE
         } else {
