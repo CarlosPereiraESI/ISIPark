@@ -20,7 +20,6 @@
     <string name="search">Search Users</string>
     <string name="logout">Log Out</string>
 
-
     <string name="add_vehicle">Add Vehicle</string>
     <string name="add_vehicletype">Type</string>
     <string name="add_vehicleRegistration">Registration</string>
@@ -33,7 +32,6 @@
     <string name="sendNoti_send">Send</string>
     <string name="sendNoti_back">Back</string>
 
-
     <string name="report_titulo">Reports</string>
     <string name="report_wron">Wrongly parked</string>
     <string name="report_sect">Sector :</string>
@@ -42,7 +40,4 @@
 
     <string name="notifocation_titulo">Nofitication</string>
     <string name="history">History</string>
-
-
-
 </resources>
