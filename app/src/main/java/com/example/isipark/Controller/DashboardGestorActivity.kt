@@ -15,7 +15,7 @@ class DashboardGestorActivity : AppCompatActivity() {
         findViewById<ListView>(R.id.dashboard_gestor_list_sectors)
     }
 
-
+    //Values places
     val values = mutableListOf<sector>(
         sector("Sector T", "Normal: 50", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"),
         sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"),
@@ -49,6 +49,7 @@ class DashboardGestorActivity : AppCompatActivity() {
 
 
         //Options buttons
+        val noti = findViewById<ImageButton>(R.id.dashboard_g_notification)
         val codeBtn = findViewById<Button>(R.id.dashboard_gestor_code_btn)
         val moreOptions = findViewById<Button>(R.id.dashboard_gestor_more_btn)
 
@@ -58,11 +59,11 @@ class DashboardGestorActivity : AppCompatActivity() {
         val eletricBtn = findViewById<ImageButton>(R.id.eletric)
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
 
-
+        //Adapter
         var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, values)
         listView.adapter = adapter
 
-
+        // --------------------------------- Buttons information ----------------------------------------
         normalBtn.setOnClickListener {
             var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesN)
             listView.adapter = adapter
@@ -80,16 +81,25 @@ class DashboardGestorActivity : AppCompatActivity() {
             listView.adapter = adapter
         }
 
+
+        // ------------------------------ Other Buttons ----------------------------------
+        // Show code page
         codeBtn.setOnClickListener {
             val intent = Intent(this@DashboardGestorActivity, CodeGestorActivity::class.java)
             startActivity(intent)
         }
 
+        // Show more options page
         moreOptions.setOnClickListener {
-            val intent = Intent(this, MoreOptionsActivity::class.java)
+            val intent = Intent(this@DashboardGestorActivity, MoreOptionsActivity::class.java)
             startActivity(intent)
         }
 
+        //Show notificationadmin page
+        noti.setOnClickListener {
+            val intent = Intent(this@DashboardGestorActivity, NotificationAdminActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onBackPressed() {}

@@ -14,7 +14,7 @@
     <string name="more_action">More Actions</string>
     <string name="parking_edit">Parking Edit</string>
     <string name="new_entries">New Entries</string>
-    <string name="add_vehi">Add Vehicle</string>
+    <string name="my_info">My Informations</string>
     <string name="special">Special Profiles</string>
     <string name="report">Reports Messages</string>
     <string name="search">Search Users</string>
@@ -42,7 +42,6 @@
 
     <string name="notifocation_titulo">Nofitication</string>
     <string name="history">History</string>
-
 
 
 </resources>
