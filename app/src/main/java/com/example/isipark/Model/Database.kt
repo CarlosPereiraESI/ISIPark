@@ -19,7 +19,6 @@ abstract class MyDatabase: RoomDatabase() {
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
             instance ?: buildDatabase(context).also { instance = it }
         }
-
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
             context,
             MyDatabase::class.java, "isipark.db"
