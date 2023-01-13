@@ -1,6 +1,9 @@
 package com.example.isipark.Model
 
+import androidx.room.*
 import java.util.Date
 
-class AdminMessage(val id: Int, val description: String, val date: Date) {
+@Entity(tableName = "adminMessage")
+data class AdminMessage(@PrimaryKey(autoGenerate = true) val id: Int = 0,
+                        val description: String?, val date: String?) {
 }

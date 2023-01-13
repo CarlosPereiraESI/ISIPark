@@ -34,15 +34,10 @@
 
     <string name="report_titulo">Reports</string>
     <string name="report_wron">Wrongly parked</string>
-    <string name="report_sect">Sector :</string>
+    <string name="report_sect">Sector:</string>
     <string name="report_regist">Registration:</string>
     <string name="report_more">More:</string>
 
     <string name="notifocation_titulo">Nofitication</string>
     <string name="history">History</string>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f244edbfa9c827e932883f0740a24670a2efc480
 </resources>

@@ -46,6 +46,5 @@ class RegisterActivity : AppCompatActivity() {
     private fun isCorrect(string: String): Boolean {
         return string.matches("(([a-zA-Z0-9.])+[@][a-z]+[.][a-z]+)".toRegex())
     }
-
     override fun onBackPressed() {}
 }
