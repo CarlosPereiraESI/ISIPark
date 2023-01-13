@@ -1,4 +1,4 @@
 package com.example.isipark.Model
-
+//ESTE NAO DA O NOME ESTA IGUAL AO FIXO É PARA APAGAR
 class Sector(val id: Int, val sectorName: String, val totalPlace: Int) {
 }
