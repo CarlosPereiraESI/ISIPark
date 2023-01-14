@@ -19,6 +19,8 @@ class NotificationActivity : AppCompatActivity() {
                 DashboardActivity::class.java)
             startActivity(intent)
         }
+
+        // Falta adapter para a listview das notificacoes
     }
     override fun onBackPressed() {}
 }

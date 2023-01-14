@@ -38,6 +38,7 @@ class DashboardActivity : AppCompatActivity() {
         val notification = findViewById<ImageButton>(R.id.dashboard_notification)
 
         //Code button
+        val profile = findViewById<Button>(R.id.dashboard_profile_btn)
         val codeBtn = findViewById<Button>(R.id.dashboard_code_btn)
 
         //Vehicle buttons
@@ -62,6 +63,12 @@ class DashboardActivity : AppCompatActivity() {
         //Show notification page
         notification.setOnClickListener{
             val intent = Intent(this@DashboardActivity, NotificationActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Show profile page
+        profile.setOnClickListener {
+            val intent = Intent(this, ProfileAcitivity::class.java)
             startActivity(intent)
         }
 

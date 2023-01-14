@@ -14,7 +14,7 @@
     <string name="more_action">More Actions</string>
     <string name="parking_edit">Parking Edit</string>
     <string name="new_entries">New Entries</string>
-    <string name="my_info">My Informations</string>
+    <string name="my_info">My Vehicles</string>
     <string name="special">Special Profiles</string>
     <string name="report">Reports Messages</string>
     <string name="search">Search Users</string>
@@ -41,5 +41,9 @@
     <string name="notification_titulo">Nofitication</string>
     <string name="history">History</string>
     <string name="vehicles">Vehicles</string>
+<<<<<<< HEAD
+=======
+    <string name="data">   Data           Operation           Sector</string>
+>>>>>>> 3227b082fc733fe0f8a5f02ec2d40c93eb77cac9
 
 </resources>

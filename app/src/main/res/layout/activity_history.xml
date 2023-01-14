@@ -34,6 +34,17 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="35dp"/>
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:text="@string/data"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/history_et"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
     <ListView
         android:id="@+id/dashboard_list_history"
         android:layout_width="300dp"
@@ -52,10 +63,11 @@
         android:text="@string/back"
         android:textColor="@color/strings"
         android:backgroundTint="@color/buttons"
-        android:id="@+id/code_back_btn"
+        android:id="@+id/history_back_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginBottom="40dp"
+        app:cornerRadius="25dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
