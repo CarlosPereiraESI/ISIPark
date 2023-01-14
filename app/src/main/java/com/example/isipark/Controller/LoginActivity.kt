@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.room.Room
 import com.example.isipark.Model.InterfacesRetroFit.IRetroUser
 import com.example.isipark.Model.MyDatabase
+import com.example.isipark.Model.RetroFit.RetroLogin
 import com.example.isipark.Model.RetroFit.RetroUser
 import com.example.isipark.Model.Utils
 import com.example.isipark.R
@@ -46,17 +47,17 @@ class LoginActivity : AppCompatActivity() {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 val service = retrofit.create(IRetroUser::class.java)
-                val call = service.login(email.text.toString(),
-                    password.text.toString()).enqueue(object: Callback<RetroUser> {
-                    override fun onResponse(call : Call<RetroUser>,
-                                            response: Response<RetroUser>){
+                val userRequest = RetroLogin(email.toString(), password.toString())
+                val call = service.login(userRequest).enqueue(object: Callback<RetroLogin> {
+                    override fun onResponse(call : Call<RetroLogin>,
+                                            response: Response<RetroLogin>){
                         if(response.code() == 200){
                             val intent = Intent(this@LoginActivity,
                                 DashboardActivity::class.java)
                             startActivity(intent)
                         }
                     }
-                    override fun onFailure(calll: Call<RetroUser>, t: Throwable){
+                    override fun onFailure(calll: Call<RetroLogin>, t: Throwable){
                         print("error")
                     }
                 })
