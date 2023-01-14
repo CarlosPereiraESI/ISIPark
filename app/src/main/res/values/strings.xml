@@ -17,7 +17,7 @@
     <string name="my_info">My Vehicles</string>
     <string name="special">Special Profiles</string>
     <string name="report">Reports Messages</string>
-    <string name="search">Search Users</string>
+    <string name="search_users">Search Users</string>
     <string name="logout">Log Out</string>
 
     <string name="add_vehicle">Add Vehicle</string>
@@ -38,10 +38,13 @@
     <string name="report_regist">Registration:</string>
     <string name="report_more">More:</string>
 
-    <string name="notification_titulo">Nofitication</string>
+    <string name="notification_titulo">Notifications</string>
     <string name="history">History</string>
     <string name="vehicles">Vehicles</string>
     <string name="data">   Data           Operation           Sector</string>
     <string name="add_more">Add More</string>
+    <string name="name_regist">Name / Registration:</string>
+
+    <string name="search">Search</string>
 
 </resources>

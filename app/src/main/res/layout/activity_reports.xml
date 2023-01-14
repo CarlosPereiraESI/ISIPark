@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.ReportsActivity"
+    tools:context=".controller.ReportsActivity"
     android:background="@color/background">
 
 
@@ -25,7 +25,7 @@
         android:textColor="@color/text"
         android:background="@color/white"
         android:text="@string/report_titulo"
-        android:textSize="80px"
+        android:textSize="35sp"
         android:textAlignment="center"
         android:textStyle="bold"
         android:id="@+id/reports_ti"
@@ -38,7 +38,7 @@
         android:layout_height="30dp"
         app:layout_constraintTop_toBottomOf="@id/reports_ti"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:id="@+id/report_wro"
         android:textAlignment="center"
         android:textStyle="bold"
