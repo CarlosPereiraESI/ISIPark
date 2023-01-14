@@ -14,5 +14,5 @@ interface IAdminMessage {
     @Delete
     fun delete(amessage: AdminMessage)
     @Update
-    fun updateComment(vararg amessage: AdminMessage)
+    fun update(vararg amessage: AdminMessage)
 }

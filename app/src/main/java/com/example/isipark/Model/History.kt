@@ -5,5 +5,5 @@ import java.util.*
 
 @Entity(tableName = "history")
 data class History(@PrimaryKey(autoGenerate = true) val id: Int = 0,
-                   val entryTime: String?, val exitTime: String?, val placeID: Int?) {
+                   val entryTime: Date, val exitTime: Date, val placeID: Int) {
 }

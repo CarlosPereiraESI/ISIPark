@@ -14,5 +14,5 @@ interface IHistory {
     @Delete
     fun delete(hist: History)
     @Update
-    fun updateComment(vararg hist: History)
+    fun update(vararg hist: History)
 }
