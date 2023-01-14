@@ -18,7 +18,7 @@ data class PersonalData(@PrimaryKey(autoGenerate = true) val number: Int=0,
                         val CP3: Int?, val street: String?,
                         val contact: Int?, val nif: Int?,
                         val email: String?, val password: String?,
-                        val birthDate: Date?,
+                        val birthDate: String?,
                         val gender: String?, val userType: String?,
                         val payment: Boolean?,
                         val userID: Int?) {
