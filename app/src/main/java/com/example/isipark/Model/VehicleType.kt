@@ -8,6 +8,6 @@ class VehicleType(val userID: Int, val vehicleTypeID: Int, val licensePlate: Str
 }*/
 
 @Entity(tableName = "vehicleType")
-data class VehicleType(@PrimaryKey(autoGenerate = true) val userID: Int=0,
-                       val vehicleTypeID: Int?, val licensePlate: String?) {
+data class VehicleType(@PrimaryKey(autoGenerate = true) val IdVehicle: Int=0,
+                       val description: String?) {
 }
