@@ -6,7 +6,7 @@ import java.util.*
 data class RetroUser(@SerializedName("id") val id: Int,
                      @SerializedName("nome") val name: String,
                      @SerializedName("nif") val nif: Int,
-                     @SerializedName("DataNasc") val birthDate: Date,
+                     @SerializedName("DataNasc") val birthDate: String,
                      @SerializedName("genero") val gender: String,
                      @SerializedName("tipo_utilizadorid") val typeUserID: Int,
                      @SerializedName("Moradaid_morada") val addressID: Int,

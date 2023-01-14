@@ -7,8 +7,8 @@ import retrofit2.http.*
 interface IRetroUser {
 
     @POST("api/Auth/login")
-    fun login(@Body user: RetroUser): Call<RetroUser>
+    fun login(@Body email: String, password: String): Call<RetroUser>
 
     @POST("api/Auth/register")
-    fun insertAdminMessage(@Body user: RetroUser): Call<RetroUser>
+    fun insertUser(@Body user: RetroUser): Call<RetroUser>
 }

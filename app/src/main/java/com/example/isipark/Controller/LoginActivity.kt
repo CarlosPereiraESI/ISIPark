@@ -7,10 +7,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.room.Room
+import com.example.isipark.Model.InterfacesRetroFit.IRetroUser
 import com.example.isipark.Model.MyDatabase
+import com.example.isipark.Model.RetroFit.RetroUser
+import com.example.isipark.Model.Utils
 import com.example.isipark.R
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,16 +41,32 @@ class LoginActivity : AppCompatActivity() {
             if ( email.text.toString() == "" || password.text.toString() == ""){
                 Toast.makeText(this,"It has empty fields!", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
-                startActivity(intent)
+                var retrofit = Retrofit.Builder()
+                    .baseUrl(Utils.URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                val service = retrofit.create(IRetroUser::class.java)
+                val call = service.login(email.text.toString(),
+                    password.text.toString()).enqueue(object: Callback<RetroUser> {
+                    override fun onResponse(call : Call<RetroUser>,
+                                            response: Response<RetroUser>){
+                        if(response.code() == 200){
+                            val intent = Intent(this@LoginActivity,
+                                DashboardActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+                    override fun onFailure(calll: Call<RetroUser>, t: Throwable){
+                        print("error")
+                    }
+                })
             }
-
-            if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "1"){
-                val intent = Intent(this@LoginActivity, DashboardGestorActivity::class.java)
+            if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin"){
+                val intent = Intent(this@LoginActivity,
+                    DashboardGestorActivity::class.java)
                 startActivity(intent)
             }
         }
     }
-
     override fun onBackPressed() {}
 }

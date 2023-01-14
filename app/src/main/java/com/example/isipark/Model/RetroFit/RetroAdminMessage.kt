@@ -5,5 +5,5 @@ import java.util.*
 
 data class RetroAdminMessage(@SerializedName("id_mensagem") val id: Int,
                              @SerializedName("descricao") val desc: String,
-                             @SerializedName("data") val date: Date) {
+                             @SerializedName("data") val date: String) {
 }
