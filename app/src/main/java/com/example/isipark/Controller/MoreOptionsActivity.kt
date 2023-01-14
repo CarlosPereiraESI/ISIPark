@@ -44,7 +44,11 @@ class MoreOptionsActivity : AppCompatActivity() {
         }
         specialProfiles.setOnClickListener {  }
 
-        reportMessage.setOnClickListener {  }
+        //Go to page Repor Messages
+        reportMessage.setOnClickListener {
+            val intent = Intent(this@MoreOptionsActivity, ReportsMessagesActivity::class.java)
+            startActivity(intent)
+        }
 
         searchUser.setOnClickListener {  }
     }

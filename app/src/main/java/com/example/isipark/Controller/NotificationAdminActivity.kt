@@ -18,6 +18,9 @@ class NotificationAdminActivity : AppCompatActivity() {
             val intent = Intent(this@NotificationAdminActivity, DashboardGestorActivity::class.java)
             startActivity(intent)
         }
+
+        // Falta adapter para a listview das notificacoes
+
     }
 
     override fun onBackPressed() {}

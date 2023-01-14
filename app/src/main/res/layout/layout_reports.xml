@@ -5,41 +5,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/logo_not"
+        android:id="@+id/logo_report"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/parque"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/titulo_notifi"
-        android:layout_width="100dp"
+        android:id="@+id/titulo_report"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/logo_not"
-        app:layout_constraintStart_toEndOf="@id/logo_not"
-        app:layout_constraintTop_toTopOf="@id/logo_not" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/logo_report"
+        app:layout_constraintStart_toEndOf="@id/logo_report"
+        app:layout_constraintTop_toTopOf="@id/logo_report" />
 
     <TextView
-        android:id="@+id/mensagem_notifi"
+        android:id="@+id/dados_report"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_notifi"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/titulo_report" />
 
     <TextView
-        android:id="@+id/data_notifi"
+        android:id="@+id/data_report"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="280dp"
         android:layout_marginRight="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mensagem_notifi"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/dados_report" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
