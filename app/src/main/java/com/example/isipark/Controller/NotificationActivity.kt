@@ -15,7 +15,8 @@ class NotificationActivity : AppCompatActivity() {
 
         //Back button
         back.setOnClickListener {
-            val intent = Intent(this@NotificationActivity, DashboardActivity::class.java)
+            val intent = Intent(this@NotificationActivity,
+                DashboardActivity::class.java)
             startActivity(intent)
         }
     }

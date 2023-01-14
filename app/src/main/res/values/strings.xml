@@ -38,7 +38,8 @@
     <string name="report_regist">Registration:</string>
     <string name="report_more">More:</string>
 
-    <string name="notifocation_titulo">Nofitication</string>
+    <string name="notification_titulo">Nofitication</string>
     <string name="history">History</string>
+    <string name="vehicles">Vehicles</string>
 
 </resources>
