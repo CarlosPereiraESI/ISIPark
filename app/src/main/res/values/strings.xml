@@ -41,9 +41,7 @@
     <string name="notification_titulo">Nofitication</string>
     <string name="history">History</string>
     <string name="vehicles">Vehicles</string>
-<<<<<<< HEAD
-=======
     <string name="data">   Data           Operation           Sector</string>
->>>>>>> 3227b082fc733fe0f8a5f02ec2d40c93eb77cac9
+    <string name="add_more">Add More</string>
 
 </resources>

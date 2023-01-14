@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.isipark.R
 
-class ProfileAcitivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -23,7 +23,6 @@ class ProfileAcitivity : AppCompatActivity() {
 
         //Go to vehicle page
         vehiclesbtn.setOnClickListener {
-
         }
 
         //Go to history page

@@ -15,7 +15,7 @@ class HistoryActivity : AppCompatActivity() {
 
         //Go back to profile page
         back.setOnClickListener {
-            val intent = Intent(this,ProfileAcitivity::class.java)
+            val intent = Intent(this,ProfileActivity::class.java)
             startActivity(intent)
         }
 

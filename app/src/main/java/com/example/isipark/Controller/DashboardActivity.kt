@@ -68,7 +68,7 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show profile page
         profile.setOnClickListener {
-            val intent = Intent(this, ProfileAcitivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
