@@ -23,7 +23,7 @@ class RegisterActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-        
+
         createBtn.setOnClickListener {
             if ( email.text.toString() == "" || password.text.toString() == "" || confpassword.text.toString() == ""){
                 Toast.makeText(this,"It has empty fields!", Toast.LENGTH_SHORT).show()
