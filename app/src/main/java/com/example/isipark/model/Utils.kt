@@ -1,6 +1,5 @@
 package com.example.isipark.model.InterfacesRetroFit
 
-import android.util.Base64
 import com.example.isipark.model.Interfaces.NetworkManager
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
