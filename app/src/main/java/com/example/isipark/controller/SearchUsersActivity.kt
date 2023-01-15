@@ -20,7 +20,8 @@ class SearchUsersActivity : AppCompatActivity() {
 
         //Go back to more options menu
         back.setOnClickListener {
-            val intent = Intent(this,MoreOptionsActivity::class.java)
+            val intent = Intent(this@SearchUsersActivity,
+                MoreOptionsActivity::class.java)
             startActivity(intent)
         }
 

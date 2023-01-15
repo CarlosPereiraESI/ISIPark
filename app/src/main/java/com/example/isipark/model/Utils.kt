@@ -1,7 +1,35 @@
-package com.example.isipark.model
+package com.example.isipark.model.InterfacesRetroFit
 
-class Utils {
-    companion object {
-        val URL = "https://f594-2001-818-eb13-c00-cb2-1739-74e3-9ecf.eu.ngrok.io/"
+import android.util.Base64
+import com.example.isipark.model.Interfaces.NetworkManager
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+object Utils {
+
+    private val AUTH = "Basic "+ Base64.encodeToString("belalkhan:123456".toByteArray(), Base64.NO_WRAP)
+
+    private const val BASE_URL = "https://08ca-2001-8a0-fe1a-c901-548-2f97-b065-a538.eu.ngrok.io/"
+
+    private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            val original = chain.request()
+
+            val requestBuilder = original.newBuilder()
+                .method(original.method(), original.body())
+
+            val request = requestBuilder.build()
+            chain.proceed(request)
+        }.build()
+
+    val instance: NetworkManager by lazy{
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+
+        retrofit.create(NetworkManager::class.java)
     }
 }

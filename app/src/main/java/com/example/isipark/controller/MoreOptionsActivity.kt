@@ -23,18 +23,21 @@ class MoreOptionsActivity : AppCompatActivity() {
 
         //Back button
         back.setOnClickListener {
-            val intent = Intent(this, DashboardGestorActivity::class.java)
+            val intent = Intent(this@MoreOptionsActivity,
+                DashboardGestorActivity::class.java)
             startActivity(intent)
         }
 
         //Log Out button
         logout.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this@MoreOptionsActivity,
+                LoginActivity::class.java)
             startActivity(intent)
         }
 
         parkingEdit.setOnClickListener {
-            val intent = Intent(this, ParkingEditActivity::class.java)
+            val intent = Intent(this@MoreOptionsActivity,
+                ParkingEditActivity::class.java)
             startActivity(intent)
         }
 
@@ -42,22 +45,26 @@ class MoreOptionsActivity : AppCompatActivity() {
 
         // Go to page Add Vehicle
         addVehicle.setOnClickListener {
-            val intent = Intent(this, Add_VehicleActivity::class.java)
+            val intent = Intent(this@MoreOptionsActivity,
+                Add_VehicleActivity::class.java)
             startActivity(intent)
         }
         specialProfiles.setOnClickListener {
-            val intent = Intent(this, SpecialProfileActivity::class.java)
+            val intent = Intent(this@MoreOptionsActivity,
+                SpecialProfileActivity::class.java)
             startActivity(intent)
         }
 
         //Go to page Repor Messages
         reportMessage.setOnClickListener {
-            val intent = Intent(this@MoreOptionsActivity, ReportsMessagesActivity::class.java)
+            val intent = Intent(this@MoreOptionsActivity,
+                ReportsMessagesActivity::class.java)
             startActivity(intent)
         }
 
         searchUser.setOnClickListener {
-            val intent = Intent(this, SearchUsersActivity::class.java)
+            val intent = Intent(this@MoreOptionsActivity,
+                SearchUsersActivity::class.java)
             startActivity(intent)
         }
     }
