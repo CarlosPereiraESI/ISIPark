@@ -15,10 +15,7 @@ class DashboardActivity : AppCompatActivity() {
         findViewById<ListView>(R.id.dashboard_list_sectors)
     }
 
-
     val values = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"), sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"), sector("Sector G", "Normal: 10", "Eletric: 0", "Motorcycle: 1", "R.Mobility: 2"))
-
-
     val valuesN = mutableListOf<sector>(sector("Sector T", "Normal: 50", "", "", ""), sector("Sector D", "Normal: 20", "", "", ""), sector("Sector G", "Normal: 10", "", "", ""))
     val valuesM = mutableListOf<sector>(sector("Sector T", "Normal: 50", "", "Motorcycle: 10", ""), sector("Sector D", "Normal: 20", "", "Motorcycle: 5", ""), sector("Sector G", "Normal: 10", "", "Motorcycle: 1", ""))
     val valuesE = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", ""), sector("Sector D", "Normal: 20", "Eletric: 1", "", ""), sector("Sector G", "Normal: 10", "Eletric: 0", "", ""))

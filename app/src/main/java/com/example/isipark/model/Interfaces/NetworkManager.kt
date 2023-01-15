@@ -18,12 +18,10 @@ interface NetworkManager {
     ): Call<RetroAdminMessage>
 
     //Login
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json")
     @POST("api/Auth/login")
-    fun login(
-        @Field("email") email: String,
-        @Field("password") password: String): Call<RetroLogin>
+    fun login(@Body log: RetroLogin): Call<RetroLogin>
 
     @POST("api/Auth/register")
-    fun insertUser(@Body user: RetroUser): Call<RetroUser>
+    fun insertUser( user: RetroUser): Call<RetroUser>
 }

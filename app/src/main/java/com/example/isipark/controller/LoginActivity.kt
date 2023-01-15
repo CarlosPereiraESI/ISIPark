@@ -14,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+    var retrolog = RetroLogin(email="", password = "")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -33,58 +34,32 @@ class LoginActivity : AppCompatActivity() {
             if (email.text.toString() == "" || password.text.toString() == "") {
                 Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
             }
-
+            else{
+                retrolog.email = email.text.toString()
+                retrolog.password = password.text.toString()
+                Utils.instance.login(retrolog)
+                    .enqueue(object: Callback<RetroLogin>{
+                        override fun onFailure(call: Call<RetroLogin>, t: Throwable) {
+                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        }
+                        override fun onResponse(call: Call<RetroLogin>,
+                                                response: Response<RetroLogin>) {
+                            if(response.code() == 200){
+                                val intent = Intent(this@LoginActivity,
+                                    DashboardActivity::class.java)
+                                startActivity(intent)
+                            }
+                        }
+                    })
+            }
             if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin") {
                 val intent = Intent(
                     this@LoginActivity,
                     DashboardGestorActivity::class.java)
                 startActivity(intent)
             }
-            Utils.instance.login(email.text.toString(), password.text.toString())
-                .enqueue(object: Callback<RetroLogin>{
 
-                    override fun onFailure(call: Call<RetroLogin>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                    }
-                    override fun onResponse(call: Call<RetroLogin>,
-                        response: Response<RetroLogin>) {
-                        if(response.code() == 200){
-                            val intent = Intent(this@LoginActivity,
-                                DashboardActivity::class.java)
-                            startActivity(intent)
-                        }
-                    }
-                })
         }
     }
-<<<<<<< HEAD
-=======
-
-
-    val loginUrl = "api/Auth/login"
-
-    val urlLogim = Utils.URL+loginUrl
-
-
-    var retrofit = Retrofit.Builder()
-        .baseUrl(Utils.URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-    val service = retrofit.create(IRetroUser::class.java)
-    val call = service.login(userRequest).enqueue(object: Callback<RetroLogin> {
-        override fun onResponse(call : Call<RetroLogin>,
-                                response: Response<RetroLogin>){
-            if(response.code() == 200){
-                print("Hey")
-                val intent = Intent(this@LoginActivity,
-                    DashboardActivity::class.java)
-                startActivity(intent)
-            }
-        }
-        override fun onFailure(calll: Call<RetroLogin>, t: Throwable){
-            print("error")
-        }
-    })
->>>>>>> 4bf8f77e05fe269ff3ca27d0ff090595ee5df9b8
     override fun onBackPressed() {}
 }
