@@ -33,7 +33,10 @@ class MoreOptionsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        parkingEdit.setOnClickListener {  }
+        parkingEdit.setOnClickListener {
+            val intent = Intent(this, ParkingEditActivity::class.java)
+            startActivity(intent)
+        }
 
         newEntries.setOnClickListener {  }
 
@@ -42,7 +45,10 @@ class MoreOptionsActivity : AppCompatActivity() {
             val intent = Intent(this, Add_VehicleActivity::class.java)
             startActivity(intent)
         }
-        specialProfiles.setOnClickListener {  }
+        specialProfiles.setOnClickListener {
+            val intent = Intent(this, SpecialProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         //Go to page Repor Messages
         reportMessage.setOnClickListener {
@@ -50,7 +56,10 @@ class MoreOptionsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        searchUser.setOnClickListener {  }
+        searchUser.setOnClickListener {
+            val intent = Intent(this, SearchUsersActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onBackPressed() {}
