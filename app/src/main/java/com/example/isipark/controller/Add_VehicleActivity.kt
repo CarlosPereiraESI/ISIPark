@@ -25,7 +25,7 @@ class Add_VehicleActivity : AppCompatActivity() {
 
             //Button back
             back.setOnClickListener {
-                val intent = Intent(this@Add_VehicleActivity, DashboardGestorActivity::class.java)
+                val intent = Intent(this@Add_VehicleActivity, MoreOptionsActivity::class.java)
                 startActivity(intent)
             }
 

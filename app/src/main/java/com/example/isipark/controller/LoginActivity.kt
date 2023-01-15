@@ -57,5 +57,34 @@ class LoginActivity : AppCompatActivity() {
                 })
         }
     }
+<<<<<<< HEAD
+=======
+
+
+    val loginUrl = "api/Auth/login"
+
+    val urlLogim = Utils.URL+loginUrl
+
+
+    var retrofit = Retrofit.Builder()
+        .baseUrl(Utils.URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    val service = retrofit.create(IRetroUser::class.java)
+    val call = service.login(userRequest).enqueue(object: Callback<RetroLogin> {
+        override fun onResponse(call : Call<RetroLogin>,
+                                response: Response<RetroLogin>){
+            if(response.code() == 200){
+                print("Hey")
+                val intent = Intent(this@LoginActivity,
+                    DashboardActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        override fun onFailure(calll: Call<RetroLogin>, t: Throwable){
+            print("error")
+        }
+    })
+>>>>>>> 4bf8f77e05fe269ff3ca27d0ff090595ee5df9b8
     override fun onBackPressed() {}
 }
