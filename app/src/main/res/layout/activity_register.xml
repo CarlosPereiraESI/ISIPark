@@ -100,4 +100,17 @@
         android:layout_marginTop="80dp"
         app:cornerRadius="25dp"/>
 
+    <Button
+        android:id="@+id/back_register_btn"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/back"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        app:layout_constraintTop_toBottomOf="@id/register_create_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        app:cornerRadius="25dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
