@@ -2,6 +2,6 @@ package com.example.isipark.model
 
 class Utils {
     companion object {
-        val URL = "https://f594-2001-818-eb13-c00-cb2-1739-74e3-9ecf.eu.ngrok.io/"
+        val URL = "https://cb68-2001-8a0-fe1a-c901-548-2f97-b065-a538.eu.ngrok.io/"
     }
 }

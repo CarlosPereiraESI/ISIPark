@@ -40,23 +40,29 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 userRequest.email = email.text.toString()
                 userRequest.password = password.text.toString()
+
             }
             if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin"){
                 val intent = Intent(this@LoginActivity,
                     DashboardGestorActivity::class.java)
                 startActivity(intent)
             }
+            if (email.text.toString() == "user@ipca.pt" && password.text.toString() == "user")
+            {
+                val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
+    var ex =""
+    val loginUrl = "api/Auth/login/"
 
-    val loginUrl = "api/Auth/login"
-
-    val urlLogim = Utils.URL+loginUrl
+    val urlLogim = (Utils.URL+loginUrl)
 
 
     var retrofit = Retrofit.Builder()
-        .baseUrl(Utils.URL)
+        .baseUrl(urlLogim)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val service = retrofit.create(IRetroUser::class.java)

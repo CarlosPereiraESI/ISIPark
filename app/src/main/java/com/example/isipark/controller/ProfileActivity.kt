@@ -23,6 +23,8 @@ class ProfileActivity : AppCompatActivity() {
 
         //Go to vehicle page
         vehiclesbtn.setOnClickListener {
+            val intent = Intent(this, VehiclesActivity::class.java)
+            startActivity(intent)
         }
 
         //Go to history page
