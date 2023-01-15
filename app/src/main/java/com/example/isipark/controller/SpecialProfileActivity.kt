@@ -17,8 +17,8 @@ class SpecialProfileActivity: AppCompatActivity() {
 
         // Button Create
         create.setOnClickListener{
-            val intent = Intent(this@SpecialProfileActivity, DashboardGestorActivity::class.java)
-            startActivity(intent)
+            /*val intent = Intent(this@SpecialProfileActivity, DashboardGestorActivity::class.java)
+            startActivity(intent)*/
         }
 
         //Button Back

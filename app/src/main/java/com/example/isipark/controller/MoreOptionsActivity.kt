@@ -13,7 +13,6 @@ class MoreOptionsActivity : AppCompatActivity() {
 
         // Buttons page
         val parkingEdit = findViewById<Button>(R.id.more_parking_btn)
-        val newEntries = findViewById<Button>(R.id.more_new_btn)
         val addVehicle = findViewById<Button>(R.id.more_addv_btn)
         val specialProfiles = findViewById<Button>(R.id.more_special_btn)
         val reportMessage = findViewById<Button>(R.id.more_report_btn)
@@ -38,7 +37,6 @@ class MoreOptionsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        newEntries.setOnClickListener {  }
 
         // Go to page Add Vehicle
         addVehicle.setOnClickListener {

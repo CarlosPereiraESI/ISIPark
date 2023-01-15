@@ -49,6 +49,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
+    val loginUrl = "api/Auth/login"
+
+    val urlLogim = Utils.URL+loginUrl
+
+
     var retrofit = Retrofit.Builder()
         .baseUrl(Utils.URL)
         .addConverterFactory(GsonConverterFactory.create())
