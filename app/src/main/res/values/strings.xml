@@ -44,7 +44,20 @@
     <string name="data">   Data           Operation           Sector</string>
     <string name="add_more">Add More</string>
     <string name="name_regist">Name / Registration:</string>
+    <string name="name">Name:</string>
 
     <string name="search">Search</string>
+    <string name="vehicle_type">Vehicle Type:</string>
+    <string name="exp_date">Expiration Date:</string>
+    <string name="contact">Contact:</string>
+    <string name="create">Create</string>
+    <string name="add_code">Code:</string>
+
+    <string name="normal_parking">Normal Parking:</string>
+    <string name="motorcycle">Motorcycle:</string>
+    <string name="electrics">Electrics:</string>
+    <string name="reduced_mobility">Reduced Mobility:</string>
+    <string name="add_map">Add Map</string>
+    <string name="parking">Parking</string>
 
 </resources>

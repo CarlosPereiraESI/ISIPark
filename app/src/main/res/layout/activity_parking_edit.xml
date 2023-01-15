@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.Add_VehicleActivity"
+    android:background="@color/background">
+
+    <ImageView
+        android:id="@+id/code_logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/parking_edit_et"
+        android:layout_width="410dp"
+        android:layout_height="60dp"
+        android:textColor="@color/text"
+        android:background="@color/white"
+        android:text="@string/parking_edit"
+        android:textSize="33sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/code_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="35dp"/>
+
+    <TextView
+        android:id="@+id/sector_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/parking_edit_et"
+        android:textStyle="bold"
+        android:text="@string/report_sect"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:id="@+id/add_sector_et"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="85dp"
+        android:textColor="@color/text"
+        android:background="@color/buttons"
+        app:layout_constraintBottom_toBottomOf="@id/sector_tv"
+        app:layout_constraintStart_toEndOf="@id/sector_tv"
+        app:layout_constraintTop_toTopOf="@id/sector_tv" />
+
+    <TextView
+        android:id="@+id/normal_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textStyle="bold"
+        android:text="@string/normal_parking"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/add_sector_et"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:id="@+id/normal_et"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="21dp"
+        android:textColor="@color/black"
+        android:background="@color/buttons"
+        app:layout_constraintBottom_toBottomOf="@id/normal_tv"
+        app:layout_constraintStart_toEndOf="@id/normal_tv"
+        app:layout_constraintTop_toTopOf="@id/normal_tv" />
+
+    <TextView
+        android:id="@+id/motorcycle_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textStyle="bold"
+        android:text="@string/motorcycle"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/normal_et"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:id="@+id/motorcycle_et"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="52dp"
+        android:textColor="@color/black"
+        android:background="@color/buttons"
+        app:layout_constraintBottom_toBottomOf="@id/motorcycle_tv"
+        app:layout_constraintStart_toEndOf="@id/motorcycle_tv"
+        app:layout_constraintTop_toTopOf="@id/motorcycle_tv" />
+
+    <TextView
+        android:id="@+id/electrics_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textStyle="bold"
+        android:text="@string/electrics"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/motorcycle_et"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:id="@+id/electrics_et"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="70dp"
+        android:textColor="@color/black"
+        android:background="@color/buttons"
+        app:layout_constraintBottom_toBottomOf="@id/electrics_tv"
+        app:layout_constraintStart_toEndOf="@id/electrics_tv"
+        app:layout_constraintTop_toTopOf="@id/electrics_tv" />
+
+    <TextView
+        android:id="@+id/red_mob_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textStyle="bold"
+        android:text="@string/reduced_mobility"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/electrics_et"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:id="@+id/red_mob_et"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:background="@color/buttons"
+        app:layout_constraintBottom_toBottomOf="@id/red_mob_tv"
+        app:layout_constraintStart_toEndOf="@id/red_mob_tv"
+        app:layout_constraintTop_toTopOf="@id/red_mob_tv" />
+
+    <Button
+        android:id="@+id/add_map_btn"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:text="@string/add_map"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/red_mob_et"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="75dp"
+        app:cornerRadius="25dp" />
+
+    <Button
+        android:id="@+id/create_park_btn"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:text="@string/create"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/red_mob_et"
+        app:layout_constraintStart_toEndOf="@id/add_map_btn"
+        android:gravity="center"
+        android:textColor="@color/strings"
+        android:backgroundTint="@color/buttons"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        app:cornerRadius="25dp" />
+
+    <ListView
+        android:id="@+id/list_sectors"
+        android:layout_width="370dp"
+        android:layout_height="150dp"
+        android:background="@color/buttons"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/create_park_btn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/parking_edit_back"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/buttons"
+        android:text="@string/back"
+        android:textColor="@color/strings"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/list_sectors" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
