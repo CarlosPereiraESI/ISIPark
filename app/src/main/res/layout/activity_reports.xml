@@ -68,7 +68,7 @@
         app:layout_constraintBottom_toBottomOf="@id/report_setor"
         app:layout_constraintStart_toEndOf="@id/report_setor"
         app:layout_constraintTop_toTopOf="@id/report_setor"
-        android:background="@color/white" />
+        android:background="@color/buttons" />
 
     <TextView
         android:layout_width="100dp"
@@ -93,7 +93,7 @@
         app:layout_constraintBottom_toBottomOf="@id/report_regis"
         app:layout_constraintStart_toEndOf="@id/report_regis"
         app:layout_constraintTop_toTopOf="@id/report_regis"
-        android:background="@color/white" />
+        android:background="@color/buttons" />
 
     <TextView
         android:layout_width="60dp"
@@ -113,7 +113,7 @@
         android:layout_width="190dp"
         android:layout_height="130dp"
         android:layout_marginStart="8dp"
-        android:background="@color/white"
+        android:background="@color/buttons"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@id/report_moreT"
         app:layout_constraintTop_toTopOf="@id/report_moreT" />

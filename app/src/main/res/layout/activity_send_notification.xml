@@ -101,7 +101,7 @@
         android:layout_height="130dp"
         android:layout_margin="5dp"
         android:layout_marginStart="8dp"
-        android:background="@color/white"
+        android:background="@color/buttons"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@id/send_noti_messade_t"
         app:layout_constraintTop_toTopOf="@id/send_noti_messade_t" />
