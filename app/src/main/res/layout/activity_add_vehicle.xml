@@ -50,14 +50,12 @@
         android:id="@+id/addvehicletype"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_margin="10dp"
         android:orientation="vertical"
-        android:backgroundTint="@color/white"
+        android:background="@color/white"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@id/type"
         app:layout_constraintStart_toEndOf="@id/type"
-        app:layout_constraintTop_toTopOf="@id/type"
-        />
+        app:layout_constraintTop_toTopOf="@id/type" />
 
     <TextView
         android:layout_width="120dp"
@@ -72,16 +70,16 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="55dp" />
 
+
     <EditText
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:background="@color/white"
         android:id="@+id/AddVehicleRegistration"
         app:layout_constraintBottom_toBottomOf="@id/Registration"
         app:layout_constraintStart_toEndOf="@id/Registration"
-        app:layout_constraintTop_toTopOf="@id/Registration" />
+        app:layout_constraintTop_toTopOf="@id/Registration"
+        android:background="@color/white" />
 
     <Button
         android:layout_width="127dp"

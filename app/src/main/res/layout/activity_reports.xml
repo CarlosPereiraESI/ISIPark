@@ -7,7 +7,6 @@
     tools:context=".controller.ReportsActivity"
     android:background="@color/background">
 
-
     <ImageView
     android:id="@+id/code_logo"
     android:layout_width="300dp"
