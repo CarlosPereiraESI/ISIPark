@@ -2,6 +2,7 @@ package com.example.isipark.model.Interfaces
 
 import com.example.isipark.model.RetroFit.RetroAdminMessage
 import com.example.isipark.model.RetroFit.RetroLogin
+import com.example.isipark.model.RetroFit.RetroPlaceFree
 import com.example.isipark.model.RetroFit.RetroUser
 import retrofit2.Call
 import retrofit2.http.*
@@ -26,8 +27,8 @@ interface NetworkManager {
     fun insertUser( user: RetroUser): Call<RetroUser>
 
     //Places
-    @GET("api/Place/T/normal")
-    fun getPlaceNormal(@Header("Authorization") token: String): Call<Int>
+    @GET("api/Place/SetorType")
+    fun getPlaceNormal(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
     @GET("api/Place/T/eletrico")
     fun getPlaceElectric(@Header("Authorization") token: String): Call<Int>

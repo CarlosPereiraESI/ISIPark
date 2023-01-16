@@ -11,6 +11,7 @@ import android.widget.ListView
 import android.widget.Toast
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
+import com.example.isipark.model.RetroFit.RetroPlaceFree
 import com.example.isipark.model.sector
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +28,7 @@ class DashboardActivity : AppCompatActivity() {
     val valuesE = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", ""), sector("Sector D", "Normal: 20", "Eletric: 1", "", ""), sector("Sector G", "Normal: 10", "Eletric: 0", "", ""))
     val valuesR = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", "R.Mobility: 1"), sector("Sector D", "Normal: 20", "Eletric: 1", "", "R.Mobility: 0"), sector("Sector G", "Normal: 10", "Eletric: 0", "", "R.Mobility: 2"))
 
-    var normal: Int? = null
+    var normal: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class DashboardActivity : AppCompatActivity() {
         //---------------------------- Buttons -------------------------------------
 
         //var normal: Int? = null
-        var normal1: Int? = null
+        var normal1: String? = null
         //Report button
         val report = findViewById<ImageButton>(R.id.dashboard_report)
 
@@ -58,21 +59,20 @@ class DashboardActivity : AppCompatActivity() {
         val token = sp.getString("token", null)
 
         Utils.instance.getPlaceNormal("Bearer $token")
-            .enqueue(object: Callback<Int> {
-                override fun onResponse(call: Call<Int>, response: Response<Int>){
+            .enqueue(object: Callback<List<RetroPlaceFree>> {
+                override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
                     if(response.code() == 200) {
-                        normal = response.body()
-                        normal1=normal
-                        println("Normal: " + normal)
-                        var values = mutableListOf<sector>(sector("Sector T", "Normal: $normal1", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"),
-                            sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"),
-                            sector("Sector G", "Normal: 10", "Eletric: 0", "Motorcycle: 1", "R.Mobility: 2"))
+                        val retroFit2 = response.body()
+                        var adapter = retroFit2?.let {
+                            VehiclesArrayAdapter(this@DashboardActivity, it)
+                        }
 
-                        var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, values)
+
+                        //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                         listView.adapter = adapter
                     }
                 }
-                override fun onFailure(call: Call<Int>, t: Throwable) {
+                override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
             })
@@ -107,6 +107,7 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        /*
         //Show normal places on dashboard
         normalBtn.setOnClickListener{
 
@@ -134,7 +135,7 @@ class DashboardActivity : AppCompatActivity() {
             var adapter = VehiclesArrayAdapter(this,
                 R.layout.layout_sector_dash, valuesR)
             listView.adapter = adapter
-        }
+        }*/
     }
 
     override fun onBackPressed() {}
