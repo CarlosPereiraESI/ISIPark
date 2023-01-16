@@ -41,7 +41,10 @@
     <string name="notification_titulo">Notifications</string>
     <string name="history">History</string>
     <string name="vehicles">Vehicles</string>
-    <string name="data">   Data           Operation           Sector</string>
+    <string name="date">Date</string>
+    <string name="operation">Operation</string>
+    <string name="sector">Sector</string>
+
     <string name="add_more">Add More</string>
     <string name="name_regist">Name / Registration:</string>
     <string name="name">Name:</string>
