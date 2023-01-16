@@ -14,6 +14,7 @@ class ProfileActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.profile_back_btn)
         val vehiclesbtn = findViewById<Button>(R.id.profile_vehicle_btn)
         val historybtn = findViewById<Button>(R.id.profile_history_btn)
+        val logoutbtn = findViewById<Button>(R.id.profile_logout)
 
         //Back to dashboard page
         back.setOnClickListener {
@@ -28,6 +29,12 @@ class ProfileActivity : AppCompatActivity() {
         //Go to history page
         historybtn.setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Logout
+        logoutbtn.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
