@@ -12,25 +12,21 @@ class Add_VehicleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_vehicle)
 
         //Buttons page
+        val save = findViewById<Button>(R.id.addVehicleSave)
+        val back = findViewById<Button>(R.id.addVehicle_back)
 
-            val save = findViewById<Button>(R.id.addVehicleSave)
-            val back = findViewById<Button>(R.id.addVehicle_back)
-
-
-            // Button Save
-            save.setOnClickListener{
-                val intent = Intent(this@Add_VehicleActivity, DashboardActivity::class.java)
-                startActivity(intent)
-            }
-
-            //Button back
-            back.setOnClickListener {
-                val intent = Intent(this@Add_VehicleActivity, VehiclesActivity::class.java)
-                startActivity(intent)
-            }
-
-
+        // Button Save
+        save.setOnClickListener{
+            val intent = Intent(this@Add_VehicleActivity, DashboardActivity::class.java)
+            startActivity(intent)
         }
+
+        //Button back
+        back.setOnClickListener {
+            val intent = Intent(this@Add_VehicleActivity, VehiclesActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     override fun onBackPressed() {}
 
