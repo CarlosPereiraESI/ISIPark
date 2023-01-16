@@ -12,7 +12,7 @@ class SendNotificationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_send_notification)
 
         val back = findViewById<Button>(R.id.send_back_btn)
-        val send_noti = findViewById<Button>(R.id.send_nofi_btn)
+        val send_noti = findViewById<Button>(R.id.send_noti_btn)
 
         back.setOnClickListener {
             val intent = Intent(this,ReportsMessagesActivity::class.java)
