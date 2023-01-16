@@ -57,29 +57,33 @@ class LoginActivity : AppCompatActivity() {
                                 val sp = getSharedPreferences(this@LoginActivity)
                                 sp.edit().putString("token", loginbody).commit()
 
-                                val intent = Intent(this@LoginActivity,
-                                    DashboardActivity::class.java)
-                                startActivity(intent)
-
+                                if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin") {
+                                    val intent = Intent(
+                                        this@LoginActivity,
+                                        DashboardGestorActivity::class.java)
+                                    startActivity(intent)
+                                }
+                                else {
+                                    val intent = Intent(this@LoginActivity,
+                                        DashboardActivity::class.java)
+                                    startActivity(intent)
+                                }
                             }
                             if(response.code() == 400){
                                 Toast.makeText(applicationContext,"User nao existe" , Toast.LENGTH_SHORT).show()
-
                             }
-
                         }
                         override fun onFailure(call: Call<String>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
                     })
             }
-            if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin") {
-                val intent = Intent(
-                    this@LoginActivity,
-                    DashboardGestorActivity::class.java)
-                startActivity(intent)
-            }
-
+           // if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin") {
+             //   val intent = Intent(
+               //     this@LoginActivity,
+                 //   DashboardGestorActivity::class.java)
+                //startActivity(intent)
+            //}
         }
     }
     override fun onBackPressed() {}
