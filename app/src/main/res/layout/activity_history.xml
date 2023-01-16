@@ -43,7 +43,7 @@
         android:id="@+id/date_history"
         app:layout_constraintTop_toBottomOf="@id/history_et"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"/>
 
     <TextView

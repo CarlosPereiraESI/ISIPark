@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toBottomOf="@id/name_regist"
         app:layout_constraintStart_toEndOf="@id/name_regist"
         app:layout_constraintTop_toTopOf="@id/name_regist"
-        android:background="@color/white" />
+        android:background="@color/buttons" />
 
     <Button
         android:id="@+id/search_btn"

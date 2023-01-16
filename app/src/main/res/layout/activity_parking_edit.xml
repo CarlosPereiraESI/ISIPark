@@ -48,7 +48,7 @@
 
     <EditText
         android:id="@+id/add_sector_et"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="25dp"
         android:layout_marginStart="85dp"
         android:textColor="@color/text"
@@ -72,7 +72,7 @@
 
     <EditText
         android:id="@+id/normal_et"
-        android:layout_width="150dp"
+        android:layout_width="50dp"
         android:layout_height="25dp"
         android:layout_marginStart="21dp"
         android:textColor="@color/black"
@@ -96,7 +96,7 @@
 
     <EditText
         android:id="@+id/motorcycle_et"
-        android:layout_width="150dp"
+        android:layout_width="50dp"
         android:layout_height="25dp"
         android:layout_marginStart="52dp"
         android:textColor="@color/black"
@@ -120,7 +120,7 @@
 
     <EditText
         android:id="@+id/electrics_et"
-        android:layout_width="150dp"
+        android:layout_width="50dp"
         android:layout_height="25dp"
         android:layout_marginStart="70dp"
         android:textColor="@color/black"
@@ -144,7 +144,7 @@
 
     <EditText
         android:id="@+id/red_mob_et"
-        android:layout_width="150dp"
+        android:layout_width="50dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:textColor="@color/black"
