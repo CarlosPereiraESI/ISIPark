@@ -20,8 +20,6 @@ class NotificationAdminActivity : AppCompatActivity() {
         }
 
         // Falta adapter para a listview das notificacoes
-
     }
-
     override fun onBackPressed() {}
 }

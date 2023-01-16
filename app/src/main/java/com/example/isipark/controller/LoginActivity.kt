@@ -1,6 +1,5 @@
 package com.example.isipark.controller
 
-import android.app.backup.SharedPreferencesBackupHelper
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -12,7 +11,6 @@ import android.widget.Toast
 import com.example.isipark.model.RetroFit.RetroLogin
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
-import com.example.isipark.model.RetroFit.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                             if(response.code() == 200){
                                 val loginbody = response.body()
                                 //val token = loginbody?.token
-                                
+
                                 Toast.makeText(applicationContext,"Welcome!",
                                     Toast.LENGTH_SHORT).show()
 
