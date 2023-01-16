@@ -32,6 +32,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+
         //---------------------------- Buttons -------------------------------------
 
         var normal: Int? = null
@@ -99,6 +100,7 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show normal places on dashboard
         normalBtn.setOnClickListener{
+
             var adapter = VehiclesArrayAdapter(this,
                 R.layout.layout_sector_dash, valuesN)
             listView.adapter = adapter
