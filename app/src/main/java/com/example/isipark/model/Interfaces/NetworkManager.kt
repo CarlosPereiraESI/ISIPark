@@ -21,7 +21,7 @@ interface NetworkManager {
     //Login
     @Headers("Accept: application/json", "Content-Type: application/json")
     @POST("api/Auth/login")
-    fun login(@Body log: RetroLogin): Call<LoginResponse>
+    fun login(@Body log: RetroLogin): Call<String>
 
     @POST("api/Auth/register")
     fun insertUser( user: RetroUser): Call<RetroUser>

@@ -1,6 +1,9 @@
 package com.example.isipark.controller
 
+import android.app.backup.SharedPreferencesBackupHelper
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -39,14 +42,33 @@ class LoginActivity : AppCompatActivity() {
                 retrolog.email = email.text.toString()
                 retrolog.password = password.text.toString()
                 Utils.instance.login(retrolog)
-                    .enqueue(object: Callback<LoginResponse>{
-                        override fun onResponse(call: Call<LoginResponse>,
-                                                response: Response<LoginResponse>) {
+                    .enqueue(object: Callback<String>{
+                        override fun onResponse(call: Call<String>,
+                                                response: Response<String>) {
+
+                            if(response.code() == 200){
+                                val loginbody = response.body()
+                                //val token = loginbody?.token
+                                println("AQUI0000000000000000000000")
+                                println(loginbody)
+
+                                Toast.makeText(applicationContext,"Bem-Vindo !" , Toast.LENGTH_SHORT).show()
+
+                                val sp = getSharedPreferences(this@LoginActivity)
+                                sp.edit().putString("token", loginbody).commit()
+
                                 val intent = Intent(this@LoginActivity,
                                     DashboardActivity::class.java)
                                 startActivity(intent)
+
+                            }
+                            if(response.code() == 400){
+                                Toast.makeText(applicationContext,"User nao existe" , Toast.LENGTH_SHORT).show()
+
+                            }
+
                         }
-                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        override fun onFailure(call: Call<String>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
                     })
@@ -61,4 +83,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     override fun onBackPressed() {}
+
+    //usar quando chamar os token
+    fun getSharedPreferences(context: Context): SharedPreferences {
+        return context.getSharedPreferences(context.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
+    }
 }
+
