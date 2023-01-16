@@ -14,7 +14,7 @@ interface NetworkManager {
     fun insertAdminMessage(@Header("Authorization") token: String,
                            @Body adminMessage: RetroAdminMessage): Call<RetroAdminMessage>
 
-    //Login
+    //Login - Done
     @Headers("Accept: application/json", "Content-Type: application/json")
     @POST("api/Auth/login")
     fun login(@Body log: RetroLogin): Call<String>
