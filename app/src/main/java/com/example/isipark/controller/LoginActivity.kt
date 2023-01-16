@@ -49,15 +49,15 @@ class LoginActivity : AppCompatActivity() {
                             if(response.code() == 200){
                                 val loginbody = response.body()
                                 //val token = loginbody?.token
-                                println("AQUI0000000000000000000000")
-                                println(loginbody)
-
-                                Toast.makeText(applicationContext,"Bem-Vindo !" , Toast.LENGTH_SHORT).show()
+                                
+                                Toast.makeText(applicationContext,"Welcome!",
+                                    Toast.LENGTH_SHORT).show()
 
                                 val sp = getSharedPreferences(this@LoginActivity)
                                 sp.edit().putString("token", loginbody).commit()
 
-                                if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin") {
+                                if (email.text.toString() == "admin@ipca.pt" &&
+                                    password.text.toString() == "admin") {
                                     val intent = Intent(
                                         this@LoginActivity,
                                         DashboardGestorActivity::class.java)
@@ -70,7 +70,8 @@ class LoginActivity : AppCompatActivity() {
                                 }
                             }
                             if(response.code() == 400){
-                                Toast.makeText(applicationContext,"User nao existe" , Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext,"User Not Found",
+                                    Toast.LENGTH_SHORT).show()
                             }
                         }
                         override fun onFailure(call: Call<String>, t: Throwable) {
