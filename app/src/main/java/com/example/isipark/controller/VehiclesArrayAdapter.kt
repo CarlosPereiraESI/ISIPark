@@ -9,15 +9,13 @@ import android.widget.TextView
 import com.example.isipark.R
 import com.example.isipark.model.sector
 
-
-class MySimpleArrayAdapterObjects(context: Context, resource: Int,
-                                  objects: MutableList<sector>): ArrayAdapter<sector>(context,
+class VehiclesArrayAdapter(context: Context, resource: Int,
+                           objects: MutableList<sector>): ArrayAdapter<sector>(context,
                                     resource, objects){
 
     var mContext: Context
     var mValues: MutableList<sector>
     var mResource: Int
-
 
     init {
         mContext = context
@@ -36,8 +34,6 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int,
         val motorcycle = rowView.findViewById<TextView>(R.id.motorcycle)
         val r_mob = rowView.findViewById<TextView>(R.id.reduce_mobility)
 
-
-
         val name = mValues[position].setor
         sector_name.text = name
 
@@ -48,14 +44,12 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int,
             normal.text = norm
         }
 
-
         val eletr = mValues[position].eletric
         if(eletr == ""){
             eletric.visibility = View.GONE
         } else {
             eletric.text = eletr
         }
-
 
         val motor = mValues[position].motorcycle
         if(motor == ""){
@@ -64,17 +58,12 @@ class MySimpleArrayAdapterObjects(context: Context, resource: Int,
             motorcycle.text = motor
         }
 
-
         val rm = mValues[position].reduce_mob
         if(rm == ""){
             r_mob.visibility = View.GONE
         } else {
             r_mob.text = rm
         }
-
         return rowView
-
     }
-
-
 }

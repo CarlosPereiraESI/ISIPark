@@ -60,24 +60,24 @@ class DashboardGestorActivity : AppCompatActivity() {
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
 
         //Adapter
-        var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, values)
+        var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, values)
         listView.adapter = adapter
 
         // --------------------------------- Buttons information ----------------------------------------
         normalBtn.setOnClickListener {
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesN)
+            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesN)
             listView.adapter = adapter
         }
         motoBtn.setOnClickListener {
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesM)
+            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesM)
             listView.adapter = adapter
         }
         eletricBtn.setOnClickListener {
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesE)
+            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesE)
             listView.adapter = adapter
         }
         rmobBtn.setOnClickListener {
-            var adapter = MySimpleArrayAdapterObjects(this, R.layout.layout_sector_dash, valuesR)
+            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesR)
             listView.adapter = adapter
         }
 
@@ -103,4 +103,6 @@ class DashboardGestorActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {}
+
+
 }
