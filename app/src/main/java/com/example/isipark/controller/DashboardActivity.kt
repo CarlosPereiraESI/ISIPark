@@ -27,6 +27,7 @@ class DashboardActivity : AppCompatActivity() {
     val valuesE = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", ""), sector("Sector D", "Normal: 20", "Eletric: 1", "", ""), sector("Sector G", "Normal: 10", "Eletric: 0", "", ""))
     val valuesR = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", "R.Mobility: 1"), sector("Sector D", "Normal: 20", "Eletric: 1", "", "R.Mobility: 0"), sector("Sector G", "Normal: 10", "Eletric: 0", "", "R.Mobility: 2"))
 
+    var normal: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,8 @@ class DashboardActivity : AppCompatActivity() {
 
         //---------------------------- Buttons -------------------------------------
 
-        var normal: Int? = null
+        //var normal: Int? = null
+        var normal1: Int? = null
         //Report button
         val report = findViewById<ImageButton>(R.id.dashboard_report)
 
@@ -60,6 +62,14 @@ class DashboardActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<Int>, response: Response<Int>){
                     if(response.code() == 200) {
                         normal = response.body()
+                        normal1=normal
+                        println("Normal: " + normal)
+                        var values = mutableListOf<sector>(sector("Sector T", "Normal: $normal1", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"),
+                            sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"),
+                            sector("Sector G", "Normal: 10", "Eletric: 0", "Motorcycle: 1", "R.Mobility: 2"))
+
+                        var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, values)
+                        listView.adapter = adapter
                     }
                 }
                 override fun onFailure(call: Call<Int>, t: Throwable) {
@@ -67,9 +77,8 @@ class DashboardActivity : AppCompatActivity() {
                 }
             })
         //--------------------------- Adapter ------------------------------
-        var values = mutableListOf<sector>(sector("Sector T", "Normal: $normal", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"), sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"), sector("Sector G", "Normal: 10", "Eletric: 0", "Motorcycle: 1", "R.Mobility: 2"))
-        var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, values)
-        listView.adapter = adapter
+
+
 
         // ------------------------- Click buttons ------------------------------------
 
