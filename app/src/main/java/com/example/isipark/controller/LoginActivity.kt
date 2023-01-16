@@ -78,12 +78,6 @@ class LoginActivity : AppCompatActivity() {
                         }
                     })
             }
-           // if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin") {
-             //   val intent = Intent(
-               //     this@LoginActivity,
-                 //   DashboardGestorActivity::class.java)
-                //startActivity(intent)
-            //}
         }
     }
     override fun onBackPressed() {}
