@@ -1,5 +1,6 @@
 package com.example.isipark.model.Interfaces
 
+import com.example.isipark.model.RetroFit.LoginResponse
 import com.example.isipark.model.RetroFit.RetroAdminMessage
 import com.example.isipark.model.RetroFit.RetroLogin
 import com.example.isipark.model.RetroFit.RetroUser
@@ -18,9 +19,9 @@ interface NetworkManager {
     ): Call<RetroAdminMessage>
 
     //Login
-    @Headers("Content-Type: application/json")
+    @Headers("Accept: application/json", "Content-Type: application/json")
     @POST("api/Auth/login")
-    fun login(@Body log: RetroLogin): Call<RetroLogin>
+    fun login(@Body log: RetroLogin): Call<LoginResponse>
 
     @POST("api/Auth/register")
     fun insertUser( user: RetroUser): Call<RetroUser>

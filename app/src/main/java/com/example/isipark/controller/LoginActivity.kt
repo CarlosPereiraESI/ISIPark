@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.isipark.model.RetroFit.RetroLogin
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
+import com.example.isipark.model.RetroFit.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,17 +39,15 @@ class LoginActivity : AppCompatActivity() {
                 retrolog.email = email.text.toString()
                 retrolog.password = password.text.toString()
                 Utils.instance.login(retrolog)
-                    .enqueue(object: Callback<RetroLogin>{
-                        override fun onFailure(call: Call<RetroLogin>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                        }
-                        override fun onResponse(call: Call<RetroLogin>,
-                                                response: Response<RetroLogin>) {
-                            if(response.code() == 200){
+                    .enqueue(object: Callback<LoginResponse>{
+                        override fun onResponse(call: Call<LoginResponse>,
+                                                response: Response<LoginResponse>) {
                                 val intent = Intent(this@LoginActivity,
                                     DashboardActivity::class.java)
                                 startActivity(intent)
-                            }
+                        }
+                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
                     })
             }
