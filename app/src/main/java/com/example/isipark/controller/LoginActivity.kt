@@ -41,26 +41,29 @@ class LoginActivity : AppCompatActivity() {
                 retrolog.email = email.text.toString()
                 retrolog.password = password.text.toString()
 
-                Utils.instance.getUserID(em)
-                    .enqueue(object: Callback<Int>{
-                        override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                            if(response.code() == 200){
-                                val idUser = response.body()
-                                val ap = getSharedPreferences(this@LoginActivity)
-                                ap.edit().putInt("id", idUser!!).apply()
-                                println("HELLOOOOOOOOOOOOOOOOOOOOOOOOO")
-                            }
-                        }
-                        override fun onFailure(call: Call<Int>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
                 Utils.instance.login(retrolog)
                     .enqueue(object: Callback<String>{
                         override fun onResponse(call: Call<String>,
                                                 response: Response<String>) {
 
                             if(response.code() == 200){
+
+                                Utils.instance.getUserID(em)
+                                    .enqueue(object: Callback<Int>{
+                                        override fun onResponse(call: Call<Int>,
+                                                                response: Response<Int>) {
+                                            if(response.code() == 200){
+                                                val idUser = response.body()
+                                                val ap = getSharedPreferences(this@LoginActivity)
+                                                ap.edit().putInt("id", idUser!!).apply()
+                                                println("HELLOOOOOOOOOOOOOOOOOOOOOOOOO")
+                                            }
+                                        }
+                                        override fun onFailure(call: Call<Int>, t: Throwable) {
+                                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                                        }
+                                    })
+
                                 val loginbody = response.body()
                                 //val token = loginbody?.token
 
@@ -92,6 +95,7 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
                     })
+
             }
         }
     }

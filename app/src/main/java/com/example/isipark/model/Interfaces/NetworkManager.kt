@@ -20,7 +20,7 @@ interface NetworkManager {
     fun login(@Body log: RetroLogin): Call<String>
 
     @POST("api/Auth/register")
-    fun insertUser( user: RetroUser): Call<RetroUser>
+    fun insertUser(user: RetroUser): Call<RetroUser>
 
     //Places
     @GET("api/Place/SetorType")
@@ -35,14 +35,14 @@ interface NetworkManager {
     @GET("api/Place/T/necessidade especial")
     fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
 
-    @Headers("Accept: application/json", "Content-Type: application/json")
-    @GET("api/Auth/emailID{email}")
+    //Get UserID by Email - Erro
+    @GET("api/Auth/emailID/{email}")
     fun getUserID(@Query("email") email: String) : Call<Int>
 
-    //Get Suggested Place
-    @Headers("Accept: application/json", "Content-Type: application/json")
+    //Get Suggested Place - Incompleto
     @GET("api/Place/Setor")
-    fun getSuggestedPlace(@Query("id") id: Int): Call<String>
+    fun getSuggestedPlace(@Query("id") id: Int,
+                          @Header("Authorization") token: String): Call<String>
 
     //Get User Profile
     @GET("api/User/{id}")
