@@ -54,13 +54,14 @@ class LoginActivity : AppCompatActivity() {
                                                                 response: Response<Int>) {
                                             if(response.code() == 200){
                                                 val idUser = response.body()
-                                                val ap = getSharedPreferences(this@LoginActivity)
+                                                val ap = getSharedPreferences(
+                                                    this@LoginActivity)
                                                 ap.edit().putInt("id", idUser!!).apply()
-                                                println("HELLOOOOOOOOOOOOOOOOOOOOOOOOO")
                                             }
                                         }
                                         override fun onFailure(call: Call<Int>, t: Throwable) {
-                                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                                            Toast.makeText(applicationContext, t.message,
+                                                Toast.LENGTH_LONG).show()
                                         }
                                     })
 

@@ -35,12 +35,11 @@ interface NetworkManager {
     @GET("api/Place/T/necessidade especial")
     fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
 
-    //Get UserID by Email - Erro
     @GET("api/Auth/emailID/{email}")
     fun getUserID(@Query("email") email: String) : Call<Int>
 
     //Get Suggested Place - Incompleto
-    @GET("api/Place/Setor")
+    @GET("api/Place/Setor/{id}")
     fun getSuggestedPlace(@Query("id") id: Int,
                           @Header("Authorization") token: String): Call<String>
 

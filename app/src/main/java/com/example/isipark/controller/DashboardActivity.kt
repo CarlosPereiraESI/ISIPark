@@ -63,6 +63,7 @@ class DashboardActivity : AppCompatActivity() {
                     if(response.code() == 200) {
                         val sug = response.body()
                         suggested_place.setText(sug)
+                        println("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
                     }
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {
