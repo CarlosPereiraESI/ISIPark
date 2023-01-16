@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.Toast
@@ -28,19 +29,24 @@ class DashboardActivity : AppCompatActivity() {
     val valuesE = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", ""), sector("Sector D", "Normal: 20", "Eletric: 1", "", ""), sector("Sector G", "Normal: 10", "Eletric: 0", "", ""))
     val valuesR = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", "R.Mobility: 1"), sector("Sector D", "Normal: 20", "Eletric: 1", "", "R.Mobility: 0"), sector("Sector G", "Normal: 10", "Eletric: 0", "", "R.Mobility: 2"))
 
+
     var normal: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-
+        var normal: Int? = null
         //---------------------------- Buttons -------------------------------------
 
         //var normal: Int? = null
         var normal1: String? = null
         //Report button
         val report = findViewById<ImageButton>(R.id.dashboard_report)
+        val suggested_place = findViewById<EditText>(R.id.dashboard_suggestion_et)
+
+        var email = ""
 
         //Notification button
         val notification = findViewById<ImageButton>(R.id.dashboard_notification)
@@ -57,18 +63,40 @@ class DashboardActivity : AppCompatActivity() {
 
         val sp = getSharedPreferences(this@DashboardActivity)
         val token = sp.getString("token", null)
+        val id = sp.getInt("id", 0)
+
+        Utils.instance.getSuggestedPlace(id)
+            .enqueue(object: Callback<String>{
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(response.code() == 200) {
+                        val sug = response.body()
+                        suggested_place.setText(sug)
+                    }
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                }
+            })
 
         Utils.instance.getPlaceNormal("Bearer $token")
             .enqueue(object: Callback<List<RetroPlaceFree>> {
-                override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                override fun onResponse(call: Call<List<RetroPlaceFree>>,
+                                        response: Response<List<RetroPlaceFree>>){
                     if(response.code() == 200) {
+
                         val retroFit2 = response.body()
                         var adapter = retroFit2?.let {
                             VehiclesArrayAdapter(this@DashboardActivity, it)
                         }
 
-
                         //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                        normal = response.body()
+                        var values = mutableListOf<sector>(sector("Sector T", "Normal: $normal", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"),
+                            sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"),
+                            sector("Sector G", "Normal: 10", "Eletric: 0", "Motorcycle: 1", "R.Mobility: 2"))
+
+                        var adapter = VehiclesArrayAdapter(this@DashboardActivity,
+                            R.layout.layout_sector_dash, values)
                         listView.adapter = adapter
                     }
                 }
@@ -77,8 +105,6 @@ class DashboardActivity : AppCompatActivity() {
                 }
             })
         //--------------------------- Adapter ------------------------------
-
-
 
         // ------------------------- Click buttons ------------------------------------
 
@@ -110,7 +136,6 @@ class DashboardActivity : AppCompatActivity() {
         /*
         //Show normal places on dashboard
         normalBtn.setOnClickListener{
-
             var adapter = VehiclesArrayAdapter(this,
                 R.layout.layout_sector_dash, valuesN)
             listView.adapter = adapter

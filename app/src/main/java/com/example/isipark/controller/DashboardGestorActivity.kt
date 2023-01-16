@@ -58,7 +58,7 @@ class DashboardGestorActivity : AppCompatActivity() {
         val motoBtn = findViewById<ImageButton>(R.id.moto)
         val eletricBtn = findViewById<ImageButton>(R.id.eletric)
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
-
+/*
         //Adapter
         var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, values)
         listView.adapter = adapter
@@ -80,7 +80,7 @@ class DashboardGestorActivity : AppCompatActivity() {
             var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesR)
             listView.adapter = adapter
         }
-
+*/
 
         // ------------------------------ Other Buttons ----------------------------------
         // Show code page

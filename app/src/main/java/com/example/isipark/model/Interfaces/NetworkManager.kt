@@ -1,9 +1,6 @@
 package com.example.isipark.model.Interfaces
 
-import com.example.isipark.model.RetroFit.RetroAdminMessage
-import com.example.isipark.model.RetroFit.RetroLogin
-import com.example.isipark.model.RetroFit.RetroPlaceFree
-import com.example.isipark.model.RetroFit.RetroUser
+import com.example.isipark.model.RetroFit.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -15,8 +12,7 @@ interface NetworkManager {
 
     @POST("api/AdminMessage/insert")
     fun insertAdminMessage(@Header("Authorization") token: String,
-                           @Body adminMessage: RetroAdminMessage
-    ): Call<RetroAdminMessage>
+                           @Body adminMessage: RetroAdminMessage): Call<RetroAdminMessage>
 
     //Login
     @Headers("Accept: application/json", "Content-Type: application/json")
@@ -38,4 +34,21 @@ interface NetworkManager {
 
     @GET("api/Place/T/necessidade especial")
     fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
+
+    @Headers("Accept: application/json", "Content-Type: application/json")
+    @GET("api/Auth/emailID{email}")
+    fun getUserID(@Query("email") email: String) : Call<Int>
+
+    //Get Suggested Place
+    @Headers("Accept: application/json", "Content-Type: application/json")
+    @GET("api/Place/Setor")
+    fun getSuggestedPlace(@Query("id") id: Int): Call<String>
+
+    //Get User Profile
+    @GET("api/User/{id}")
+    fun getUser(@Query("id") id: Int) : Call<RetroUser>
+
+    //Get User Vehicles
+    @GET("api/UserVehicleType/{id}")
+    fun getAllVehicles(@Query("id") id: Int) : Call<RetroVehicleType>
 }
