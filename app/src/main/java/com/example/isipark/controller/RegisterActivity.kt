@@ -30,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             else{
                 if(password.text.toString() == confpassword.text.toString()){
-                    if (isCorrect(password.text.toString()) == true){
+                    if (isCorrect(email.text.toString()) == true){
                         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                         startActivity(intent)
                     } else {
