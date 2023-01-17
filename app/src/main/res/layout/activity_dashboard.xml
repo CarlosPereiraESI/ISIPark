@@ -91,7 +91,7 @@
         android:layout_height="30dp"
         android:textColor="@color/text"
         android:background="@color/white"
-        android:text="@string/park_sug"
+        android:text=""
         android:textAlignment="center"
         android:enabled="false"
         android:id="@+id/dashboard_suggestion2_et"

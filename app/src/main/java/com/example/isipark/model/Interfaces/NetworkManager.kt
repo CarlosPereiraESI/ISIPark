@@ -12,16 +12,15 @@ interface NetworkManager {
 
     @POST("api/AdminMessage/insert")
     fun insertAdminMessage(@Header("Authorization") token: String,
-                           @Body adminMessage: RetroAdminMessage
-    ): Call<RetroAdminMessage>
+                           @Body adminMessage: RetroAdminMessage): Call<RetroAdminMessage>
 
-    //Login
+    //Login - Done
     @Headers("Accept: application/json", "Content-Type: application/json")
     @POST("api/Auth/login")
     fun login(@Body log: RetroLogin): Call<String>
 
     @POST("api/Auth/register")
-    fun insertUser( user: RetroUser): Call<RetroUser>
+    fun insertUser(user: RetroUser): Call<RetroUser>
 
     //ROUTAS USER LUGARES LIVRES
     //todos utilizador
@@ -48,8 +47,26 @@ interface NetworkManager {
 
     //ADMIN
     //noficacoes
-
-
     @GET("api/AdminMessage/getAll")
     fun getnotifcationAdmin(@Header("Authorization") token: String): Call<List<RetroAdminMessage>>
+
+    @GET("api/Place/T/necessidade especial")
+    fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
+
+    @GET("api/Auth/emailID/{email}")
+    fun getUserID(@Query("email") email: String) : Call<Int>
+
+    //Get Suggested Place - Incompleto
+    @GET("api/Place/Setor/{id}")
+    fun getSuggestedPlace(@Query("id") id: Int,
+                          @Header("Authorization") token: String): Call<String>
+
+    //Get User Profile
+    @GET("api/User/{id}")
+    fun getUser(@Query("id") id: Int) : Call<RetroUser>
+
+    //Get User Vehicles
+    @GET("api/UserVehicleType/{id}")
+    fun getAllVehicles(@Query("id") id: Int) : Call<RetroVehicleType>
+
 }

@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
         val email = findViewById<EditText>(R.id.login_email_et)
         val password = findViewById<EditText>(R.id.login_password_et)
+        val em = email.text.toString()
 
         register.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
@@ -39,12 +40,31 @@ class LoginActivity : AppCompatActivity() {
             else{
                 retrolog.email = email.text.toString()
                 retrolog.password = password.text.toString()
+
                 Utils.instance.login(retrolog)
                     .enqueue(object: Callback<String>{
                         override fun onResponse(call: Call<String>,
                                                 response: Response<String>) {
 
                             if(response.code() == 200){
+
+                                Utils.instance.getUserID(em)
+                                    .enqueue(object: Callback<Int>{
+                                        override fun onResponse(call: Call<Int>,
+                                                                response: Response<Int>) {
+                                            if(response.code() == 200){
+                                                val idUser = response.body()
+                                                val ap = getSharedPreferences(
+                                                    this@LoginActivity)
+                                                ap.edit().putInt("id", idUser!!).apply()
+                                            }
+                                        }
+                                        override fun onFailure(call: Call<Int>, t: Throwable) {
+                                            Toast.makeText(applicationContext, t.message,
+                                                Toast.LENGTH_LONG).show()
+                                        }
+                                    })
+
                                 val loginbody = response.body()
                                 //val token = loginbody?.token
 
@@ -89,6 +109,7 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
                     })
+
             }
         }
     }

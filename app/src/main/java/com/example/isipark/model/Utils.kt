@@ -9,8 +9,6 @@ object Utils {
 
     private const val BASE_URL = "https://1479-89-114-77-52.eu.ngrok.io/"
 
-
-
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
             val original = chain.request()
