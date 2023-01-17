@@ -35,10 +35,10 @@
         android:layout_marginTop="35dp"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="40dp"
         android:text="@string/id_hist"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:id="@+id/id_history"
         app:layout_constraintTop_toBottomOf="@id/history_et"
@@ -47,27 +47,26 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="40dp"
         android:text="@string/date"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:id="@+id/date_history"
         app:layout_constraintTop_toBottomOf="@id/history_et"
         app:layout_constraintStart_toEndOf="@id/id_history"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"/>
 
     <TextView
         android:layout_width="90dp"
         android:layout_height="40dp"
         android:text="@string/operation"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:id="@+id/operation_history"
         app:layout_constraintTop_toBottomOf="@id/history_et"
         app:layout_constraintStart_toEndOf="@id/date_history"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"/>
 
     <TextView
@@ -76,7 +75,7 @@
         android:layout_height="41dp"
         android:layout_marginTop="20dp"
         android:text="@string/sector"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/operation_history"
         app:layout_constraintTop_toBottomOf="@id/history_et" />
