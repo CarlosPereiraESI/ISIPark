@@ -27,7 +27,7 @@ class ReportArrayAdapter(context: Context, list: List<RetroAdminMessage>):
         val view = LayoutInflater.from(context).inflate(R.layout.layout_notification,parent, false)
 
         //layout_sector_dash
-        val idR = view.findViewById<TextView>(R.id.titulo_notifi)
+        val name = view.findViewById<TextView>(R.id.titulo_notifi)
         val descricao = view.findViewById<TextView>(R.id.mensagem_notifi)
         val data = view.findViewById<TextView>(R.id.data_notifi)
 
@@ -35,14 +35,14 @@ class ReportArrayAdapter(context: Context, list: List<RetroAdminMessage>):
         val p = getItem(position)
 
         if (p != null) {
-            idR.text = p.idR.toString()
+            name.text = p.name
         }
         if (p != null) {
             descricao.text = p.desc
         }
 
         if (p != null) {
-            descricao.text = p.date
+            data.text = p.date
         }
 
 
