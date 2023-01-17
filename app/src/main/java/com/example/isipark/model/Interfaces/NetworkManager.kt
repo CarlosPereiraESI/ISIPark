@@ -53,17 +53,21 @@ interface NetworkManager {
     @GET("api/Place/T/necessidade especial")
     fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
 
+
+    //Get UserID by Email - Feito
     @GET("api/Auth/emailID/{email}")
-    fun getUserID(@Query("email") email: String) : Call<Int>
+    fun getUserID(@Path("email") email: String) : Call<Int>
 
     //Get Suggested Place - Incompleto
     @GET("api/Place/Setor/{id}")
-    fun getSuggestedPlace(@Query("id") id: Int,
-                          @Header("Authorization") token: String): Call<String>
 
-    //Get User Profile
+    fun getSuggestedPlace(@Path("id") id: Int,
+                        @Header("Authorization") token: String): Call<String>
+
+    //Get User Profile - Feito
     @GET("api/User/{id}")
-    fun getUser(@Query("id") id: Int) : Call<RetroUser>
+    fun getUser(@Path("id") id: Int,
+                @Header("Authorization") token: String) : Call<RetroUser>
 
     //Get User Vehicles
     @GET("api/UserVehicleType/{id}")

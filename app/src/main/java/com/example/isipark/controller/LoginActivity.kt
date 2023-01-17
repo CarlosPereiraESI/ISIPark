@@ -8,9 +8,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.edit
 import com.example.isipark.model.RetroFit.RetroLogin
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
+import com.example.isipark.model.RetroFit.RetroUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +28,6 @@ class LoginActivity : AppCompatActivity() {
 
         val email = findViewById<EditText>(R.id.login_email_et)
         val password = findViewById<EditText>(R.id.login_password_et)
-        val em = email.text.toString()
 
         register.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
@@ -48,15 +49,19 @@ class LoginActivity : AppCompatActivity() {
 
                             if(response.code() == 200){
 
-                                Utils.instance.getUserID(em)
+                                Utils.instance.getUserID(retrolog.email)
                                     .enqueue(object: Callback<Int>{
                                         override fun onResponse(call: Call<Int>,
                                                                 response: Response<Int>) {
                                             if(response.code() == 200){
+                                                println(retrolog.email)
                                                 val idUser = response.body()
-                                                val ap = getSharedPreferences(
-                                                    this@LoginActivity)
-                                                ap.edit().putInt("id", idUser!!).apply()
+
+                                                val sp = getSharedPreferences(this@LoginActivity)
+                                                sp.edit().putInt("id", idUser!!).apply()
+                                                println(idUser)
+                                                println(sp.all)
+
                                             }
                                         }
                                         override fun onFailure(call: Call<Int>, t: Throwable) {
