@@ -60,7 +60,7 @@
     <Button
         android:id="@+id/search_btn"
         android:layout_width="140dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/search"
@@ -70,15 +70,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fill_user_regist"
-        android:backgroundTint="@color/white"/>
+        android:backgroundTint="@color/buttons"/>
 
     <ListView
         android:id="@+id/search_users_listview"
-        android:layout_width="410dp"
+        android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_marginTop="24dp"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_btn" />
 
     <Button

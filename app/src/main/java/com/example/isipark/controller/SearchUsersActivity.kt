@@ -27,6 +27,7 @@ class SearchUsersActivity : AppCompatActivity() {
 
         //Fill Missing
         searchBtn.setOnClickListener {
+
             }
         }
         // Falta o adapter
