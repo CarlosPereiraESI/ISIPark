@@ -45,10 +45,6 @@ class ReportArrayAdapter(context: Context, list: List<RetroAdminMessage>):
             data.text = p.date
         }
 
-
         return view
     }
-
-
-
 }

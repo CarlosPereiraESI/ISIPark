@@ -26,8 +26,6 @@ class VehiclesArrayAdapter(context: Context,
 
         val view = LayoutInflater.from(context).inflate(R.layout.layout_sector_dash,parent, false)
 
-
-
         //layout_sector_dash
         val sector_name = view.findViewById<TextView>(R.id.sector_name)
         val normal = view.findViewById<TextView>(R.id.normal)

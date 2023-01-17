@@ -27,7 +27,9 @@ class Add_VehicleActivity : AppCompatActivity() {
         }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>, view: View,
+                                        position: Int, id: Long) {
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -48,5 +50,4 @@ class Add_VehicleActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {}
-
 }

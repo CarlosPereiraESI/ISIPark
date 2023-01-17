@@ -145,7 +145,7 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                             }
                         })
-                    }
+                }
             }
         }
     }
