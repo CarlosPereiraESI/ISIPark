@@ -80,8 +80,6 @@ class LoginActivity : AppCompatActivity() {
                                 sp.edit().putString("token", loginbody).commit()
 
                                 println(loginbody)
-
-                                println("///////////////////////////////////////////////////////////////////////////")
                                 println(email.text.toString())
                                 println(password.text.toString())
 

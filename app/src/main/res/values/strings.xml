@@ -42,9 +42,9 @@
     <string name="notification_titulo">Notifications</string>
     <string name="history">History</string>
     <string name="vehicles">Vehicles</string>
-    <string name="date">Date</string>
-    <string name="operation">Operation</string>
-    <string name="sector">Sector</string>
+    <string name="date">Entry Date</string>
+    <string name="operation">Exit Date</string>
+    <string name="sector">Place</string>
 
     <string name="add_more">Add More</string>
     <string name="name_regist">Name / Registration:</string>
@@ -63,5 +63,6 @@
     <string name="reduced_mobility">Reduced Mobility:</string>
     <string name="add_map">Add Map</string>
     <string name="parking">Parking</string>
+    <string name="id_hist">IDHistory</string>
 
 </resources>

@@ -44,7 +44,6 @@ interface NetworkManager {
     fun getPlaceReduceLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
 
-
     //ADMIN
     //noficacoes
     @GET("api/AdminMessage/getAll")
@@ -73,4 +72,12 @@ interface NetworkManager {
     @GET("api/UserVehicleType/{id}")
     fun getAllVehicles(@Query("id") id: Int) : Call<RetroVehicleType>
 
+    //Get all History
+    @GET("api/History/getAll")
+    fun getAllHistory(@Header("Authorization") token: String): Call<List<RetroHistory>>
+
+    //Get All History for a user
+    @GET("api/History/{id}")
+    fun getAllHistoryUser(@Path("id") id: Int,
+                          @Header("Authorization") token: String) : Call<List<RetroHistory>>
 }

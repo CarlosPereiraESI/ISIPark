@@ -5,15 +5,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="25dp"
-        android:id="@+id/data"
-        android:textSize="15dp"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:id="@+id/id_h"
+        android:textSize="15sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:id="@+id/entry"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/id_h"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:id="@+id/exit"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/entry"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:id="@+id/numberplaces"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toEndOf="@+id/exit"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="5dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,8 @@ class ReportArrayAdapter(context: Context, list: List<RetroAdminMessage>):
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
-        val view = LayoutInflater.from(context).inflate(R.layout.layout_notification,parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.layout_notification,
+            parent, false)
 
         //layout_sector_dash
         val idR = view.findViewById<TextView>(R.id.titulo_notifi)
@@ -45,10 +46,6 @@ class ReportArrayAdapter(context: Context, list: List<RetroAdminMessage>):
             descricao.text = p.date
         }
 
-
         return view
     }
-
-
-
 }
