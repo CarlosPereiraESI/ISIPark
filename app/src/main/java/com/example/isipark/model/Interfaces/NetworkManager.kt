@@ -45,7 +45,7 @@ interface NetworkManager {
 
 
     //ADMIN
-    //noficacoes
+    //noficacoes - Done
     @GET("api/AdminMessage/getAll")
     fun getnotifcationAdmin(@Header("Authorization") token: String): Call<List<RetroAdminMessage>>
 
@@ -53,17 +53,16 @@ interface NetworkManager {
     fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
 
 
-    //Get UserID by Email - Feito
+    //Get UserID by Email - Done
     @GET("api/Auth/emailID/{email}")
     fun getUserID(@Path("email") email: String) : Call<Int>
 
-    //Get Suggested Place - Incompleto
+    //Get Suggested Place - Done
     @GET("api/Place/Setor/{id}")
-
     fun getSuggestedPlace(@Path("id") id: Int,
                         @Header("Authorization") token: String): Call<RetroSetorDis>
 
-    //Get User Profile - Feito
+    //Get User Profile - Done
     @GET("api/User/{id}")
     fun getUser(@Path("id") id: Int,
                 @Header("Authorization") token: String) : Call<RetroUser>
@@ -72,6 +71,7 @@ interface NetworkManager {
     @GET("api/UserVehicleType/{id}")
     fun getAllVehicles(@Query("id") id: Int) : Call<RetroVehicleType>
 
+<<<<<<< HEAD
     //Get all History
     @GET("api/History/getAll")
     fun getAllHistory(@Header("Authorization") token: String): Call<List<RetroHistory>>
@@ -80,4 +80,11 @@ interface NetworkManager {
     @GET("api/History/{id}")
     fun getAllHistoryUser(@Path("id") id: Int,
                           @Header("Authorization") token: String) : Call<List<RetroHistory>>
+=======
+    //Add a special User
+    @POST("api/SpecialUsers/insert")
+    fun insertSpecialUser(@Body user: RetroSpecialProfile,
+                          @Header("Authorization") token: String) : Call<Boolean>
+
+>>>>>>> 0adb1df12f24131fad29d6dbc26d1677849d0620
 }
