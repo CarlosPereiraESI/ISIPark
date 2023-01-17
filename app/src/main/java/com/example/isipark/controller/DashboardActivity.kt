@@ -9,6 +9,7 @@ import android.widget.*
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
 import com.example.isipark.model.RetroFit.RetroPlaceFree
+import com.example.isipark.model.RetroFit.RetroSetorDis
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,19 +61,21 @@ class DashboardActivity : AppCompatActivity() {
         println(token)
 
         Utils.instance.getSuggestedPlace(id, "Bearer $token")
-            .enqueue(object: Callback<String>{
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    if(response.code() == 200) {
-                        val sug = response.body()
+        .enqueue(object: Callback<RetroSetorDis>{
+            override fun onResponse(call: Call<RetroSetorDis>, response: Response<RetroSetorDis>) {
+                if(response.code() == 200) {
+                    val sug = response.body()
 
-                        suggested_place.setText(sug)
-                        println("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-                    }
+                    println("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                    suggested_place.text = sug?.setor
+                    println(sug)
+
                 }
-                override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                }
-            })
+            }
+            override fun onFailure(call: Call<RetroSetorDis>, t: Throwable) {
+                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+            }
+        })
 
         Utils.instance.getPlaceNormal("Bearer $token")
             .enqueue(object: Callback<List<RetroPlaceFree>> {

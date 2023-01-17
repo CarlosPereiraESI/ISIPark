@@ -62,7 +62,7 @@ interface NetworkManager {
     @GET("api/Place/Setor/{id}")
 
     fun getSuggestedPlace(@Path("id") id: Int,
-                        @Header("Authorization") token: String): Call<String>
+                        @Header("Authorization") token: String): Call<RetroSetorDis>
 
     //Get User Profile - Feito
     @GET("api/User/{id}")
