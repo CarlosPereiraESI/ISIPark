@@ -5,13 +5,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
 import com.example.isipark.model.RetroFit.RetroPlaceFree
+import com.example.isipark.model.RetroFit.RetroSetorDis
 import com.example.isipark.model.sector
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,37 +31,39 @@ class DashboardGestorActivity : AppCompatActivity() {
         val codeBtn = findViewById<Button>(R.id.dashboard_gestor_code_btn)
         val moreOptions = findViewById<Button>(R.id.dashboard_gestor_more_btn)
 
+        val suggested_place = findViewById<TextView>(R.id.dashboard_gestor_suggestion2_et)
+
         // Vehicle buttons
         val normalBtn = findViewById<ImageButton>(R.id.normal)
         val motoBtn = findViewById<ImageButton>(R.id.moto)
         val eletricBtn = findViewById<ImageButton>(R.id.eletric)
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
 
-/*        //Adapter
-        var adapter = VehiclesArrayAdapter(this, it, values)
-        listView.adapter = adapter*/
-
-
         val sp = getSharedPreferences(this@DashboardGestorActivity)
         val token = sp.getString("tokenA", null)
+        val id = sp.getInt("idA", 1)
 
-        println("777777777777777777777777777777777777777777777777777777777777777777777")
-        println(token)
+        Utils.instance.getSuggestedPlace(id, "Bearer $token")
+            .enqueue(object: Callback<RetroSetorDis>{
+                override fun onResponse(call: Call<RetroSetorDis>, response: Response<RetroSetorDis>) {
+                    if(response.code() == 200) {
+                        val sug = response.body()
+                        suggested_place.text = sug?.setor
+                    }
+                }
+                override fun onFailure(call: Call<RetroSetorDis>, t: Throwable) {
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                }
+            })
 
         Utils.instance.getPlaceNormal("Bearer $token")
             .enqueue(object: Callback<List<RetroPlaceFree>> {
                 override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
-                    println("AQUI-------------------------------------------------------")
-                    println(token)
                     if(response.code() == 200) {
                         val retroFit2 = response.body()
                         var adapter = retroFit2?.let {
                             VehiclesArrayAdapter(this@DashboardGestorActivity, it)
                         }
-                        println("AQUI GESTOR")
-
-
-                        //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                         listView.adapter = adapter
                     }
                 }
@@ -83,9 +83,6 @@ class DashboardGestorActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardGestorActivity, it)
                             }
-
-
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }
@@ -105,9 +102,6 @@ class DashboardGestorActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardGestorActivity, it)
                             }
-
-
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }
@@ -127,9 +121,6 @@ class DashboardGestorActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardGestorActivity, it)
                             }
-
-
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }
@@ -150,8 +141,6 @@ class DashboardGestorActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardGestorActivity, it)
                             }
-
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }
@@ -159,9 +148,6 @@ class DashboardGestorActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
                 })
-
-
-
         }
 
 
