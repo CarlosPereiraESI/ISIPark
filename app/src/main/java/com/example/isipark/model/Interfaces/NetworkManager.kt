@@ -1,9 +1,6 @@
 package com.example.isipark.model.Interfaces
 
-import com.example.isipark.model.RetroFit.RetroAdminMessage
-import com.example.isipark.model.RetroFit.RetroLogin
-import com.example.isipark.model.RetroFit.RetroPlaceFree
-import com.example.isipark.model.RetroFit.RetroUser
+import com.example.isipark.model.RetroFit.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -26,16 +23,33 @@ interface NetworkManager {
     @POST("api/Auth/register")
     fun insertUser( user: RetroUser): Call<RetroUser>
 
-    //Places
+    //ROUTAS USER LUGARES LIVRES
+    //todos utilizador
     @GET("api/Place/SetorType")
     fun getPlaceNormal(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
-    @GET("api/Place/T/eletrico")
-    fun getPlaceElectric(@Header("Authorization") token: String): Call<Int>
+    //normal
+    @GET("api/Place/SetorTypeNormal")
+    fun getPlaceNormalLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
-    @GET("api/Place/T/mota")
-    fun getPlaceMotorcycle(@Header("Authorization") token: String): Call<Int>
+    //motas
+    @GET("api/Place/SetorTypeMoto")
+    fun getPlaceMotasLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
-    @GET("api/Place/T/necessidade especial")
-    fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
+    //Eletrico
+    @GET("api/Place/SetorTypeEletric")
+    fun getPlaceElectricLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
+
+    //ReduceMob
+    @GET("api/Place/SetorTypeReduceMob")
+    fun getPlaceReduceLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
+
+
+
+    //ADMIN
+    //noficacoes
+
+
+    @GET("api/AdminMessage/getAll")
+    fun getnotifcationAdmin(@Header("Authorization") token: String): Call<List<RetroAdminMessage>>
 }
