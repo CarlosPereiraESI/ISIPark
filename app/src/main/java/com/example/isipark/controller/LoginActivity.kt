@@ -39,30 +39,30 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
             }
             else{
-                retrolog.email = email.text.toString()
-                retrolog.password = password.text.toString()
+                // Se for administrador
+                if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin")
+                {
+                    retrolog.email = "admin@ipca.pt"
+                    retrolog.password = "admin"
 
-                Utils.instance.login(retrolog)
-                    .enqueue(object: Callback<String>{
-                        override fun onResponse(call: Call<String>,
-                                                response: Response<String>) {
-
-                            if(response.code() == 200){
-
-                                Utils.instance.getUserID(retrolog.email)
-                                    .enqueue(object: Callback<Int>{
-                                        override fun onResponse(call: Call<Int>,
-                                                                response: Response<Int>) {
-                                            if(response.code() == 200){
-                                                println(retrolog.email)
-                                                val idUser = response.body()
-
-                                                val sp = getSharedPreferences(this@LoginActivity)
-                                                sp.edit().putInt("id", idUser!!).apply()
-                                                println(idUser)
-                                                println(sp.all)
-
+                    Utils.instance.login(retrolog)
+                        .enqueue(object: Callback<String>{
+                            override fun onResponse(call: Call<String>, response: Response<String>) {
+                                if(response.code() == 200){
+                                    Utils.instance.getUserID(retrolog.email)
+                                        .enqueue(object: Callback<Int>{
+                                            override fun onResponse(call: Call<Int>,
+                                                                    response: Response<Int>) {
+                                                if(response.code() == 200){
+                                                    println(retrolog.email)
+                                                    val idUser = response.body()
+                                                    val sp = getSharedPreferences(this@LoginActivity)
+                                                    sp.edit().putInt("idA", idUser!!).apply()
+                                                    println(idUser)
+                                                    println(sp.all)
+                                                }
                                             }
+<<<<<<< HEAD
                                         }
                                         override fun onFailure(call: Call<Int>, t: Throwable) {
                                             Toast.makeText(applicationContext, t.message,
@@ -87,32 +87,92 @@ class LoginActivity : AppCompatActivity() {
                                     password.text.toString() == "admin") {
 
                                     /*
+=======
+                                            override fun onFailure(call: Call<Int>, t: Throwable) {
+                                                Toast.makeText(applicationContext, t.message,
+                                                    Toast.LENGTH_LONG).show()
+                                            }
+                                        })
+                                    val loginbody = response.body()
+                                    Toast.makeText(applicationContext,"Welcome!",
+                                        Toast.LENGTH_SHORT).show()
+>>>>>>> bcd7f4732b4d8e8b450f643cb43d8d753277f72d
                                     val sp = getSharedPreferences(this@LoginActivity)
-                                    sp.edit().putString("token", loginbody).commit()
-                                     */
+                                    sp.edit().putString("tokenA", loginbody).commit()
 
-                                    println("O GESTOR ENTROU")
-                                    val intent = Intent(
-                                        this@LoginActivity,
+                                    val intent = Intent(this@LoginActivity,
                                         DashboardGestorActivity::class.java)
                                     startActivity(intent)
                                 }
-                                else {
+                                if(response.code() == 400){
+                                    Toast.makeText(applicationContext,"User Not Found",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                            }
+                        })
+                }
+                // Se for um user normal
+                else
+                {
+                    retrolog.email = email.text.toString()
+                    retrolog.password = password.text.toString()
+
+                    Utils.instance.login(retrolog)
+                        .enqueue(object: Callback<String>{
+                            override fun onResponse(call: Call<String>,
+                                                    response: Response<String>) {
+
+                                if(response.code() == 200){
+
+                                    Utils.instance.getUserID(retrolog.email)
+                                        .enqueue(object: Callback<Int>{
+                                            override fun onResponse(call: Call<Int>,
+                                                                    response: Response<Int>) {
+                                                if(response.code() == 200){
+                                                    println(retrolog.email)
+                                                    val idUser = response.body()
+
+                                                    val sp = getSharedPreferences(this@LoginActivity)
+                                                    sp.edit().putInt("id", idUser!!).apply()
+                                                    println(idUser)
+                                                    println(sp.all)
+
+                                                }
+                                            }
+                                            override fun onFailure(call: Call<Int>, t: Throwable) {
+                                                Toast.makeText(applicationContext, t.message,
+                                                    Toast.LENGTH_LONG).show()
+                                            }
+                                        })
+
+                                    val loginbody = response.body()
+                                    //val token = loginbody?.token
+
+                                    Toast.makeText(applicationContext,"Welcome!",
+                                        Toast.LENGTH_SHORT).show()
+
+                                    val sp = getSharedPreferences(this@LoginActivity)
+                                    sp.edit().putString("token", loginbody).commit()
+
+
                                     val intent = Intent(this@LoginActivity,
                                         DashboardActivity::class.java)
                                     startActivity(intent)
+
+                                }
+                                if(response.code() == 400){
+                                    Toast.makeText(applicationContext,"User Not Found",
+                                        Toast.LENGTH_SHORT).show()
                                 }
                             }
-                            if(response.code() == 400){
-                                Toast.makeText(applicationContext,"User Not Found",
-                                    Toast.LENGTH_SHORT).show()
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                             }
-                        }
-                        override fun onFailure(call: Call<String>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
-
+                        })
+                    }
             }
         }
     }

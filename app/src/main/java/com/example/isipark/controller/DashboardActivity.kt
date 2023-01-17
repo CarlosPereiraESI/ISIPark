@@ -34,8 +34,6 @@ class DashboardActivity : AppCompatActivity() {
 
         //---------------------------- Buttons -------------------------------------
 
-        //var normal: Int? = null
-        //var normal1: String? = null
         //Report button
         val report = findViewById<ImageButton>(R.id.dashboard_report)
         val suggested_place = findViewById<TextView>(R.id.dashboard_suggestion2_et)
@@ -57,19 +55,12 @@ class DashboardActivity : AppCompatActivity() {
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
 
-        println("Okkkkk")
-        println(token)
-
         Utils.instance.getSuggestedPlace(id, "Bearer $token")
         .enqueue(object: Callback<RetroSetorDis>{
             override fun onResponse(call: Call<RetroSetorDis>, response: Response<RetroSetorDis>) {
                 if(response.code() == 200) {
                     val sug = response.body()
-
-                    println("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
                     suggested_place.text = sug?.setor
-                    println(sug)
-
                 }
             }
             override fun onFailure(call: Call<RetroSetorDis>, t: Throwable) {
@@ -135,8 +126,6 @@ class DashboardActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-
-
                             //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
@@ -157,8 +146,6 @@ class DashboardActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-
-
                             //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
@@ -180,8 +167,6 @@ class DashboardActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-
-
                             //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
@@ -204,7 +189,6 @@ class DashboardActivity : AppCompatActivity() {
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-
                             //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }

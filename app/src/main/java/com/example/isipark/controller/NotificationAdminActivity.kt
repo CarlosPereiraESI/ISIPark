@@ -20,14 +20,12 @@ class NotificationAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification_admin)
 
-        val listView: ListView by lazy {
-            findViewById<ListView>(R.id.main_listview)
-        }
 
+        val listView = findViewById<ListView>(R.id.mainA_listview)
         val back = findViewById<Button>(R.id.notiA_back_btn)
 
         val sp = getSharedPreferences(this@NotificationAdminActivity)
-        val token = sp.getString("token", null)
+        val token = sp.getString("tokenA", null)
 
         Utils.instance.getnotifcationAdmin("Bearer $token")
             .enqueue(object: Callback<List<RetroAdminMessage>> {
@@ -37,8 +35,6 @@ class NotificationAdminActivity : AppCompatActivity() {
                         var adapter = retroFit2?.let {
                             ReportArrayAdapter(this@NotificationAdminActivity, it)
                         }
-
-                        //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                         listView.adapter = adapter
                     }
                 }
