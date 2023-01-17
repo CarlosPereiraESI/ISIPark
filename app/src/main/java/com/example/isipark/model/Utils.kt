@@ -7,11 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Utils {
 
-<<<<<<< HEAD
-    private const val BASE_URL = "https://8403-2001-818-eb13-c00-5c2b-f9b9-99bf-81cf.eu.ngrok.io/"
-=======
     private const val BASE_URL = "https://8403-2001-818-eb13-c00-5c2b-f9b9-99bf-81cf.eu.ngrok.io"
->>>>>>> bcd7f4732b4d8e8b450f643cb43d8d753277f72d
+
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
