@@ -56,17 +56,17 @@ class LoginActivity : AppCompatActivity() {
                                             if(response.code() == 200){
                                                 println(retrolog.email)
                                                 val idUser = response.body()
+
                                                 val sp = getSharedPreferences(this@LoginActivity)
                                                 sp.edit().putInt("id", idUser!!).apply()
                                                 println(idUser)
-
-
                                                 println(sp.all)
 
                                             }
                                         }
                                         override fun onFailure(call: Call<Int>, t: Throwable) {
-                                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                                            Toast.makeText(applicationContext, t.message,
+                                                Toast.LENGTH_LONG).show()
                                         }
                                     })
 
@@ -79,8 +79,21 @@ class LoginActivity : AppCompatActivity() {
                                 val sp = getSharedPreferences(this@LoginActivity)
                                 sp.edit().putString("token", loginbody).commit()
 
+                                println(loginbody)
+
+                                println("///////////////////////////////////////////////////////////////////////////")
+                                println(email.text.toString())
+                                println(password.text.toString())
+
                                 if (email.text.toString() == "admin@ipca.pt" &&
                                     password.text.toString() == "admin") {
+
+                                    /*
+                                    val sp = getSharedPreferences(this@LoginActivity)
+                                    sp.edit().putString("token", loginbody).commit()
+                                     */
+
+                                    println("O GESTOR ENTROU")
                                     val intent = Intent(
                                         this@LoginActivity,
                                         DashboardGestorActivity::class.java)

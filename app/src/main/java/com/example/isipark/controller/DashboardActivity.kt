@@ -9,7 +9,6 @@ import android.widget.*
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
 import com.example.isipark.model.RetroFit.RetroPlaceFree
-import com.example.isipark.model.sector
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,13 +18,13 @@ class DashboardActivity : AppCompatActivity() {
     val listView: ListView by lazy{
         findViewById<ListView>(R.id.dashboard_list_sectors)
     }
-
+/*
     val valuesN = mutableListOf<sector>(sector("Sector T", "Normal: 50", "", "", ""), sector("Sector D", "Normal: 20", "", "", ""), sector("Sector G", "Normal: 10", "", "", ""))
     val valuesM = mutableListOf<sector>(sector("Sector T", "Normal: 50", "", "Motorcycle: 10", ""), sector("Sector D", "Normal: 20", "", "Motorcycle: 5", ""), sector("Sector G", "Normal: 10", "", "Motorcycle: 1", ""))
     val valuesE = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", ""), sector("Sector D", "Normal: 20", "Eletric: 1", "", ""), sector("Sector G", "Normal: 10", "Eletric: 0", "", ""))
     val valuesR = mutableListOf<sector>(sector("Sector T", "Normal: 50", "Eletric: 3", "", "R.Mobility: 1"), sector("Sector D", "Normal: 20", "Eletric: 1", "", "R.Mobility: 0"), sector("Sector G", "Normal: 10", "Eletric: 0", "", "R.Mobility: 2"))
-
-    var normal: String? = null
+*/
+    //var normal: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +34,7 @@ class DashboardActivity : AppCompatActivity() {
         //---------------------------- Buttons -------------------------------------
 
         //var normal: Int? = null
-        var normal1: String? = null
+        //var normal1: String? = null
         //Report button
         val report = findViewById<ImageButton>(R.id.dashboard_report)
         val suggested_place = findViewById<TextView>(R.id.dashboard_suggestion2_et)
@@ -65,7 +64,9 @@ class DashboardActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.code() == 200) {
                         val sug = response.body()
-                        suggested_place.text = sug
+
+                        suggested_place.setText(sug)
+                        println("HELLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
                     }
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {
@@ -120,35 +121,97 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        /*
+
         //Show normal places on dashboard
         normalBtn.setOnClickListener{
+            Utils.instance.getPlaceNormalLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardActivity, it)
+                            }
 
-            var adapter = VehiclesArrayAdapter(this,
-                R.layout.layout_sector_dash, valuesN)
-            listView.adapter = adapter
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
         }
 
         //Show motocycle places on dashboard
         motoBtn.setOnClickListener{
-            var adapter = VehiclesArrayAdapter(this,
-                R.layout.layout_sector_dash, valuesM)
-            listView.adapter = adapter
+            Utils.instance.getPlaceMotasLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardActivity, it)
+                            }
+
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
         }
 
         //Show eletric places on dashboard
         eletricBtn.setOnClickListener{
-            var adapter = VehiclesArrayAdapter(this,
-                R.layout.layout_sector_dash, valuesE)
-            listView.adapter = adapter
+//getPlaceElectricLivre
+            Utils.instance.getPlaceElectricLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardActivity, it)
+                            }
+
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+
         }
 
         //Show reduce mobility places on dashboard
         rmobBtn.setOnClickListener{
-            var adapter = VehiclesArrayAdapter(this,
-                R.layout.layout_sector_dash, valuesR)
-            listView.adapter = adapter
-        }*/
+   //getPlaceReduceLivre
+            Utils.instance.getPlaceReduceLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardActivity, it)
+                            }
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+
+        }
     }
 
     override fun onBackPressed() {}

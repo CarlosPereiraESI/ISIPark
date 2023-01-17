@@ -39,55 +39,39 @@ class VehiclesArrayAdapter(context: Context,
         val p = getItem(position)
 
         if (p != null) {
-            sector_name.text=p.setor
+            sector_name.text = p.setor
         }
         if (p != null) {
-            normal.text= p.normal
+            normal.text = p.normal
         }
+
         if (p != null) {
-            eletric.text = p.eletric
+            //eletric.text = p.eletric
+            if(p.eletric == ""){
+                eletric.visibility = View.GONE
+            } else {
+                eletric.text = p.eletric
+            }
         }
+
         if (p != null) {
-            motorcycle.text = p.motorcycle
+            if(p.motorcycle == ""){
+                motorcycle.visibility = View.GONE
+            } else {
+                motorcycle.text = p.motorcycle
+            }
         }
+
         if (p != null) {
-            r_mob.text = p.reduce_mob
+
+            if(p.reduce_mob == ""){
+                r_mob.visibility = View.GONE
+            } else {
+                r_mob.text = p.reduce_mob
+            }
         }
 
         return view
     }
-
-        /*
-        val name = mValues[position].setor
-        sector_name.text = name
-
-        val norm = mValues[position].normal
-        if(norm == ""){
-            normal.visibility = View.GONE
-        } else {
-            normal.text = norm
-        }
-
-        val eletr = mValues[position].eletric
-        if(eletr == ""){
-            eletric.visibility = View.GONE
-        } else {
-            eletric.text = eletr
-        }
-
-        val motor = mValues[position].motorcycle
-        if(motor == ""){
-            motorcycle.visibility = View.GONE
-        } else {
-            motorcycle.text = motor
-        }
-
-        val rm = mValues[position].reduce_mob
-        if(rm == ""){
-            r_mob.visibility = View.GONE
-        } else {
-            r_mob.text = rm
-        }
-        return rowView*/
 
 }

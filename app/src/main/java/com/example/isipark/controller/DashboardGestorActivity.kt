@@ -1,47 +1,27 @@
 package com.example.isipark.controller
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
+import android.widget.Toast
 import com.example.isipark.R
+import com.example.isipark.model.InterfacesRetroFit.Utils
+import com.example.isipark.model.RetroFit.RetroPlaceFree
 import com.example.isipark.model.sector
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DashboardGestorActivity : AppCompatActivity() {
 
     val listView: ListView by lazy {
         findViewById<ListView>(R.id.dashboard_gestor_list_sectors)
     }
-
-    //Values places
-    val values = mutableListOf<sector>(
-        sector("Sector T", "Normal: 50", "Eletric: 3", "Motorcycle: 10", "R.Mobility: 1"),
-        sector("Sector D", "Normal: 20", "Eletric: 1", "Motorcycle: 5", "R.Mobility: 0"),
-        sector("Sector G", "Normal: 10", "Eletric: 0", "Motorcycle: 1", "R.Mobility: 2")
-    )
-    val valuesN = mutableListOf<sector>(
-        sector("Sector T", "Normal: 50", "", "", ""),
-        sector("Sector D", "Normal: 20", "", "", ""),
-        sector("Sector G", "Normal: 10", "", "", "")
-    )
-    val valuesM = mutableListOf<sector>(
-        sector("Sector T", "Normal: 50", "", "Motorcycle: 10", ""),
-        sector("Sector D", "Normal: 20", "", "Motorcycle: 5", ""),
-        sector("Sector G", "Normal: 10", "", "Motorcycle: 1", "")
-    )
-    val valuesE = mutableListOf<sector>(
-        sector("Sector T", "Normal: 50", "Eletric: 3", "", ""),
-        sector("Sector D", "Normal: 20", "Eletric: 1", "", ""),
-        sector("Sector G", "Normal: 10", "Eletric: 0", "", "")
-    )
-    val valuesR = mutableListOf<sector>(
-        sector("Sector T", "Normal: 50", "Eletric: 3", "", "R.Mobility: 1"),
-        sector("Sector D", "Normal: 20", "Eletric: 1", "", "R.Mobility: 0"),
-        sector("Sector G", "Normal: 10", "Eletric: 0", "", "R.Mobility: 2")
-    )
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,29 +38,132 @@ class DashboardGestorActivity : AppCompatActivity() {
         val motoBtn = findViewById<ImageButton>(R.id.moto)
         val eletricBtn = findViewById<ImageButton>(R.id.eletric)
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
-/*
-        //Adapter
-        var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, values)
-        listView.adapter = adapter
+
+/*        //Adapter
+        var adapter = VehiclesArrayAdapter(this, it, values)
+        listView.adapter = adapter*/
+
+
+        val sp = getSharedPreferences(this@DashboardGestorActivity)
+        val token = sp.getString("tokenA", null)
+
+        println("777777777777777777777777777777777777777777777777777777777777777777777")
+        println(token)
+
+        Utils.instance.getPlaceNormal("Bearer $token")
+            .enqueue(object: Callback<List<RetroPlaceFree>> {
+                override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                    println("AQUI-------------------------------------------------------")
+                    println(token)
+                    if(response.code() == 200) {
+                        val retroFit2 = response.body()
+                        var adapter = retroFit2?.let {
+                            VehiclesArrayAdapter(this@DashboardGestorActivity, it)
+                        }
+                        println("AQUI GESTOR")
+
+
+                        //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                        listView.adapter = adapter
+                    }
+                }
+                override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                }
+            })
+
 
         // --------------------------------- Buttons information ----------------------------------------
         normalBtn.setOnClickListener {
-            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesN)
-            listView.adapter = adapter
+            Utils.instance.getPlaceNormalLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardGestorActivity, it)
+                            }
+
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+
+
         }
         motoBtn.setOnClickListener {
-            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesM)
-            listView.adapter = adapter
+            Utils.instance.getPlaceMotasLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardGestorActivity, it)
+                            }
+
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+
+
         }
         eletricBtn.setOnClickListener {
-            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesE)
-            listView.adapter = adapter
+            Utils.instance.getPlaceElectricLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardGestorActivity, it)
+                            }
+
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+
+
+
         }
         rmobBtn.setOnClickListener {
-            var adapter = VehiclesArrayAdapter(this, R.layout.layout_sector_dash, valuesR)
-            listView.adapter = adapter
+            Utils.instance.getPlaceReduceLivre("Bearer $token")
+                .enqueue(object: Callback<List<RetroPlaceFree>> {
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                        if(response.code() == 200) {
+                            val retroFit2 = response.body()
+                            var adapter = retroFit2?.let {
+                                VehiclesArrayAdapter(this@DashboardGestorActivity, it)
+                            }
+
+                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
+                            listView.adapter = adapter
+                        }
+                    }
+                    override fun onFailure(call: Call<List<RetroPlaceFree>>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+
+
+
         }
-*/
+
 
         // ------------------------------ Other Buttons ----------------------------------
         // Show code page
@@ -104,5 +187,10 @@ class DashboardGestorActivity : AppCompatActivity() {
 
     override fun onBackPressed() {}
 
+    //usar quando chamar os token
+    fun getSharedPreferences(context: Context): SharedPreferences {
+        return context.getSharedPreferences(context.resources.getString(R.string.app_name),
+            Context.MODE_PRIVATE)
+    }
 
 }
