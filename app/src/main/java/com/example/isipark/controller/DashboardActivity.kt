@@ -38,7 +38,7 @@ class DashboardActivity : AppCompatActivity() {
         var normal1: String? = null
         //Report button
         val report = findViewById<ImageButton>(R.id.dashboard_report)
-        val suggested_place = findViewById<EditText>(R.id.dashboard_suggestion_et)
+        val suggested_place = findViewById<TextView>(R.id.dashboard_suggestion2_et)
 
         //Notification button
         val notification = findViewById<ImageButton>(R.id.dashboard_notification)
@@ -55,14 +55,17 @@ class DashboardActivity : AppCompatActivity() {
 
         val sp = getSharedPreferences(this@DashboardActivity)
         val token = sp.getString("token", null)
-        val id = sp.getInt("id", 0)
+        val id = sp.getInt("id", 1)
 
-        Utils.instance.getSuggestedPlace(id, token!!)
+        println("Okkkkk")
+        println(token)
+
+        Utils.instance.getSuggestedPlace(id, "Bearer $token")
             .enqueue(object: Callback<String>{
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.code() == 200) {
                         val sug = response.body()
-                        suggested_place.setText(sug)
+                        suggested_place.text = sug
                     }
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {
