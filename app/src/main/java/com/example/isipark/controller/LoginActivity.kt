@@ -62,32 +62,6 @@ class LoginActivity : AppCompatActivity() {
                                                     println(sp.all)
                                                 }
                                             }
-<<<<<<< HEAD
-                                        }
-                                        override fun onFailure(call: Call<Int>, t: Throwable) {
-                                            Toast.makeText(applicationContext, t.message,
-                                                Toast.LENGTH_LONG).show()
-                                        }
-                                    })
-
-                                val loginbody = response.body()
-                                //val token = loginbody?.token
-
-                                Toast.makeText(applicationContext,"Welcome!",
-                                    Toast.LENGTH_SHORT).show()
-
-                                val sp = getSharedPreferences(this@LoginActivity)
-                                sp.edit().putString("token", loginbody).commit()
-
-                                println(loginbody)
-                                println(email.text.toString())
-                                println(password.text.toString())
-
-                                if (email.text.toString() == "admin@ipca.pt" &&
-                                    password.text.toString() == "admin") {
-
-                                    /*
-=======
                                             override fun onFailure(call: Call<Int>, t: Throwable) {
                                                 Toast.makeText(applicationContext, t.message,
                                                     Toast.LENGTH_LONG).show()
@@ -96,7 +70,6 @@ class LoginActivity : AppCompatActivity() {
                                     val loginbody = response.body()
                                     Toast.makeText(applicationContext,"Welcome!",
                                         Toast.LENGTH_SHORT).show()
->>>>>>> bcd7f4732b4d8e8b450f643cb43d8d753277f72d
                                     val sp = getSharedPreferences(this@LoginActivity)
                                     sp.edit().putString("tokenA", loginbody).commit()
 
@@ -172,7 +145,7 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                             }
                         })
-                    }
+                }
             }
         }
     }

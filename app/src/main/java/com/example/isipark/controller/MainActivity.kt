@@ -1,4 +1,4 @@
-package com.example.isipark.controller
+/*package com.example.isipark.controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,11 +17,11 @@ class MainActivity : AppCompatActivity() {
             MyDatabase::class.java, "isipark.db"
         ).build()
         GlobalScope.launch {
-            //db.iAdminMessage().insertAll(AdminMessage(description= " ")
+            db.iAdminMessage().insertAll(AdminMessage)
             val data = db.iAdminMessage().getAll()
             data?.forEach {
                 println(it)
             }
         }
     }
-}
+} */
