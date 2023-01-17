@@ -22,15 +22,33 @@ interface NetworkManager {
     @POST("api/Auth/register")
     fun insertUser(user: RetroUser): Call<RetroUser>
 
-    //Places
+    //ROUTAS USER LUGARES LIVRES
+    //todos utilizador
     @GET("api/Place/SetorType")
     fun getPlaceNormal(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
-    @GET("api/Place/T/eletrico")
-    fun getPlaceElectric(@Header("Authorization") token: String): Call<Int>
+    //normal
+    @GET("api/Place/SetorTypeNormal")
+    fun getPlaceNormalLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
-    @GET("api/Place/T/mota")
-    fun getPlaceMotorcycle(@Header("Authorization") token: String): Call<Int>
+    //motas
+    @GET("api/Place/SetorTypeMoto")
+    fun getPlaceMotasLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
+
+    //Eletrico
+    @GET("api/Place/SetorTypeEletric")
+    fun getPlaceElectricLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
+
+    //ReduceMob
+    @GET("api/Place/SetorTypeReduceMob")
+    fun getPlaceReduceLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
+
+
+
+    //ADMIN
+    //noficacoes
+    @GET("api/AdminMessage/getAll")
+    fun getnotifcationAdmin(@Header("Authorization") token: String): Call<List<RetroAdminMessage>>
 
     @GET("api/Place/T/necessidade especial")
     fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
@@ -50,4 +68,5 @@ interface NetworkManager {
     //Get User Vehicles
     @GET("api/UserVehicleType/{id}")
     fun getAllVehicles(@Query("id") id: Int) : Call<RetroVehicleType>
+
 }

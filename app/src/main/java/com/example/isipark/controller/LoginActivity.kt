@@ -74,8 +74,21 @@ class LoginActivity : AppCompatActivity() {
                                 val sp = getSharedPreferences(this@LoginActivity)
                                 sp.edit().putString("token", loginbody).commit()
 
+                                println(loginbody)
+
+                                println("///////////////////////////////////////////////////////////////////////////")
+                                println(email.text.toString())
+                                println(password.text.toString())
+
                                 if (email.text.toString() == "admin@ipca.pt" &&
                                     password.text.toString() == "admin") {
+
+                                    /*
+                                    val sp = getSharedPreferences(this@LoginActivity)
+                                    sp.edit().putString("token", loginbody).commit()
+                                     */
+
+                                    println("O GESTOR ENTROU")
                                     val intent = Intent(
                                         this@LoginActivity,
                                         DashboardGestorActivity::class.java)
