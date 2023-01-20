@@ -67,9 +67,15 @@ interface NetworkManager {
     fun getUser(@Path("id") id: Int,
                 @Header("Authorization") token: String) : Call<RetroUser>
 
+
     //Get User Vehicles
-    @GET("api/UserVehicleType/{id}")
-    fun getAllVehicles(@Query("id") id: Int) : Call<RetroVehicleType>
+    @GET("api/UserVechicleType/{id}")
+    fun getAllVehicles(@Path("id") id: Int,
+                       @Header("Authorization") token: String) :Call<List<RetroVehicleType>>
+
+    @DELETE("api/UserVechicleType/plate/{plate}")
+    fun deleteVehicle(@Path("plate") plate: String) : Call<String>
+
 
     //Get all History
     @GET("api/History/getAll")

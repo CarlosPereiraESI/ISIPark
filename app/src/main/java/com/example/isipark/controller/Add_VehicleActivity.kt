@@ -20,6 +20,8 @@ class Add_VehicleActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.addVehicle_back)
         val spinner = findViewById<Spinner>(R.id.addvehicletype)
 
+        var typeVehicle : Int
+
         if(spinner != null){
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item,
                 listOf("normal", "eletric", "motorcycle", "reduce mobility"))
@@ -30,7 +32,16 @@ class Add_VehicleActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View,
                                         position: Int, id: Long) {
 
+                typeVehicle = position+1
+                println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                println(typeVehicle)
+
             }
+
+
+
+
+
 
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
@@ -38,6 +49,10 @@ class Add_VehicleActivity : AppCompatActivity() {
 
         // Button Save
         save.setOnClickListener{
+            val x = spinner.onItemSelectedListener.toString()
+            println("SELECIONADO ///////////////////////////////////")
+            println(x)
+
             val intent = Intent(this@Add_VehicleActivity, DashboardActivity::class.java)
             startActivity(intent)
         }
