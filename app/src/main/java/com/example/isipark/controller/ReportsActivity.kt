@@ -21,7 +21,7 @@ import java.util.*
 
 class ReportsActivity : AppCompatActivity() {
 
-    var retroR = RetroReport(id=0, description="", userID=0, date="", licensePlate="", sector="")
+    var retroR = RetroReport(id=0, description="", userID=0, date="", licensePlate="", sector="", name="")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

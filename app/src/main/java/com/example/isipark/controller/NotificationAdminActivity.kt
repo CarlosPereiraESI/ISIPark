@@ -33,7 +33,7 @@ class NotificationAdminActivity : AppCompatActivity() {
                     if(response.code() == 200) {
                         val retroFit2 = response.body()
                         var adapter = retroFit2?.let {
-                            ReportArrayAdapter(this@NotificationAdminActivity, it)
+                            NotificationAdminAdapter(this@NotificationAdminActivity, it)
                         }
                         listView.adapter = adapter
                     }

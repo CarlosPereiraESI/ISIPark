@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.isipark.R
 import com.example.isipark.model.RetroFit.RetroAdminMessage
 
-class ReportArrayAdapter(context: Context, list: List<RetroAdminMessage>):
+class NotificationAdminAdapter(context: Context, list: List<RetroAdminMessage>):
     ArrayAdapter<RetroAdminMessage>(context, -1) {
 
     val mList : List<RetroAdminMessage> = list

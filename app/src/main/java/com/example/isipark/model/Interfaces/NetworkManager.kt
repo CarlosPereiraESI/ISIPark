@@ -89,4 +89,8 @@ interface NetworkManager {
     fun insertReport(@Body report: RetroReport,
                           @Header("Authorization") token: String) : Call<String>
 
+    //Get all reports
+    @GET("/api/Report/getAll")
+    fun getAllReports(@Header("Authorization") token: String): Call<List<RetroReport>>
+
 }

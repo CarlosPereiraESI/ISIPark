@@ -8,6 +8,5 @@ data class RetroReport(@SerializedName("id_report") var id : Int,
                        @SerializedName("utilizadorid") var userID: Int,
                        @SerializedName("data") var date: String,
                        @SerializedName("matricula") var licensePlate: String,
-                       @SerializedName("setor") var sector: String
-
-                       )
+                       @SerializedName("setor") var sector: String,
+                       @SerializedName("nome") val name: String)
