@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Utils {
 
 
-    private const val BASE_URL = "https://8403-2001-818-eb13-c00-5c2b-f9b9-99bf-81cf.eu.ngrok.io/"
+    private const val BASE_URL = "https://a738-2001-818-eb13-c00-3940-9f1e-492b-6f5d.eu.ngrok.io"
 
 
 

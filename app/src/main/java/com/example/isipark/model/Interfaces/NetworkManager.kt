@@ -82,6 +82,6 @@ interface NetworkManager {
     //Add a special User
     @POST("api/SpecialUsers/insert")
     fun insertSpecialUser(@Body user: RetroSpecialProfile,
-                          @Header("Authorization") token: String) : Call<Boolean>
+                          @Header("Authorization") token: String) : Call<String>
 
 }

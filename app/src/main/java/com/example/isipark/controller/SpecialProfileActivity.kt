@@ -39,13 +39,13 @@ class SpecialProfileActivity: AppCompatActivity() {
             spinner.adapter = adapter
         }
 
-        if(spinner.id == 0)
+        if(spinner.selectedItem == "normal")
         {retroSP.vehicleTypeID = 1 }
-        if(spinner.id == 1)
+        if(spinner.selectedItem == "eletric")
         {retroSP.vehicleTypeID = 2 }
-        if(spinner.id == 2)
+        if(spinner.selectedItem == "motorcycle")
         {retroSP.vehicleTypeID = 3 }
-        if(spinner.id == 3)
+        if(spinner.selectedItem == "reduce mobility")
         {retroSP.vehicleTypeID = 4 }
 
 
@@ -56,29 +56,36 @@ class SpecialProfileActivity: AppCompatActivity() {
         val date = findViewById<EditText>(R.id.exp_date_et)
         val contact = findViewById<EditText>(R.id.contact_et)
 
-        retroSP.name = name.text.toString()
-        retroSP.licensePlate = registration.text.toString()
-        retroSP.contact = contact.text.toString()
-        retroSP.id = 0
 
         // Button Create
         create.setOnClickListener{
-            Utils.instance.insertSpecialUser(retroSP,"Bearer $token")
-                .enqueue(object: Callback<Boolean> {
-                    override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                        if(response.code() == 200) {
-                            val userInf = response.body()
-                            println("Feito com sucesso $userInf")
 
-                            val intent = Intent(this@SpecialProfileActivity,
-                                DashboardGestorActivity::class.java)
-                            startActivity(intent)
+            if(name.text.toString() == "" || registration.text.toString() =="" || code.text.toString()==""
+                || date.text.toString() == "" || contact.text.toString()==""){
+                Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
+            } else {
+
+                retroSP.name = name.text.toString()
+                retroSP.licensePlate = registration.text.toString()
+                retroSP.contact = contact.text.toString()
+                retroSP.id = 0
+
+                Utils.instance.insertSpecialUser(retroSP,"Bearer $token")
+                    .enqueue(object: Callback<String> {
+                        override fun onResponse(call: Call<String>, response: Response<String>) {
+                            if(response.code() == 201) {
+                                val userInf = response.body()
+                                val intent = Intent(this@SpecialProfileActivity,
+                                    DashboardGestorActivity::class.java)
+                                startActivity(intent)
+                            }
                         }
-                    }
-                    override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                    }
-                })
+                        override fun onFailure(call: Call<String>, t: Throwable) {
+                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        }
+                    })
+            }
+
 
         }
 
