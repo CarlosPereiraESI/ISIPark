@@ -86,6 +86,11 @@ interface NetworkManager {
     fun insertVehicleUser(@Body user: RetroUserVehicleType,
                           @Header("Authorization") token: String) : Call<Boolean>
 
+    //notification User id
+    @GET("api/UserMessage/user/{id}")
+    fun getNotificationUser(@Path("id") id: Int,
+                       @Header("Authorization") token: String) :Call<List<RetroUserMessageId>>
+
 
 
     //Get all History
