@@ -59,20 +59,33 @@ class ReportsActivity : AppCompatActivity() {
                 retroR.userID = id
                 retroR.date = current
 
-                Utils.instance.insertReport(retroR,"Bearer $token")
-                    .enqueue(object: Callback<String> {
-                        override fun onResponse(call: Call<String>, response: Response<String>) {
-                            if(response.code() == 201) {
-                                val userInf = response.body()
-                                val intent = Intent(this@ReportsActivity,
-                                    DashboardActivity::class.java)
-                                startActivity(intent)
+                if (isValidLicensePlate(retroR.licensePlate) == true) {
+
+                    Utils.instance.insertReport(retroR, "Bearer $token")
+                        .enqueue(object : Callback<String> {
+                            override fun onResponse(
+                                call: Call<String>,
+                                response: Response<String>
+                            ) {
+                                if (response.code() == 201) {
+                                    val userInf = response.body()
+                                    val intent = Intent(
+                                        this@ReportsActivity,
+                                        DashboardActivity::class.java
+                                    )
+                                    startActivity(intent)
+                                }
                             }
-                        }
-                        override fun onFailure(call: Call<String>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
+
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG)
+                                    .show()
+                            }
+                        })
+                    } else {
+                    Toast.makeText(this, "You need to put a valid License Plate", Toast.LENGTH_LONG)
+                        .show()
+                    }
             }
         }
 
@@ -89,5 +102,10 @@ class ReportsActivity : AppCompatActivity() {
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)
+    }
+
+    fun isValidLicensePlate(plate: String): Boolean {
+        val pattern = "(([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2}))".toRegex()
+        return plate.matches(pattern)
     }
 }

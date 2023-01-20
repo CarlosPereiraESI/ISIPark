@@ -26,15 +26,14 @@ class Add_VehicleActivity : AppCompatActivity() {
             spinner.adapter = adapter
         }
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>, view: View,
-                                        position: Int, id: Long) {
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
-        }
+        if(spinner.selectedItem == "normal")
+        //{retroSP.vehicleTypeID = 1 }
+        if(spinner.selectedItem == "eletric")
+        //{retroSP.vehicleTypeID = 2 }
+        if(spinner.selectedItem == "motorcycle")
+        //{retroSP.vehicleTypeID = 3 }
+        if(spinner.selectedItem == "reduce mobility")
+        //{retroSP.vehicleTypeID = 4 }
 
         // Button Save
         save.setOnClickListener{
