@@ -35,7 +35,7 @@ class VehiclesActivity : AppCompatActivity() {
 
         //Back to dashboard page
         back.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 

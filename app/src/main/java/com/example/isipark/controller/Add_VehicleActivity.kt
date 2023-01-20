@@ -79,19 +79,6 @@ class Add_VehicleActivity : AppCompatActivity() {
             }
         }
 
-/*
-        if(spinner.selectedItem == "normal")
-        //{retroSP.vehicleTypeID = 1 }
-        if(spinner.selectedItem == "eletric")
-        //{retroSP.vehicleTypeID = 2 }
-        if(spinner.selectedItem == "motorcycle")
-        //{retroSP.vehicleTypeID = 3 }
-        if(spinner.selectedItem == "reduce mobility")
-        //{retroSP.vehicleTypeID = 4 }*/
-
-
-println("ANTES DO SAVE ////////////////////////////////////////////////////////////////////////////////////")
-
         // Button Save
 
         save.setOnClickListener{
@@ -102,15 +89,6 @@ println("ANTES DO SAVE /////////////////////////////////////////////////////////
             if (isValidLicensePlate(licensePlate.text.toString())==true){
                 //mandar para a base de dados
 
-               /* fun importFromJSON(jsonObject: JSONObject): RetroUserVehicleType {
-                    //val jsonObject = JSONObject(jsonString)
-                    val id = jsonObject.getString("utilizadorid")
-                    val typeVehicle = jsonObject.getString("Tipo_veiculosid_veiculo")
-                    val licenseP = jsonObject.getString("matricula")
-                    val post = RetroUserVehicleType(id, typeVehicle, licenseP)
-                    println(post.toString())
-                    return post
-                }*/
                 retroSP.userID=id
                 retroSP.vehicleTypeID=typeVehicle!!
                 retroSP.licensePlate= licensePlate.text.toString()
@@ -137,9 +115,6 @@ println("ANTES DO SAVE /////////////////////////////////////////////////////////
                                 Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                             }
                         })
-
-
-
 
 
 
