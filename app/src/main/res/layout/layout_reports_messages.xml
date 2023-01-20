@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/buttons"
+    android:layout_marginBottom="50dp">
+
+    <ImageView
+        android:id="@+id/logo_report"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/parque"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/name_report"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/logo_report"
+        app:layout_constraintStart_toEndOf="@id/logo_report"
+        app:layout_constraintTop_toTopOf="@id/logo_report" />
+
+    <TextView
+        android:id="@+id/sector_report"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textSize="14sp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_report" />
+
+    <TextView
+        android:id="@+id/regist_report"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textSize="14sp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sector_report" />
+
+    <TextView
+        android:id="@+id/more_report"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="14sp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regist_report" />
+
+    <TextView
+        android:id="@+id/data_report"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="14sp"
+        android:textColor="@color/text"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/more_report" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

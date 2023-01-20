@@ -99,6 +99,15 @@ interface NetworkManager {
     //Add a special User
     @POST("api/SpecialUsers/insert")
     fun insertSpecialUser(@Body user: RetroSpecialProfile,
-                          @Header("Authorization") token: String) : Call<Boolean>
+                          @Header("Authorization") token: String) : Call<String>
+
+    //Send a new report
+    @POST("api/Report/insert")
+    fun insertReport(@Body report: RetroReport,
+                          @Header("Authorization") token: String) : Call<String>
+
+    //Get all reports
+    @GET("/api/Report/getAll")
+    fun getAllReports(@Header("Authorization") token: String): Call<List<RetroReport>>
 
 }
