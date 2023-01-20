@@ -84,4 +84,9 @@ interface NetworkManager {
     fun insertSpecialUser(@Body user: RetroSpecialProfile,
                           @Header("Authorization") token: String) : Call<String>
 
+    //Send a new report
+    @POST("api/Report/insert")
+    fun insertReport(@Body report: RetroReport,
+                          @Header("Authorization") token: String) : Call<String>
+
 }

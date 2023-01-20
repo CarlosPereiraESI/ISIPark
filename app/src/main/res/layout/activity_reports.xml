@@ -64,7 +64,7 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:textColor="@color/black"
-        android:id="@+id/AddVehicleRegistration"
+        android:id="@+id/report_setor_et"
         app:layout_constraintBottom_toBottomOf="@id/report_setor"
         app:layout_constraintStart_toEndOf="@id/report_setor"
         app:layout_constraintTop_toTopOf="@id/report_setor"

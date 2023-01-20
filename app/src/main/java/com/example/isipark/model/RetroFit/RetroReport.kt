@@ -3,11 +3,11 @@ package com.example.isipark.model.RetroFit
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class RetroReport(@SerializedName("id_report") val id : Int,
-                       @SerializedName("descricao") val description: String,
-                       @SerializedName("utilizadorid") val userID: Int,
-                       @SerializedName("data") val date: Date,
-                       @SerializedName("matricula") val licensePlate: String,
-                       @SerializedName("setor") val sector: String
+data class RetroReport(@SerializedName("id_report") var id : Int,
+                       @SerializedName("descricao") var description: String,
+                       @SerializedName("utilizadorid") var userID: Int,
+                       @SerializedName("data") var date: String,
+                       @SerializedName("matricula") var licensePlate: String,
+                       @SerializedName("setor") var sector: String
 
                        )
