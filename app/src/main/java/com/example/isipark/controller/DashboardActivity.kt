@@ -61,6 +61,7 @@ class DashboardActivity : AppCompatActivity() {
                 if(response.code() == 200) {
                     val sug = response.body()
                     suggested_place.text = sug?.setor
+
                 }
             }
             override fun onFailure(call: Call<RetroSetorDis>, t: Throwable) {
@@ -76,6 +77,7 @@ class DashboardActivity : AppCompatActivity() {
                         var adapter = retroFit2?.let {
                             VehiclesArrayAdapter(this@DashboardActivity, it)
                         }
+
                         //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                         listView.adapter = adapter
                     }

@@ -73,8 +73,19 @@ interface NetworkManager {
     fun getAllVehicles(@Path("id") id: Int,
                        @Header("Authorization") token: String) :Call<List<RetroVehicleType>>
 
+    //delete vehicle user
     @DELETE("api/UserVechicleType/plate/{plate}")
     fun deleteVehicle(@Path("plate") plate: String) : Call<String>
+
+    //get type vehicle
+    @GET("api/VehicleType/getAll")
+    fun getTypeVehicles(@Header("Authorization") token: String) :Call<List<RetroTypeVehicle>>
+
+    //add vehicle user
+    @POST("api/UserVechicleType/insert")
+    fun insertVehicleUser(@Body user: RetroUserVehicleType,
+                          @Header("Authorization") token: String) : Call<Boolean>
+
 
 
     //Get all History
