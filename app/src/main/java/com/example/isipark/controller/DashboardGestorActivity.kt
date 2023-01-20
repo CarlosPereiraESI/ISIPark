@@ -10,7 +10,6 @@ import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
 import com.example.isipark.model.RetroFit.RetroPlaceFree
 import com.example.isipark.model.RetroFit.RetroSetorDis
-import com.example.isipark.model.sector
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

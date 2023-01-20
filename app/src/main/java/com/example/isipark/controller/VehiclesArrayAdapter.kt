@@ -9,8 +9,10 @@ import android.widget.TextView
 import com.example.isipark.R
 import com.example.isipark.model.RetroFit.RetroPlaceFree
 
-class VehiclesArrayAdapter(context: Context,
-                           list: List<RetroPlaceFree>):ArrayAdapter<RetroPlaceFree>(context, -1){
+class VehiclesArrayAdapter(
+    context: Context,
+    list: List<RetroPlaceFree>
+):ArrayAdapter<RetroPlaceFree>(context, -1){
 
     val mList : List<RetroPlaceFree> = list
 

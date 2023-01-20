@@ -2,48 +2,41 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/ic_launcher_background">
 
     <TextView
         android:id="@+id/type_vehicles"
-        android:layout_width="330dp"
+        android:layout_width="160dp"
         android:layout_height="25dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+
     <TextView
-        android:id="@+id/fuel_vehicles"
-        android:layout_width="330dp"
+        android:id="@+id/registration_vehicles"
+        android:layout_width="160dp"
         android:layout_height="25dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/type_vehicles"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/registration_vehicles"
-        android:layout_width="330dp"
-        android:layout_height="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fuel_vehicles"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/badge_vehicles"
-        android:layout_width="330dp"
-        android:layout_height="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registration_vehicles"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <ImageView
-        android:id="@+id/logo_cross"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <Button
+        android:id="@+id/deleteVehicle"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginTop="10dp"
+        android:text="X"
         android:src="@drawable/cross"
-        app:layout_constraintTop_toBottomOf="@id/badge_vehicles"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/registration_vehicles"
+        app:layout_constraintStart_toEndOf="@id/registration_vehicles"
+        app:layout_constraintTop_toTopOf="@id/registration_vehicles"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

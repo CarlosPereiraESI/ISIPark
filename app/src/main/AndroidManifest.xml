@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,6 +15,13 @@
         android:theme="@style/Theme.ISIPark"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".VehicleDelete"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".controller.NotificationAdminActivity"
             android:exported="false">
@@ -133,7 +141,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".controller.SpecialProfileActivity"
             android:exported="false">
@@ -141,7 +148,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".controller.LoginActivity"
             android:exported="true">
