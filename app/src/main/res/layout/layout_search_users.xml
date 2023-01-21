@@ -5,52 +5,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/title_search_user"
+        android:id="@+id/name_search_user"
         android:layout_width="330dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
+        android:textSize="20sp"
+        android:textColor="@color/strings"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="50dp"
         />
 
     <TextView
-        android:id="@+id/number_vehicles"
+        android:id="@+id/nif_search_user"
         android:layout_width="330dp"
         android:layout_height="25dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_search_user" />
+        app:layout_constraintTop_toBottomOf="@id/name_search_user"
+        android:layout_marginStart="80dp"
+        />
 
     <TextView
-        android:id="@+id/registration1"
+        android:id="@+id/genero_search_users"
         android:layout_width="330dp"
         android:layout_height="25dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/number_vehicles" />
+        app:layout_constraintTop_toBottomOf="@id/nif_search_user"
+        android:layout_marginStart="80dp"
+        />
 
     <TextView
-        android:id="@+id/registration2"
+        android:id="@+id/tipoUser_search_user"
         android:layout_width="330dp"
         android:layout_height="25dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registration1" />
+        app:layout_constraintTop_toBottomOf="@id/genero_search_users"
+        android:layout_marginStart="80dp"
+        />
 
     <TextView
-        android:id="@+id/user_type"
+        android:id="@+id/email_search_user"
         android:layout_width="330dp"
         android:layout_height="25dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registration2"/>
+        app:layout_constraintTop_toBottomOf="@id/tipoUser_search_user"
+        android:layout_marginStart="80dp"
+        />
 
-    <TextView
-        android:id="@+id/badge_holder"
-        android:layout_width="330dp"
-        android:layout_height="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/user_type"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
