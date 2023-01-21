@@ -56,7 +56,6 @@ class DashboardActivity : AppCompatActivity() {
                 if(response.code() == 200) {
                     val sug = response.body()
                     suggested_place.text = sug?.setor
-
                 }
             }
             override fun onFailure(call: Call<RetroSetorDis>, t: Throwable) {
@@ -66,14 +65,14 @@ class DashboardActivity : AppCompatActivity() {
 
         Utils.instance.getPlaceNormal("Bearer $token")
             .enqueue(object: Callback<List<RetroPlaceFree>> {
-                override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                override fun onResponse(call: Call<List<RetroPlaceFree>>,
+                                        response: Response<List<RetroPlaceFree>>){
                     if(response.code() == 200) {
                         val retroFit2 = response.body()
                         var adapter = retroFit2?.let {
                             VehiclesArrayAdapter(this@DashboardActivity, it)
                         }
 
-                        //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                         listView.adapter = adapter
                     }
                 }
@@ -81,9 +80,6 @@ class DashboardActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
             })
-        //--------------------------- Adapter ------------------------------
-
-
 
         // ------------------------- Click buttons ------------------------------------
 
@@ -117,13 +113,13 @@ class DashboardActivity : AppCompatActivity() {
         normalBtn.setOnClickListener{
             Utils.instance.getPlaceNormalLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
-                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>,
+                                            response: Response<List<RetroPlaceFree>>){
                         if(response.code() == 200) {
                             val retroFit2 = response.body()
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }
@@ -137,13 +133,13 @@ class DashboardActivity : AppCompatActivity() {
         motoBtn.setOnClickListener{
             Utils.instance.getPlaceMotasLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
-                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>,
+                                            response: Response<List<RetroPlaceFree>>){
                         if(response.code() == 200) {
                             val retroFit2 = response.body()
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }
@@ -158,13 +154,13 @@ class DashboardActivity : AppCompatActivity() {
 //getPlaceElectricLivre
             Utils.instance.getPlaceElectricLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
-                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>,
+                                            response: Response<List<RetroPlaceFree>>){
                         if(response.code() == 200) {
                             val retroFit2 = response.body()
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }
@@ -180,13 +176,13 @@ class DashboardActivity : AppCompatActivity() {
    //getPlaceReduceLivre
             Utils.instance.getPlaceReduceLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
-                    override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
+                    override fun onResponse(call: Call<List<RetroPlaceFree>>,
+                                            response: Response<List<RetroPlaceFree>>){
                         if(response.code() == 200) {
                             val retroFit2 = response.body()
                             var adapter = retroFit2?.let {
                                 VehiclesArrayAdapter(this@DashboardActivity, it)
                             }
-                            //var adapter = VehiclesArrayAdapter(this@DashboardActivity, R.layout.layout_sector_dash, it)
                             listView.adapter = adapter
                         }
                     }

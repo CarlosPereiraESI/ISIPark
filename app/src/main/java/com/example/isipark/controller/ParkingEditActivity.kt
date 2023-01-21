@@ -31,12 +31,19 @@ class ParkingEditActivity: AppCompatActivity() {
         val electrics = findViewById<EditText>(R.id.electrics_et)
         val red_mob = findViewById<EditText>(R.id.red_mob_et)
 
-        var retroSector = RetroSetor(id = 0, sectorName = "", totalPlace = 0)
         val sp = getSharedPreferences(this@ParkingEditActivity)
         val token = sp.getString("tokenA", null)
 
         // Button Create
         create.setOnClickListener {
+            val retroSector = RetroSetor(id = 0, sectorName = "", totalPlace = 0)
+
+            retroSector.sectorName = sector.text.toString()
+            retroSector.totalPlace = normal.text.toString().toInt() +
+                    motorcycle.text.toString().toInt() +
+                    electrics.text.toString().toInt() +
+                    red_mob.text.toString().toInt()
+
             if (sector.text.toString() == "" || normal.text.toString() == ""
                 || normal.text.toString() == "" || motorcycle.text.toString() == ""
                 || electrics.text.toString() == "" || red_mob.text.toString() == "") {
@@ -46,16 +53,16 @@ class ParkingEditActivity: AppCompatActivity() {
                     .enqueue(object : Callback<Boolean> {
                         override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                             if (response.code() == 201) {
-                                val responseBody = response.body()
-                                retroSector.sectorName = sector.text.toString()
-                                retroSector.totalPlace = normal.text.toString().toInt() +
-                                        motorcycle.text.toString().toInt() +
-                                        electrics.text.toString().toInt() +
-                                        red_mob.text.toString().toInt()
-                                println(retroSector.totalPlace)
-
                                 Toast.makeText(this@ParkingEditActivity,
                                     "Created New Sector! ", Toast.LENGTH_LONG).show()
+
+
+
+                                sector.text.clear()
+                                normal.text.clear()
+                                motorcycle.text.clear()
+                                electrics.text.clear()
+                                red_mob.text.clear()
                             }
                         }
 
