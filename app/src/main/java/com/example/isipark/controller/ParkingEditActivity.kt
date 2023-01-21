@@ -59,31 +59,33 @@ class ParkingEditActivity: AppCompatActivity() {
                                 Toast.makeText(
                                     this@ParkingEditActivity,
                                     "Created New Sector! ", Toast.LENGTH_LONG).show()
+                                Utils.instance.getSectorID(retroSector.sectorName,
+                                    "Bearer $token")
+                                    .enqueue(object : Callback<RetroSetor> {
+                                        override fun onResponse(call: Call<RetroSetor>,
+                                                                response: Response<RetroSetor>) {
+                                            if (response.code() == 200) {
+                                                val responseBody = response.body()
+                                                val id = responseBody?.id
+                                                sp.edit().putInt("idSector", id!!).apply()
+                                            }
+                                        }
+                                        override fun onFailure(call: Call<RetroSetor>,
+                                                               t: Throwable) {
+                                            Toast.makeText(applicationContext,
+                                                t.message, Toast.LENGTH_LONG).show()
+                                        }
+                                    })
                             }
                         }
-
                         override fun onFailure(call: Call<Boolean>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
                     })
 
-                Utils.instance.getSectorID(retroSector.sectorName,"Bearer $token")
-                    .enqueue(object : Callback<RetroSetor> {
-                        override fun onResponse(call: Call<RetroSetor>,
-                                                response: Response<RetroSetor>) {
-                            if (response.code() == 200) {
-                                val responseBody = response.body()
-                                val id = responseBody?.id
-                                sp.edit().putInt("idSector", id!!).apply()
-                            }
-                        }
-
-                        override fun onFailure(call: Call<RetroSetor>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
                 val id = sp.getInt("idSector", 1)
                 for(i in 1..normal.text.toString().toInt()){
+                    retroPlace.placeId = 0
                     retroPlace.idsetorSetor = id
                     retroPlace.placeTypeID = 1
                     retroPlace.state = false
@@ -103,6 +105,7 @@ class ParkingEditActivity: AppCompatActivity() {
                 }
 
                 for(i in 1..electrics.text.toString().toInt()){
+                    retroPlace.placeId = 0
                     retroPlace.idsetorSetor = id
                     retroPlace.placeTypeID = 2
                     retroPlace.state = false
@@ -111,6 +114,9 @@ class ParkingEditActivity: AppCompatActivity() {
                         .enqueue(object: Callback<Boolean> {
                             override fun onResponse(call: Call<Boolean>,
                                                     response: Response<Boolean>) {
+                                if (response.code() == 200) {
+                                    println("OKOKOOOKKKK")
+                                }
                             }
 
                             override fun onFailure(call: Call<Boolean>,
@@ -122,6 +128,7 @@ class ParkingEditActivity: AppCompatActivity() {
                 }
 
                 for(i in 1..motorcycle.text.toString().toInt()){
+                    retroPlace.placeId = 0
                     retroPlace.idsetorSetor = id
                     retroPlace.placeTypeID = 3
                     retroPlace.state = false
