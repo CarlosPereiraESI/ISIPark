@@ -89,25 +89,26 @@ interface NetworkManager {
     fun getNotificationUser(@Path("id") id: Int,
                        @Header("Authorization") token: String) :Call<List<RetroUserMessageId>>
 
-    //Get all History
+    //Get all History - Done
     @GET("api/History/getAll")
     fun getAllHistory(@Header("Authorization") token: String): Call<List<RetroHistory>>
 
-    //Get All History for a user
+    //Get All History for a user - Done
     @GET("api/History/{id}")
     fun getAllHistoryUser(@Path("id") id: Int,
                           @Header("Authorization") token: String) : Call<List<RetroHistory>>
-    //Add a special User
+
+    //Add a special User - Done
     @POST("api/SpecialUsers/insert")
     fun insertSpecialUser(@Body user: RetroSpecialProfile,
                           @Header("Authorization") token: String) : Call<String>
 
-    //Send a new report
+    //Send a new report - Done
     @POST("api/Report/insert")
     fun insertReport(@Body report: RetroReport,
                           @Header("Authorization") token: String) : Call<String>
 
-    //Get all reports
+    //Get all reports - Done
     @GET("/api/Report/getAll")
     fun getAllReports(@Header("Authorization") token: String): Call<List<RetroReport>>
 
@@ -120,4 +121,13 @@ interface NetworkManager {
     @POST("api/Place/insert")
     fun createPlaces(@Body place: RetroPlace,
                      @Header("Authorization") token: String) : Call<Boolean>
+
+    //Get all users
+    @GET("api/User/getAll")
+    fun getAllUser(@Header("Authorization") token: String) : Call<List<RetroUser>>
+
+    //Get 1 user
+    @GET("api/User/userName/{nome}")
+    fun getUserByName(@Path ("nome") nome : String,
+                      @Header("Authorization") token: String) : Call<List<RetroUser>>
 }
