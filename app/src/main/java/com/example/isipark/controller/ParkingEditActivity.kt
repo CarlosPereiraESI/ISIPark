@@ -41,6 +41,7 @@ class ParkingEditActivity: AppCompatActivity() {
             val retroPlace = RetroPlace(placeId = 0, idsetorSetor = 0, placeTypeID = 0,
                                         state = false, licensePlate = "")
 
+            var responseBody = 0
             retroSector.sectorName = sector.text.toString()
             retroSector.totalPlace = normal.text.toString().toInt() +
                     motorcycle.text.toString().toInt() +
@@ -53,101 +54,104 @@ class ParkingEditActivity: AppCompatActivity() {
                 Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
             } else {
                 Utils.instance.createSector(retroSector,"Bearer $token")
-                    .enqueue(object : Callback<Boolean> {
-                        override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                            if (response.code() == 201) {
+                    .enqueue(object : Callback<Int> {
+                        override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                            if (response.code() == 200) {
+                                responseBody = response.body()!!
+                                println("HEEEH" + responseBody)
                                 Toast.makeText(
                                     this@ParkingEditActivity,
                                     "Created New Sector! ", Toast.LENGTH_LONG).show()
-
-                                for(i in 1..normal.text.toString().toInt()){
-                                    retroPlace.idsetorSetor = 16
-                                    retroPlace.placeTypeID = 1
-                                    retroPlace.state = false
-                                    retroPlace.licensePlate = ""
-                                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                                        .enqueue(object: Callback<Boolean> {
-                                            override fun onResponse(call: Call<Boolean>,
-                                                                    response: Response<Boolean>) {
-                                            }
-
-                                            override fun onFailure(call: Call<Boolean>,
-                                                                   t: Throwable) {
-                                                Toast.makeText(applicationContext,
-                                                    t.message, Toast.LENGTH_LONG).show()
-                                            }
-                                        })
-                                }
-
-                                for(i in 1..electrics.text.toString().toInt()){
-                                    retroPlace.idsetorSetor = 16
-                                    retroPlace.placeTypeID = 2
-                                    retroPlace.state = false
-                                    retroPlace.licensePlate = ""
-                                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                                        .enqueue(object: Callback<Boolean> {
-                                            override fun onResponse(call: Call<Boolean>,
-                                                                    response: Response<Boolean>) {
-                                            }
-
-                                            override fun onFailure(call: Call<Boolean>,
-                                                                   t: Throwable) {
-                                                Toast.makeText(applicationContext,
-                                                    t.message, Toast.LENGTH_LONG).show()
-                                            }
-                                        })
-                                }
-
-                                for(i in 1..motorcycle.text.toString().toInt()){
-                                    retroPlace.idsetorSetor = 16
-                                    retroPlace.placeTypeID = 3
-                                    retroPlace.state = false
-                                    retroPlace.licensePlate = ""
-                                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                                        .enqueue(object: Callback<Boolean> {
-                                            override fun onResponse(call: Call<Boolean>,
-                                                                    response: Response<Boolean>) {
-                                            }
-
-                                            override fun onFailure(call: Call<Boolean>,
-                                                                   t: Throwable) {
-                                                Toast.makeText(applicationContext,
-                                                    t.message, Toast.LENGTH_LONG).show()
-                                            }
-                                        })
-                                }
-
-                                for(i in 1..red_mob.text.toString().toInt()){
-                                    retroPlace.idsetorSetor = 16
-                                    retroPlace.placeTypeID = 4
-                                    retroPlace.state = false
-                                    retroPlace.licensePlate = ""
-                                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                                        .enqueue(object: Callback<Boolean> {
-                                            override fun onResponse(call: Call<Boolean>,
-                                                                    response: Response<Boolean>) {
-                                            }
-
-                                            override fun onFailure(call: Call<Boolean>,
-                                                                   t: Throwable) {
-                                                Toast.makeText(applicationContext,
-                                                    t.message, Toast.LENGTH_LONG).show()
-                                            }
-                                        })
-                                }
-                            }
-                                sector.text.clear()
-                                normal.text.clear()
-                                motorcycle.text.clear()
-                                electrics.text.clear()
-                                red_mob.text.clear()
                             }
 
-                        override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                        }
+
+                        override fun onFailure(call: Call<Int>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                         }
                     })
+
+                for(i in 1..normal.text.toString().toInt()){
+                    retroPlace.idsetorSetor = responseBody
+                    retroPlace.placeTypeID = 1
+                    retroPlace.state = false
+                    retroPlace.licensePlate = null
+                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
+                        .enqueue(object: Callback<Boolean> {
+                            override fun onResponse(call: Call<Boolean>,
+                                                    response: Response<Boolean>) {
+                            }
+
+                            override fun onFailure(call: Call<Boolean>,
+                                                   t: Throwable) {
+                                Toast.makeText(applicationContext,
+                                    t.message, Toast.LENGTH_LONG).show()
+                            }
+                        })
+                }
+
+                for(i in 1..electrics.text.toString().toInt()){
+                    retroPlace.idsetorSetor = responseBody
+                    retroPlace.placeTypeID = 2
+                    retroPlace.state = false
+                    retroPlace.licensePlate = null
+                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
+                        .enqueue(object: Callback<Boolean> {
+                            override fun onResponse(call: Call<Boolean>,
+                                                    response: Response<Boolean>) {
+                            }
+
+                            override fun onFailure(call: Call<Boolean>,
+                                                   t: Throwable) {
+                                Toast.makeText(applicationContext,
+                                    t.message, Toast.LENGTH_LONG).show()
+                            }
+                        })
+                }
+
+                for(i in 1..motorcycle.text.toString().toInt()){
+                    retroPlace.idsetorSetor = responseBody
+                    retroPlace.placeTypeID = 3
+                    retroPlace.state = false
+                    retroPlace.licensePlate = null
+                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
+                        .enqueue(object: Callback<Boolean> {
+                            override fun onResponse(call: Call<Boolean>,
+                                                    response: Response<Boolean>) {
+                            }
+
+                            override fun onFailure(call: Call<Boolean>,
+                                                   t: Throwable) {
+                                Toast.makeText(applicationContext,
+                                    t.message, Toast.LENGTH_LONG).show()
+                            }
+                        })
+                }
+
+                for(i in 1..red_mob.text.toString().toInt()){
+                    retroPlace.idsetorSetor = responseBody
+                    retroPlace.placeTypeID = 4
+                    retroPlace.state = false
+                    retroPlace.licensePlate = null
+                    Utils.instance.createPlaces(retroPlace, "Bearer $token")
+                        .enqueue(object: Callback<Boolean> {
+                            override fun onResponse(call: Call<Boolean>,
+                                                    response: Response<Boolean>) {
+                            }
+
+                            override fun onFailure(call: Call<Boolean>,
+                                                   t: Throwable) {
+                                Toast.makeText(applicationContext,
+                                    t.message, Toast.LENGTH_LONG).show()
+                            }
+                        })
+                }
             }
+            sector.text.clear()
+            normal.text.clear()
+            motorcycle.text.clear()
+            electrics.text.clear()
+            red_mob.text.clear()
         }
         // Button Add Map
         add_map.setOnClickListener{

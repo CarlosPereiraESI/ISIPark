@@ -190,7 +190,6 @@ class DashboardActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
                 })
-
         }
     }
 

@@ -92,8 +92,6 @@ class VehicleArrayAdapMyVehicle (context: Context,
 
         //deleteVehicle
 
-
-
         return view
     }
 
