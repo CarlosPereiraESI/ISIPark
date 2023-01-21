@@ -67,8 +67,24 @@ class ParkingEditActivity: AppCompatActivity() {
                         }
                     })
 
+                Utils.instance.getSectorID(retroSector.sectorName,"Bearer $token")
+                    .enqueue(object : Callback<RetroSetor> {
+                        override fun onResponse(call: Call<RetroSetor>,
+                                                response: Response<RetroSetor>) {
+                            if (response.code() == 200) {
+                                val responseBody = response.body()
+                                val id = responseBody?.id
+                                sp.edit().putInt("idSector", id!!).apply()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<RetroSetor>, t: Throwable) {
+                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        }
+                    })
+                val id = sp.getInt("idSector", 1)
                 for(i in 1..normal.text.toString().toInt()){
-                    retroPlace.idsetorSetor = 24
+                    retroPlace.idsetorSetor = id
                     retroPlace.placeTypeID = 1
                     retroPlace.state = false
                     retroPlace.licensePlate = null
@@ -87,7 +103,7 @@ class ParkingEditActivity: AppCompatActivity() {
                 }
 
                 for(i in 1..electrics.text.toString().toInt()){
-                    retroPlace.idsetorSetor = 24
+                    retroPlace.idsetorSetor = id
                     retroPlace.placeTypeID = 2
                     retroPlace.state = false
                     retroPlace.licensePlate = null
@@ -106,7 +122,7 @@ class ParkingEditActivity: AppCompatActivity() {
                 }
 
                 for(i in 1..motorcycle.text.toString().toInt()){
-                    retroPlace.idsetorSetor = 24
+                    retroPlace.idsetorSetor = id
                     retroPlace.placeTypeID = 3
                     retroPlace.state = false
                     retroPlace.licensePlate = null
@@ -115,7 +131,6 @@ class ParkingEditActivity: AppCompatActivity() {
                             override fun onResponse(call: Call<Boolean>,
                                                     response: Response<Boolean>) {
                             }
-
                             override fun onFailure(call: Call<Boolean>,
                                                    t: Throwable) {
                                 Toast.makeText(applicationContext,
@@ -124,7 +139,7 @@ class ParkingEditActivity: AppCompatActivity() {
                         })
                 }
                 for(i in 1..red_mob.text.toString().toInt()){
-                    retroPlace.idsetorSetor = 24
+                    retroPlace.idsetorSetor = id
                     retroPlace.placeTypeID = 4
                     retroPlace.state = false
                     retroPlace.licensePlate = null

@@ -122,6 +122,11 @@ interface NetworkManager {
     fun createPlaces(@Body place: RetroPlace,
                      @Header("Authorization") token: String) : Call<Boolean>
 
+    //Find Sector ID by sector's name
+    @GET("api/Setor/getid/{sector}")
+    fun getSectorID(@Path("sector") sector: String,
+                    @Header("Authorization") token: String) : Call<RetroSetor>
+
     //Get all users
     @GET("api/User/getAll")
     fun getAllUser(@Header("Authorization") token: String) : Call<List<RetroUser>>
