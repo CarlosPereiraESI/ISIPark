@@ -43,7 +43,6 @@ interface NetworkManager {
     @GET("api/Place/SetorTypeReduceMob")
     fun getPlaceReduceLivre(@Header("Authorization") token: String): Call<List<RetroPlaceFree>>
 
-
     //ADMIN
     //noficacoes - Done
     @GET("api/AdminMessage/getAll")
@@ -91,8 +90,6 @@ interface NetworkManager {
     fun getNotificationUser(@Path("id") id: Int,
                        @Header("Authorization") token: String) :Call<List<RetroUserMessageId>>
 
-
-
     //Get all History
     @GET("api/History/getAll")
     fun getAllHistory(@Header("Authorization") token: String): Call<List<RetroHistory>>
@@ -115,4 +112,7 @@ interface NetworkManager {
     @GET("/api/Report/getAll")
     fun getAllReports(@Header("Authorization") token: String): Call<List<RetroReport>>
 
+    //Create new sector
+    @POST("/api/Setor/insert")
+    fun createSector(@Header("Authorization") token: String) : Call<Boolean>
 }

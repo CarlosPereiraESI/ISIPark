@@ -27,10 +27,6 @@ class Add_VehicleActivity : AppCompatActivity() {
         val licensePlate = findViewById<EditText>(R.id.AddVehicleRegistration)
         val licenseP = licensePlate.text.toString()
 
-        println("ooooooooooooooooooolllllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-        println(licensePlate)
-        println(licenseP)
-
         val sp = getSharedPreferences(this@Add_VehicleActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
@@ -40,7 +36,8 @@ class Add_VehicleActivity : AppCompatActivity() {
 
         Utils.instance.getTypeVehicles("Bearer $token")
             .enqueue(object: Callback<List<RetroTypeVehicle>> {
-                override fun onResponse(call: Call<List<RetroTypeVehicle>>, response: Response<List<RetroTypeVehicle>>) {
+                override fun onResponse(call: Call<List<RetroTypeVehicle>>,
+                                        response: Response<List<RetroTypeVehicle>>) {
                     if(response.code() == 200) {
                         val sug = response.body()
 
@@ -49,22 +46,20 @@ class Add_VehicleActivity : AppCompatActivity() {
                         if (sug != null) {
                             for (d in sug){
                                 tipos.add(d.description)
-                                println(tipos.toString())
                             }
                         }
 
                         if(spinner != null){
-                            val adapter = ArrayAdapter(this@Add_VehicleActivity, android.R.layout.simple_spinner_item, tipos)
+                            val adapter = ArrayAdapter(this@Add_VehicleActivity,
+                                android.R.layout.simple_spinner_item, tipos)
                             spinner.adapter = adapter
                         }
-
                     }
                 }
                 override fun onFailure(call: Call<List<RetroTypeVehicle>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
             })
-
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>, view: View,
@@ -73,7 +68,6 @@ class Add_VehicleActivity : AppCompatActivity() {
                 typeVehicle = position+1
                 println(typeVehicle)
                 X = typeVehicle
-
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
@@ -97,11 +91,10 @@ class Add_VehicleActivity : AppCompatActivity() {
                 println(retroSP.userID)
                 println(retroSP.licensePlate)
 
-
-
                     Utils.instance.insertVehicleUser(retroSP,"Bearer $token")
                         .enqueue(object: Callback<Boolean> {
-                            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                            override fun onResponse(call: Call<Boolean>,
+                                                    response: Response<Boolean>) {
                                 if(response.code() == 200) {
                                     val userInf = response.body()
                                     println("Feito com sucesso $userInf")
@@ -112,13 +105,13 @@ class Add_VehicleActivity : AppCompatActivity() {
                                 }
                             }
                             override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                                Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext, t.message,
+                                    Toast.LENGTH_LONG).show()
                             }
                         })
 
-
-
-                val intent = Intent(this@Add_VehicleActivity, VehiclesActivity::class.java)
+                val intent = Intent(this@Add_VehicleActivity,
+                    VehiclesActivity::class.java)
                 startActivity(intent)
             }else{
                 Toast.makeText(this,"Registration Invalid ",Toast.LENGTH_LONG).show()
@@ -128,7 +121,8 @@ class Add_VehicleActivity : AppCompatActivity() {
 
         //Button back
         back.setOnClickListener {
-            val intent = Intent(this@Add_VehicleActivity, VehiclesActivity::class.java)
+            val intent = Intent(this@Add_VehicleActivity,
+                VehiclesActivity::class.java)
             startActivity(intent)
         }
     }
@@ -137,8 +131,7 @@ class Add_VehicleActivity : AppCompatActivity() {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)
     }
-
-
+    
     fun isValidLicensePlate(plate: String): Boolean {
         val pattern = "(([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2}))".toRegex()
         return plate.matches(pattern)

@@ -24,17 +24,16 @@ class NotificationActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.noti_back_btn)
         val listView = findViewById<ListView>(R.id.main_listview)
 
-
         val sp = getSharedPreferences(this@NotificationActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
 
         println("ENTREI-----------------------------------------------------")
 
-
         Utils.instance.getNotificationUser(id,"Bearer $token")
             .enqueue(object: Callback<List<RetroUserMessageId>> {
-                override fun onResponse(call: Call<List<RetroUserMessageId>>, response: Response<List<RetroUserMessageId>>){
+                override fun onResponse(call: Call<List<RetroUserMessageId>>,
+                                        response: Response<List<RetroUserMessageId>>){
                     if(response.code() == 200) {
                         val retroFit2 = response.body()
                         var adapter = retroFit2?.let {
@@ -47,18 +46,11 @@ class NotificationActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
             })
-
-
-
-
         //Back button
         back.setOnClickListener {
             val intent = Intent(this@NotificationActivity, DashboardActivity::class.java)
             startActivity(intent)
         }
-
-
-        // Falta adapter para a listview das notificacoes
     }
     override fun onBackPressed() {}
 

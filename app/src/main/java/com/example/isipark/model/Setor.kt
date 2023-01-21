@@ -11,5 +11,4 @@ class Sector(val id: Int, val sectorName: String, val totalPlace: Int) {
 data class Setor(@PrimaryKey(autoGenerate = true)val id: Int=0,
                  val sectorName: String?,
                  val totalPlace: Int?){
-
 }
