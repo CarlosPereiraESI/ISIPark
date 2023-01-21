@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
+import com.example.isipark.model.RetroFit.RetroSetor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,8 +31,9 @@ class ParkingEditActivity: AppCompatActivity() {
         val electrics = findViewById<EditText>(R.id.electrics_et)
         val red_mob = findViewById<EditText>(R.id.red_mob_et)
 
+        var retroSector = RetroSetor(id = 0, sectorName = "", totalPlace = 0)
         val sp = getSharedPreferences(this@ParkingEditActivity)
-        val token = sp.getString("token", null)
+        val token = sp.getString("tokenA", null)
 
         // Button Create
         create.setOnClickListener {
@@ -40,10 +42,20 @@ class ParkingEditActivity: AppCompatActivity() {
                 || electrics.text.toString() == "" || red_mob.text.toString() == "") {
                 Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
             } else {
-                Utils.instance.createSector("Bearer $token")
+                Utils.instance.createSector(retroSector,"Bearer $token")
                     .enqueue(object : Callback<Boolean> {
                         override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                             if (response.code() == 201) {
+                                val responseBody = response.body()
+                                retroSector.sectorName = sector.text.toString()
+                                retroSector.totalPlace = normal.text.toString().toInt() +
+                                        motorcycle.text.toString().toInt() +
+                                        electrics.text.toString().toInt() +
+                                        red_mob.text.toString().toInt()
+                                println(retroSector.totalPlace)
+
+                                Toast.makeText(this@ParkingEditActivity,
+                                    "Created New Sector! ", Toast.LENGTH_LONG).show()
                             }
                         }
 
@@ -56,7 +68,6 @@ class ParkingEditActivity: AppCompatActivity() {
         // Button Add Map
         add_map.setOnClickListener{
         }
-
         //Button Back
         back.setOnClickListener {
             val intent = Intent(this@ParkingEditActivity,

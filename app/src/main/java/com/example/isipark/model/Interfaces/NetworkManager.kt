@@ -114,5 +114,6 @@ interface NetworkManager {
 
     //Create new sector
     @POST("/api/Setor/insert")
-    fun createSector(@Header("Authorization") token: String) : Call<Boolean>
+    fun createSector(@Body setor: RetroSetor,
+                     @Header("Authorization") token: String) : Call<Boolean>
 }

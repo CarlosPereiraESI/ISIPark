@@ -27,7 +27,8 @@ class ReportsMessageAdapter(context: Context, list: List<RetroReport>):
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
-        val view = LayoutInflater.from(context).inflate(R.layout.layout_reports_messages,parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.layout_reports_messages,
+            parent, false)
 
         //layout_sector_dash
         val name = view.findViewById<TextView>(R.id.name_report)

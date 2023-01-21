@@ -28,7 +28,6 @@ class ProfileActivity : AppCompatActivity() {
         val email = findViewById<TextView>(R.id.email)
         val userType = findViewById<TextView>(R.id.userType)
 
-
         val sp = getSharedPreferences(this@ProfileActivity)
         val token = sp.getString("token", null)
         val ap = getSharedPreferences(this@ProfileActivity)
@@ -43,14 +42,12 @@ class ProfileActivity : AppCompatActivity() {
                         number.text = "Number: " + id.toString()
                         email.text ="Email: " + userInf?.email
                         userType.text = "User Type: " + userInf?.typeUserID
-
                     }
                 }
                 override fun onFailure(call: Call<RetroUser>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
             })
-
 
         //Back to dashboard page
         back.setOnClickListener {

@@ -25,20 +25,24 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         createBtn.setOnClickListener {
-            if ( email.text.toString() == "" || password.text.toString() == "" || confpassword.text.toString() == ""){
+            if ( email.text.toString() == "" || password.text.toString() == "" ||
+                confpassword.text.toString() == ""){
                 Toast.makeText(this,"It has empty fields!", Toast.LENGTH_SHORT).show()
             }
             else{
                 if(password.text.toString() == confpassword.text.toString()){
                     if (isCorrect(email.text.toString()) == true){
-                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                        val intent = Intent(this@RegisterActivity,
+                            LoginActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this,"Invalid E-mail, try again!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"Invalid E-mail, try again!",
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
                 else {
-                    Toast.makeText(this, "The passwords don't match!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "The passwords don't match!",
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -72,9 +72,7 @@ class Add_VehicleActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
         }
-
         // Button Save
-
         save.setOnClickListener{
 
             println(X)
@@ -131,7 +129,7 @@ class Add_VehicleActivity : AppCompatActivity() {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)
     }
-    
+
     fun isValidLicensePlate(plate: String): Boolean {
         val pattern = "(([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2}))".toRegex()
         return plate.matches(pattern)

@@ -49,7 +49,8 @@ class ReportsActivity : AppCompatActivity() {
         send.setOnClickListener {
             if(sector.text.toString() == "" || registration.text.toString() =="" ||
                 more.text.toString()==""){
-                Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "It has empty fields!",
+                    Toast.LENGTH_SHORT).show()
             } else {
 
                 retroR.id = 0
@@ -83,7 +84,8 @@ class ReportsActivity : AppCompatActivity() {
                             }
                         })
                     } else {
-                    Toast.makeText(this, "You need to put a valid License Plate", Toast.LENGTH_LONG)
+                    Toast.makeText(this, "You need to put a valid License Plate",
+                        Toast.LENGTH_LONG)
                         .show()
                     }
             }
