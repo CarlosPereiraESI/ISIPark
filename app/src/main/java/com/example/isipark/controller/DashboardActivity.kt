@@ -26,7 +26,6 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-
         //---------------------------- Buttons -------------------------------------
 
         //Report button
@@ -52,7 +51,8 @@ class DashboardActivity : AppCompatActivity() {
 
         Utils.instance.getSuggestedPlace(id, "Bearer $token")
         .enqueue(object: Callback<RetroSetorDis>{
-            override fun onResponse(call: Call<RetroSetorDis>, response: Response<RetroSetorDis>) {
+            override fun onResponse(call: Call<RetroSetorDis>,
+                                    response: Response<RetroSetorDis>) {
                 if(response.code() == 200) {
                     val sug = response.body()
                     suggested_place.text = sug?.setor
@@ -85,7 +85,8 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show reports page
         report.setOnClickListener{
-            val intent = Intent(this@DashboardActivity, ReportsActivity::class.java)
+            val intent = Intent(this@DashboardActivity,
+                ReportsActivity::class.java)
             startActivity(intent)
         }
 
@@ -104,10 +105,10 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show code page
         codeBtn.setOnClickListener {
-            val intent = Intent(this@DashboardActivity, CodeActivity::class.java)
+            val intent = Intent(this@DashboardActivity,
+                CodeActivity::class.java)
             startActivity(intent)
         }
-
 
         //Show normal places on dashboard
         normalBtn.setOnClickListener{
@@ -151,7 +152,7 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show eletric places on dashboard
         eletricBtn.setOnClickListener{
-//getPlaceElectricLivre
+            //getPlaceElectricLivre
             Utils.instance.getPlaceElectricLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
                     override fun onResponse(call: Call<List<RetroPlaceFree>>,
@@ -168,7 +169,6 @@ class DashboardActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
                 })
-
         }
 
         //Show reduce mobility places on dashboard

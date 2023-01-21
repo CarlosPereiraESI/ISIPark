@@ -26,7 +26,8 @@ class VehiclesArrayAdapter(
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
-        val view = LayoutInflater.from(context).inflate(R.layout.layout_sector_dash,parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.layout_sector_dash,
+            parent, false)
 
         //layout_sector_dash
         val sector_name = view.findViewById<TextView>(R.id.sector_name)

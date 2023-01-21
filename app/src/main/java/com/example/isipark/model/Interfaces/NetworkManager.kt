@@ -51,7 +51,6 @@ interface NetworkManager {
     @GET("api/Place/T/necessidade especial")
     fun getPlaceRedMob(@Header("Authorization") token: String): Call<Int>
 
-
     //Get UserID by Email - Done
     @GET("api/Auth/emailID/{email}")
     fun getUserID(@Path("email") email: String) : Call<Int>
@@ -115,5 +114,10 @@ interface NetworkManager {
     //Create new sector
     @POST("/api/Setor/insert")
     fun createSector(@Body setor: RetroSetor,
+                     @Header("Authorization") token: String) : Call<Boolean>
+
+    //Create places according to the new sector created
+    @POST("api/Place/insert")
+    fun createPlaces(@Body place: RetroPlace,
                      @Header("Authorization") token: String) : Call<Boolean>
 }

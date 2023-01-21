@@ -28,7 +28,6 @@ class VehiclesActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.profile_back_btn)
         val addMorebtn = findViewById<Button>(R.id.add_more_btn)
 
-
         val sp = getSharedPreferences(this@VehiclesActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
@@ -59,15 +58,11 @@ class VehiclesActivity : AppCompatActivity() {
                     }
                 })
 
-
-
         addMorebtn.setOnClickListener {
 
             val intent = Intent(this, Add_VehicleActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
     fun getSharedPreferences(context: Context): SharedPreferences {
