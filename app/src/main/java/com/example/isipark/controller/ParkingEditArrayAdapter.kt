@@ -37,22 +37,8 @@ class ParkingEditArrayAdapter(context: Context, list: List<RetroSetor>):
         val p = getItem(position)
 
         if (p != null) {
-            name.text = p.name
+            sector.text = "Sector: ${p.sectorName}"
         }
-        if (p != null) {
-            sector.text = "Sector: ${p.sector}"
-        }
-        if (p != null) {
-            registration.text ="Registration: ${p.licensePlate}"
-        }
-        if (p != null) {
-            descricao.text = "Description: ${p.description}"
-        }
-        if (p != null) {
-            data.text = p.date
-        }
-
-
         return view
     }
 }

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ListView
 import android.widget.Toast
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
@@ -25,6 +26,7 @@ class ParkingEditActivity: AppCompatActivity() {
         val add_map = findViewById<Button>(R.id.add_map_btn)
         val create = findViewById<Button>(R.id.create_park_btn)
         val back = findViewById<Button>(R.id.parking_edit_back)
+        val listView = findViewById<ListView>(R.id.list_sectors)
 
         val sector = findViewById<EditText>(R.id.add_sector_et)
         val normal = findViewById<EditText>(R.id.normal_et)
@@ -177,6 +179,25 @@ class ParkingEditActivity: AppCompatActivity() {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
+
+        Utils.instance.getAllSectors("Bearer $token")
+            .enqueue(object: Callback<List<RetroSetor>> {
+                override fun onResponse(call: Call<List<RetroSetor>>,
+                                        response: Response<List<RetroSetor>>) {
+                    if(response.code() == 200) {
+                        val retroFit2 = response.body()
+                        val adapter = retroFit2?.let {
+                            ParkingEditArrayAdapter(this@ParkingEditActivity, it)
+                        }
+                        listView.adapter = adapter
+                    }
+                }
+                override fun onFailure(call: Call<List<RetroSetor>>,
+                                       t: Throwable) {
+                    Toast.makeText(applicationContext,
+                        t.message, Toast.LENGTH_LONG).show()
+                }
+            })
         // Button Add Map
         add_map.setOnClickListener{
         }

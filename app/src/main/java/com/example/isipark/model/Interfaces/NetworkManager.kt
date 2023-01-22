@@ -135,4 +135,8 @@ interface NetworkManager {
     @GET("api/User/userName/{nome}")
     fun getUserByName(@Path ("nome") nome : String,
                       @Header("Authorization") token: String) : Call<List<RetroUser>>
+
+    //Get All Sectors
+    @GET("api/Setor/getAll")
+    fun getAllSectors(@Header("Authorization") token: String) : Call<List<RetroSetor>>
 }
