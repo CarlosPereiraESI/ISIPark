@@ -48,16 +48,4 @@
         app:layout_constraintTop_toBottomOf="@id/title_parking_edit"
         />
 
-    <ImageView
-        android:id="@+id/logo_plus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/plus"
-        android:layout_gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sector"
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

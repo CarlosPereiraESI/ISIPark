@@ -173,7 +173,7 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show reduce mobility places on dashboard
         rmobBtn.setOnClickListener{
-   //getPlaceReduceLivre
+            //getPlaceReduceLivre
             Utils.instance.getPlaceReduceLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
                     override fun onResponse(call: Call<List<RetroPlaceFree>>,
