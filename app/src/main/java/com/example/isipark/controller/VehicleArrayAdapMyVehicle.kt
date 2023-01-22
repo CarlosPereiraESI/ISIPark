@@ -37,8 +37,6 @@ class VehicleArrayAdapMyVehicle (context: Context,
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         val view = LayoutInflater.from(context).inflate(R.layout.layout_vehicles,parent, false)
-
-
         //layout_sector_dash
         val tipo = view.findViewById<TextView>(R.id.type_vehicles)
         val resgistration = view.findViewById<TextView>(R.id.registration_vehicles)
@@ -87,14 +85,8 @@ class VehicleArrayAdapMyVehicle (context: Context,
 
                     }
                 })
-
         }
-
-        //deleteVehicle
-
         return view
     }
-
-
 
 }

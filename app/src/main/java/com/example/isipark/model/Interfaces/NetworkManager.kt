@@ -139,4 +139,9 @@ interface NetworkManager {
     //Get All Sectors
     @GET("api/Setor/getAll")
     fun getAllSectors(@Header("Authorization") token: String) : Call<List<RetroSetor>>
+
+    //Delete Sector
+    @DELETE("api/Setor/{id}")
+    fun deleteSector(@Path("id") id: Int,
+                    @Header("Authorization") token: String) : Call<Nothing>
 }

@@ -69,7 +69,7 @@ class DashboardActivity : AppCompatActivity() {
                                         response: Response<List<RetroPlaceFree>>){
                     if(response.code() == 200) {
                         val retroFit2 = response.body()
-                        var adapter = retroFit2?.let {
+                        val adapter = retroFit2?.let {
                             VehiclesArrayAdapter(this@DashboardActivity, it)
                         }
 

@@ -54,33 +54,121 @@ class ParkingEditActivity: AppCompatActivity() {
                 || electrics.text.toString() == "" || red_mob.text.toString() == "") {
                 Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
             } else {
-                Utils.instance.createSector(retroSector,"Bearer $token")
+                Utils.instance.createSector(retroSector, "Bearer $token")
                     .enqueue(object : Callback<Boolean> {
                         override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                             if (response.code() == 200) {
                                 Toast.makeText(
                                     this@ParkingEditActivity,
-                                    "Created New Sector! ", Toast.LENGTH_LONG).show()
-                                Utils.instance.getSectorID(retroSector.sectorName,
-                                    "Bearer $token")
+                                    "Created New Sector! ", Toast.LENGTH_LONG
+                                ).show()
+                                Utils.instance.getSectorID(
+                                    retroSector.sectorName,
+                                    "Bearer $token"
+                                )
                                     .enqueue(object : Callback<RetroSetor> {
-                                        override fun onResponse(call: Call<RetroSetor>,
-                                                                response: Response<RetroSetor>) {
+                                        override fun onResponse(
+                                            call: Call<RetroSetor>,
+                                            response: Response<RetroSetor>) {
                                             if (response.code() == 200) {
                                                 val responseBody = response.body()
                                                 val id = responseBody?.id
                                                 sp.edit().putInt("idSector", id!!).apply()
-                                                println("OK")
-                                                println("OK")
-                                                println("OK")
-                                                println("OK")
-                                                println("OK")
+                                            }
+
+                                            val id = sp.getInt("idSector", 1)
+                                            for(i in 1..normal.text.toString().toInt()){
+                                                retroPlace.placeId = 0
+                                                retroPlace.idsetorSetor = id
+                                                retroPlace.placeTypeID = 1
+                                                retroPlace.state = false
+                                                retroPlace.licensePlate = null
+                                                Utils.instance.createPlaces(retroPlace,
+                                                    "Bearer $token")
+                                                    .enqueue(object: Callback<Boolean> {
+                                                        override fun onResponse(call: Call<Boolean>,
+                                                                                response:
+                                                                                Response<Boolean>) {
+                                                        }
+
+                                                        override fun onFailure(call: Call<Boolean>,
+                                                                               t: Throwable) {
+                                                            Toast.makeText(applicationContext,
+                                                                t.message, Toast.LENGTH_LONG).show()
+                                                        }
+                                                    })
+                                            }
+                                            for(i in 1..electrics.text.toString().toInt()){
+                                                retroPlace.placeId = 0
+                                                retroPlace.idsetorSetor = id
+                                                retroPlace.placeTypeID = 2
+                                                retroPlace.state = false
+                                                retroPlace.licensePlate = null
+                                                Utils.instance.createPlaces(retroPlace,
+                                                    "Bearer $token")
+                                                    .enqueue(object: Callback<Boolean> {
+                                                        override fun onResponse(call: Call<Boolean>,
+                                                                                response:
+                                                                                Response<Boolean>) {
+                                                        }
+
+                                                        override fun onFailure(call: Call<Boolean>,
+                                                                               t: Throwable) {
+                                                            Toast.makeText(applicationContext,
+                                                                t.message, Toast.LENGTH_LONG).show()
+                                                        }
+                                                    })
+                                            }
+                                            for(i in 1..motorcycle.text.toString().toInt()){
+                                                retroPlace.placeId = 0
+                                                retroPlace.idsetorSetor = id
+                                                retroPlace.placeTypeID = 3
+                                                retroPlace.state = false
+                                                retroPlace.licensePlate = null
+                                                Utils.instance.createPlaces(retroPlace,
+                                                    "Bearer $token")
+                                                    .enqueue(object: Callback<Boolean> {
+                                                        override fun onResponse(call: Call<Boolean>,
+                                                                                response:
+                                                                                Response<Boolean>) {
+                                                        }
+                                                        override fun onFailure(call: Call<Boolean>,
+                                                                               t: Throwable) {
+                                                            Toast.makeText(applicationContext,
+                                                                t.message, Toast.LENGTH_LONG).show()
+                                                        }
+                                                    })
+                                            }
+                                            for(i in 1..red_mob.text.toString().toInt()){
+                                                retroPlace.placeId = 0
+                                                retroPlace.idsetorSetor = id
+                                                retroPlace.placeTypeID = 4
+                                                retroPlace.state = false
+                                                retroPlace.licensePlate = null
+                                                Utils.instance.createPlaces(retroPlace,
+                                                    "Bearer $token")
+                                                    .enqueue(object: Callback<Boolean> {
+                                                        override fun onResponse(call: Call<Boolean>,
+                                                                                response:
+                                                                                Response<Boolean>) {
+                                                        }
+
+                                                        override fun onFailure(call: Call<Boolean>,
+                                                                               t: Throwable) {
+                                                            Toast.makeText(applicationContext,
+                                                                t.message, Toast.LENGTH_LONG).show()
+                                                        }
+                                                    })
                                             }
                                         }
-                                        override fun onFailure(call: Call<RetroSetor>,
-                                                               t: Throwable) {
-                                            Toast.makeText(applicationContext,
-                                                t.message, Toast.LENGTH_LONG).show()
+                                        override fun onFailure(
+                                            call: Call<RetroSetor>,
+                                            t: Throwable
+                                        ) {
+                                            Toast.makeText(
+                                                applicationContext,
+                                                t.message, Toast.LENGTH_LONG
+                                            ).show()
                                         }
                                     })
                             }
@@ -90,94 +178,10 @@ class ParkingEditActivity: AppCompatActivity() {
                         }
                     })
             }
-
-            val id = sp.getInt("idSector", 1)
-            for(i in 1..normal.text.toString().toInt()){
-                retroPlace.placeId = 0
-                retroPlace.idsetorSetor = id
-                retroPlace.placeTypeID = 1
-                retroPlace.state = false
-                retroPlace.licensePlate = null
-                Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                    .enqueue(object: Callback<Boolean> {
-                        override fun onResponse(call: Call<Boolean>,
-                                                response: Response<Boolean>) {
-                        }
-
-                        override fun onFailure(call: Call<Boolean>,
-                                               t: Throwable) {
-                            Toast.makeText(applicationContext,
-                                t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
-            }
-
-            for(i in 1..electrics.text.toString().toInt()){
-                retroPlace.placeId = 0
-                retroPlace.idsetorSetor = id
-                retroPlace.placeTypeID = 2
-                retroPlace.state = false
-                retroPlace.licensePlate = null
-                Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                    .enqueue(object: Callback<Boolean> {
-                        override fun onResponse(call: Call<Boolean>,
-                                                response: Response<Boolean>) {
-                        }
-
-                        override fun onFailure(call: Call<Boolean>,
-                                               t: Throwable) {
-                            Toast.makeText(applicationContext,
-                                t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
-            }
-
-            for(i in 1..motorcycle.text.toString().toInt()){
-                retroPlace.placeId = 0
-                retroPlace.idsetorSetor = id
-                retroPlace.placeTypeID = 3
-                retroPlace.state = false
-                retroPlace.licensePlate = null
-                Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                    .enqueue(object: Callback<Boolean> {
-                        override fun onResponse(call: Call<Boolean>,
-                                                response: Response<Boolean>) {
-                        }
-                        override fun onFailure(call: Call<Boolean>,
-                                               t: Throwable) {
-                            Toast.makeText(applicationContext,
-                                t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
-            }
-            for(i in 1..red_mob.text.toString().toInt()){
-                retroPlace.placeId = 0
-                retroPlace.idsetorSetor = id
-                retroPlace.placeTypeID = 4
-                retroPlace.state = false
-                retroPlace.licensePlate = null
-                Utils.instance.createPlaces(retroPlace, "Bearer $token")
-                    .enqueue(object: Callback<Boolean> {
-                        override fun onResponse(call: Call<Boolean>,
-                                                response: Response<Boolean>) {
-                        }
-
-                        override fun onFailure(call: Call<Boolean>,
-                                               t: Throwable) {
-                            Toast.makeText(applicationContext,
-                                t.message, Toast.LENGTH_LONG).show()
-                        }
-                    })
-            }
-
-            sector.text.clear()
-            normal.text.clear()
-            motorcycle.text.clear()
-            electrics.text.clear()
-            red_mob.text.clear()
-
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this@ParkingEditActivity,
+                ParkingEditActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         Utils.instance.getAllSectors("Bearer $token")
@@ -206,6 +210,7 @@ class ParkingEditActivity: AppCompatActivity() {
             val intent = Intent(this@ParkingEditActivity,
                 MoreOptionsActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
     override fun onBackPressed() {}

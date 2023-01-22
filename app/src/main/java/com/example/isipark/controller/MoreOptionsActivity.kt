@@ -24,6 +24,7 @@ class MoreOptionsActivity : AppCompatActivity() {
             val intent = Intent(this@MoreOptionsActivity,
                 DashboardGestorActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         //Log Out button
