@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:layout_marginTop="40dp"
-        android:text="" />
+        android:src="@drawable/code" />
 
     <EditText
         android:layout_width="410dp"

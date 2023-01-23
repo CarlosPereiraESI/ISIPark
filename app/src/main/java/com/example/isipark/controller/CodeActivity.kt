@@ -38,7 +38,6 @@ class CodeActivity : AppCompatActivity() {
 
         val backBtn = findViewById<Button>(R.id.code_back_btn)
 
-<<<<<<< HEAD
         val sp = getSharedPreferences(this@CodeActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
@@ -48,7 +47,6 @@ class CodeActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<String>,
                                         response: Response<String>) {
                     if(response.code() == 200) {
-                        val responseBody = response.body()
                     }
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {
@@ -56,9 +54,7 @@ class CodeActivity : AppCompatActivity() {
                 }
             })
 
-=======
         //Button back
->>>>>>> 251510b00bbca90c3dab2a58bb63948ec50fdccc
         backBtn.setOnClickListener {
             with(NotificationManagerCompat.from(this)) {
                 notify(0, builder.build())
