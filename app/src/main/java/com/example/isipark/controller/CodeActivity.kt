@@ -4,14 +4,21 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RemoteViews
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.isipark.R
+import com.example.isipark.model.InterfacesRetroFit.Utils
+import com.example.isipark.model.RetroFit.RetroHistory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CodeActivity : AppCompatActivity() {
     private var CHANNEL_ID = "Channel"
@@ -29,6 +36,24 @@ class CodeActivity : AppCompatActivity() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         val backBtn = findViewById<Button>(R.id.code_back_btn)
+
+        val sp = getSharedPreferences(this@CodeActivity)
+        val token = sp.getString("token", null)
+        val id = sp.getInt("id", 1)
+
+        Utils.instance.getQRCode(id, "Bearer $token")
+            .enqueue(object: Callback<String> {
+                override fun onResponse(call: Call<String>,
+                                        response: Response<String>) {
+                    if(response.code() == 200) {
+                        val responseBody = response.body()
+                        println(responseBody.toString())
+                    }
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                }
+            })
 
         backBtn.setOnClickListener {
             with(NotificationManagerCompat.from(this)) {
@@ -55,4 +80,8 @@ class CodeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {}
+
+    fun getSharedPreferences(context: Context): SharedPreferences {
+        return context.getSharedPreferences(context.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
+    }
 }
