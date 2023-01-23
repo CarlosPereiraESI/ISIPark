@@ -79,10 +79,10 @@
         app:cornerRadius="25dp"/>
 
     <Button
-        android:layout_width="127dp"
+        android:layout_width="150dp"
         android:layout_height="40dp"
         android:text="@string/create_ac"
-        android:textSize="8dp"
+        android:textSize="11sp"
         android:textStyle="bold"
         android:textColor="@color/text"
         android:backgroundTint="#0000ffff"
