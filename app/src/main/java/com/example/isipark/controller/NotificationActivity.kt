@@ -23,20 +23,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NotificationActivity : AppCompatActivity() {
-
-    private var CHANNEL_ID = "Channel"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
-
-        CreateNotificationChannel()
-        val notificationLayout = RemoteViews(packageName, R.layout.activity_push_notification)
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("ISIPark")
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setStyle(NotificationCompat.DecoratedCustomViewStyle())
-            .setCustomContentView(notificationLayout)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         val back = findViewById<Button>(R.id.noti_back_btn)
         val listView = findViewById<ListView>(R.id.main_listview)
@@ -65,28 +54,11 @@ class NotificationActivity : AppCompatActivity() {
             })
         //Back button
         back.setOnClickListener {
-            with(NotificationManagerCompat.from(this)) {
-                notify(0, builder.build())
-            }
             val intent = Intent(this@NotificationActivity, DashboardActivity::class.java)
             startActivity(intent)
         }
     }
     override fun onBackPressed() {}
-
-    private fun CreateNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "ISIPark Notification"
-            val descriptionText = "Notification Description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply{
-                description = descriptionText
-            }
-            val notificationManager: NotificationManager = getSystemService(Context
-                .NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
 
     //usar quando chamar os token
     fun getSharedPreferences(context: Context): SharedPreferences {

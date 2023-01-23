@@ -143,4 +143,7 @@ interface NetworkManager {
     //Delete Sector
     @DELETE("api/Setor/{id}")
     fun deleteSector(@Path("id") id: Int) : Call<String>
+
+    @GET("api/QRCode/getQRCode/{id}")
+    fun getQRCode(@Path ("id") id: Int, @Header("Authorization") token: String) : Call<String>
 }
