@@ -33,6 +33,8 @@ class ProfileActivity : AppCompatActivity() {
         val ap = getSharedPreferences(this@ProfileActivity)
         val id = ap.getInt("id", 0)
 
+
+
         Utils.instance.getUser(id, "Bearer $token")
             .enqueue(object: Callback<RetroUser> {
                 override fun onResponse(call: Call<RetroUser>, response: Response<RetroUser>) {
@@ -41,7 +43,16 @@ class ProfileActivity : AppCompatActivity() {
                         name.text = "Name: " + userInf?.name
                         number.text = "Number: " + id.toString()
                         email.text ="Email: " + userInf?.email
-                        userType.text = "User Type: " + userInf?.typeUserID
+                        if (userInf?.typeUserID == 1){
+                            userType.text = "User Type: Student"
+                        }
+                        if (userInf?.typeUserID == 2){
+                            userType.text = "Type: Teacher"
+                        }
+                        if (userInf?.typeUserID == 3){
+                            userType.text = "Type: Staff"
+                        }
+
                     }
                 }
                 override fun onFailure(call: Call<RetroUser>, t: Throwable) {
