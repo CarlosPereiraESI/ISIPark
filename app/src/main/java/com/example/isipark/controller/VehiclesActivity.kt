@@ -28,6 +28,7 @@ class VehiclesActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.profile_back_btn)
         val addMorebtn = findViewById<Button>(R.id.add_more_btn)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@VehiclesActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
@@ -38,8 +39,7 @@ class VehiclesActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //Go to add vehicles page
-
+            //Show all vehicles of this user
             Utils.instance.getAllVehicles(id, "Bearer $token")
                 .enqueue(object: Callback<List<RetroVehicleType>> {
                     override fun onResponse(call: Call<List<RetroVehicleType>>,
@@ -58,17 +58,19 @@ class VehiclesActivity : AppCompatActivity() {
                     }
                 })
 
+        //Go to page add more
         addMorebtn.setOnClickListener {
-
             val intent = Intent(this, Add_VehicleActivity::class.java)
             startActivity(intent)
         }
     }
 
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 }

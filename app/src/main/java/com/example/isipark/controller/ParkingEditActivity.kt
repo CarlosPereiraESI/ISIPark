@@ -34,6 +34,7 @@ class ParkingEditActivity: AppCompatActivity() {
         val electrics = findViewById<EditText>(R.id.electrics_et)
         val red_mob = findViewById<EditText>(R.id.red_mob_et)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@ParkingEditActivity)
         val token = sp.getString("tokenA", null)
 
@@ -199,6 +200,7 @@ class ParkingEditActivity: AppCompatActivity() {
         // Button Add Map
         add_map.setOnClickListener{
         }
+
         //Button Back
         back.setOnClickListener {
             val intent = Intent(this@ParkingEditActivity,
@@ -207,8 +209,11 @@ class ParkingEditActivity: AppCompatActivity() {
             finish()
         }
     }
+
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

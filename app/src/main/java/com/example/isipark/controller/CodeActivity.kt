@@ -26,6 +26,7 @@ class CodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_code)
 
+        //Send a push notification
         CreateNotificationChannel()
         val notificationLayout = RemoteViews(packageName, R.layout.activity_push_notification)
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
@@ -37,6 +38,7 @@ class CodeActivity : AppCompatActivity() {
 
         val backBtn = findViewById<Button>(R.id.code_back_btn)
 
+<<<<<<< HEAD
         val sp = getSharedPreferences(this@CodeActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
@@ -54,6 +56,9 @@ class CodeActivity : AppCompatActivity() {
                 }
             })
 
+=======
+        //Button back
+>>>>>>> 251510b00bbca90c3dab2a58bb63948ec50fdccc
         backBtn.setOnClickListener {
             with(NotificationManagerCompat.from(this)) {
                 notify(0, builder.build())
@@ -78,6 +83,7 @@ class CodeActivity : AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
     fun getSharedPreferences(context: Context): SharedPreferences {

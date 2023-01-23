@@ -23,7 +23,6 @@ class DashboardActivity : AppCompatActivity() {
         findViewById<ListView>(R.id.dashboard_list_sectors)
     }
 
-    //var normal: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,10 +62,12 @@ class DashboardActivity : AppCompatActivity() {
         val eletricBtn = findViewById<ImageButton>(R.id.eletric)
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@DashboardActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
 
+        //Retrofit to get the suggested place
         Utils.instance.getSuggestedPlace(id, "Bearer $token")
         .enqueue(object: Callback<RetroSetorDis>{
             override fun onResponse(call: Call<RetroSetorDis>,
@@ -81,6 +82,7 @@ class DashboardActivity : AppCompatActivity() {
             }
         })
 
+        //Retrofit to get the normal places
         Utils.instance.getPlaceNormal("Bearer $token")
             .enqueue(object: Callback<List<RetroPlaceFree>> {
                 override fun onResponse(call: Call<List<RetroPlaceFree>>,
@@ -170,7 +172,6 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show eletric places on dashboard
         eletricBtn.setOnClickListener{
-            //getPlaceElectricLivre
             Utils.instance.getPlaceElectricLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
                     override fun onResponse(call: Call<List<RetroPlaceFree>>,
@@ -191,7 +192,6 @@ class DashboardActivity : AppCompatActivity() {
 
         //Show reduce mobility places on dashboard
         rmobBtn.setOnClickListener{
-            //getPlaceReduceLivre
             Utils.instance.getPlaceReduceLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
                     override fun onResponse(call: Call<List<RetroPlaceFree>>,
@@ -211,9 +211,10 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
-    //usar quando chamar os token
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

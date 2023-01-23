@@ -20,13 +20,14 @@ class NotificationAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification_admin)
 
-
         val listView = findViewById<ListView>(R.id.mainA_listview)
         val back = findViewById<Button>(R.id.notiA_back_btn)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@NotificationAdminActivity)
         val token = sp.getString("tokenA", null)
 
+        //Retrofit to get all notifications
         Utils.instance.getnotifcationAdmin("Bearer $token")
             .enqueue(object: Callback<List<RetroAdminMessage>> {
                 override fun onResponse(call: Call<List<RetroAdminMessage>>, response: Response<List<RetroAdminMessage>>){
@@ -49,11 +50,12 @@ class NotificationAdminActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Falta adapter para a listview das notificacoes
     }
+
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
-    //usar quando chamar os token
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

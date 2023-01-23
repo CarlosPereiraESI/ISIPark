@@ -28,13 +28,13 @@ class ProfileActivity : AppCompatActivity() {
         val email = findViewById<TextView>(R.id.email)
         val userType = findViewById<TextView>(R.id.userType)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@ProfileActivity)
         val token = sp.getString("token", null)
         val ap = getSharedPreferences(this@ProfileActivity)
         val id = ap.getInt("id", 0)
 
-
-
+        //Retrofit to get all information of this user
         Utils.instance.getUser(id, "Bearer $token")
             .enqueue(object: Callback<RetroUser> {
                 override fun onResponse(call: Call<RetroUser>, response: Response<RetroUser>) {
@@ -83,13 +83,12 @@ class ProfileActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-
-        //falta o adapter
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
-    //usar quando chamar os token
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

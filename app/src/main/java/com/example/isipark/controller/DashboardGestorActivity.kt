@@ -38,10 +38,12 @@ class DashboardGestorActivity : AppCompatActivity() {
         val eletricBtn = findViewById<ImageButton>(R.id.eletric)
         val rmobBtn = findViewById<ImageButton>(R.id.rmob)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@DashboardGestorActivity)
         val token = sp.getString("tokenA", null)
         val id = sp.getInt("idA", 1)
 
+        //Retrofit to get the suggested place
         Utils.instance.getSuggestedPlace(id, "Bearer $token")
             .enqueue(object: Callback<RetroSetorDis>{
                 override fun onResponse(call: Call<RetroSetorDis>, response: Response<RetroSetorDis>) {
@@ -55,6 +57,7 @@ class DashboardGestorActivity : AppCompatActivity() {
                 }
             })
 
+        //Retrofit to get the normal places
         Utils.instance.getPlaceNormal("Bearer $token")
             .enqueue(object: Callback<List<RetroPlaceFree>> {
                 override fun onResponse(call: Call<List<RetroPlaceFree>>, response: Response<List<RetroPlaceFree>>){
@@ -73,6 +76,7 @@ class DashboardGestorActivity : AppCompatActivity() {
 
 
         // --------------------------------- Buttons information ----------------------------------------
+        //Show normal places on dashboard
         normalBtn.setOnClickListener {
             Utils.instance.getPlaceNormalLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
@@ -89,9 +93,9 @@ class DashboardGestorActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
                 })
-
-
         }
+
+        //Show motocycle places on dashboard
         motoBtn.setOnClickListener {
             Utils.instance.getPlaceMotasLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
@@ -108,9 +112,9 @@ class DashboardGestorActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
                 })
-
-
         }
+
+        //Show eletric places on dashboard
         eletricBtn.setOnClickListener {
             Utils.instance.getPlaceElectricLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
@@ -127,10 +131,9 @@ class DashboardGestorActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
                 })
-
-
-
         }
+
+        //Show reduce mobility places on dashboard
         rmobBtn.setOnClickListener {
             Utils.instance.getPlaceReduceLivre("Bearer $token")
                 .enqueue(object: Callback<List<RetroPlaceFree>> {
@@ -170,9 +173,10 @@ class DashboardGestorActivity : AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
-    //usar quando chamar os token
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

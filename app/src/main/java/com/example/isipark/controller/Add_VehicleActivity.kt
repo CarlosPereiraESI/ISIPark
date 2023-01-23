@@ -26,6 +26,7 @@ class Add_VehicleActivity : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.addvehicletype)
         val licensePlate = findViewById<EditText>(R.id.AddVehicleRegistration)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@Add_VehicleActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
@@ -33,6 +34,7 @@ class Add_VehicleActivity : AppCompatActivity() {
         var X : Int? = null
         var typeVehicle : Int? = null
 
+        //Pass the token to get all vehicle types
         Utils.instance.getTypeVehicles("Bearer $token")
             .enqueue(object: Callback<List<RetroTypeVehicle>> {
                 override fun onResponse(call: Call<List<RetroTypeVehicle>>,
@@ -60,12 +62,12 @@ class Add_VehicleActivity : AppCompatActivity() {
                 }
             })
 
+        //Get the vehicle type selected
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>, view: View,
                                         position: Int, id: Long) {
 
                 typeVehicle = position+1
-                println(typeVehicle)
                 X = typeVehicle
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -74,20 +76,15 @@ class Add_VehicleActivity : AppCompatActivity() {
         // Button Save
         save.setOnClickListener{
 
-            println(X)
             val retroSP = RetroUserVehicleType(userID=0, vehicleTypeID = 0, licensePlate = "")
 
             if (isValidLicensePlate(licensePlate.text.toString())==true){
-                //mandar para a base de dados
 
                 retroSP.userID=id
                 retroSP.vehicleTypeID=typeVehicle!!
                 retroSP.licensePlate= licensePlate.text.toString()
 
-                println( retroSP.vehicleTypeID)
-                println(retroSP.userID)
-                println(retroSP.licensePlate)
-
+                // Enter the data to be added to the new vehicle
                     Utils.instance.insertVehicleUser(retroSP,"Bearer $token")
                         .enqueue(object: Callback<Boolean> {
                             override fun onResponse(call: Call<Boolean>,
@@ -123,14 +120,18 @@ class Add_VehicleActivity : AppCompatActivity() {
         }
     }
 
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)
     }
 
+    //Function to validate a license plate
     fun isValidLicensePlate(plate: String): Boolean {
         val pattern = "(([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2})-([A-Z]{2}|\\d{2}))".toRegex()
         return plate.matches(pattern)
     }
+
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 }

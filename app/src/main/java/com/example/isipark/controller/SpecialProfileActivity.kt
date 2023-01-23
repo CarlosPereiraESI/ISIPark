@@ -57,7 +57,7 @@ class SpecialProfileActivity: AppCompatActivity() {
         val contact = findViewById<EditText>(R.id.contact_et)
 
 
-        // Button Create
+        // Button Create a special user
         create.setOnClickListener{
 
             if(name.text.toString() == "" || registration.text.toString() =="" || code.text.toString()==""
@@ -85,8 +85,6 @@ class SpecialProfileActivity: AppCompatActivity() {
                         }
                     })
             }
-
-
         }
 
         //Button Back
@@ -96,9 +94,10 @@ class SpecialProfileActivity: AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
-    //usar quando chamar os token
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textSize="14sp"
+            android:textStyle="bold"
             android:textColor="#000" />
 
         <TextView

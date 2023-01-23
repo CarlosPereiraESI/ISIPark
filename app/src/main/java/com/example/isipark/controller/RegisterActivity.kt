@@ -111,5 +111,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun isCorrect(string: String): Boolean {
         return string.matches("(([a-zA-Z0-9.])+[@](alunos.)?ipca.pt)".toRegex())
     }
+
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 }

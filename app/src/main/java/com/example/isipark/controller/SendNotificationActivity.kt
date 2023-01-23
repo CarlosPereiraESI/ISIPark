@@ -14,10 +14,13 @@ class SendNotificationActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.send_back_btn)
         val send_noti = findViewById<Button>(R.id.send_noti_btn)
 
+        //Back button
         back.setOnClickListener {
             val intent = Intent(this,ReportsMessagesActivity::class.java)
             startActivity(intent)
         }
     }
+
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 }
