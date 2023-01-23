@@ -28,9 +28,11 @@ class SearchUsersActivity : AppCompatActivity() {
         val nameReg = findViewById<EditText>(R.id.fill_user_regist)
         val listView = findViewById<ListView>(R.id.search_users_listview)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@SearchUsersActivity)
         val token = sp.getString("tokenA", null)
 
+        //Show all users
         Utils.instance.getAllUser("Bearer $token")
             .enqueue(object : Callback<List<RetroUser>> {
                 override fun onResponse(
@@ -51,7 +53,7 @@ class SearchUsersActivity : AppCompatActivity() {
                 }
             })
 
-
+        //Introduce the user who has the same name as the searched
         searchBtn.setOnClickListener {
             if (nameReg.text.toString() == "") {
                 Toast.makeText(this, "You need to put any name!", Toast.LENGTH_SHORT).show()
@@ -77,7 +79,6 @@ class SearchUsersActivity : AppCompatActivity() {
                         }
                     })
             }
-
         }
 
         //Go back to more options menu
@@ -90,8 +91,10 @@ class SearchUsersActivity : AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

@@ -26,10 +26,12 @@ class HistoryActivity : AppCompatActivity() {
         }
         val back = findViewById<Button>(R.id.history_back_btn)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@HistoryActivity)
         val token = sp.getString("token", null)
         val id = sp.getInt("id", 1)
 
+        //Retrofit to get all history of this user
         Utils.instance.getAllHistoryUser(id, "Bearer $token")
             .enqueue(object: Callback<List<RetroHistory>> {
                 override fun onResponse(call: Call<List<RetroHistory>>,
@@ -54,8 +56,10 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

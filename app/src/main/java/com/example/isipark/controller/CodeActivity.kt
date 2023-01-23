@@ -19,6 +19,7 @@ class CodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_code)
 
+        //Send a push notification
         CreateNotificationChannel()
         val notificationLayout = RemoteViews(packageName, R.layout.activity_push_notification)
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
@@ -30,6 +31,7 @@ class CodeActivity : AppCompatActivity() {
 
         val backBtn = findViewById<Button>(R.id.code_back_btn)
 
+        //Button back
         backBtn.setOnClickListener {
             with(NotificationManagerCompat.from(this)) {
                 notify(0, builder.build())
@@ -54,5 +56,6 @@ class CodeActivity : AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 }

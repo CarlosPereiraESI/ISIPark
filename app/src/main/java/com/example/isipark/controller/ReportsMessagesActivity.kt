@@ -25,9 +25,11 @@ class ReportsMessagesActivity : AppCompatActivity() {
         val send = findViewById<Button>(R.id.report_send_btn)
         val listView = findViewById<ListView>(R.id.listview_reports)
 
+        //Get id and token of this user
         val sp = getSharedPreferences(this@ReportsMessagesActivity)
         val token = sp.getString("tokenA", null)
 
+        //Get all reports
         Utils.instance.getAllReports("Bearer $token")
             .enqueue(object: Callback<List<RetroReport>> {
                 override fun onResponse(call: Call<List<RetroReport>>, response: Response<List<RetroReport>>){
@@ -56,8 +58,11 @@ class ReportsMessagesActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
+    // Function to get token and id
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name),
             Context.MODE_PRIVATE)

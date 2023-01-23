@@ -34,12 +34,14 @@ class MoreOptionsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Go to Parking edit page
         parkingEdit.setOnClickListener {
             val intent = Intent(this@MoreOptionsActivity,
                 ParkingEditActivity::class.java)
             startActivity(intent)
         }
 
+        //Go to page Special profiles
         specialProfiles.setOnClickListener {
             val intent = Intent(this@MoreOptionsActivity,
                 SpecialProfileActivity::class.java)
@@ -53,6 +55,7 @@ class MoreOptionsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Go to page search users
         searchUser.setOnClickListener {
             val intent = Intent(this@MoreOptionsActivity,
                 SearchUsersActivity::class.java)
@@ -60,5 +63,6 @@ class MoreOptionsActivity : AppCompatActivity() {
         }
     }
 
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 }

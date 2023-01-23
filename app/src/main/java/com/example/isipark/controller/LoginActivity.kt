@@ -74,22 +74,26 @@ class LoginActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.login_email_et)
         val password = findViewById<EditText>(R.id.login_password_et)
 
+        //Go to register page
         register.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
 
+        //Click on login button
         login.setOnClickListener {
+            //See if there's no empty fields
             if (email.text.toString() == "" || password.text.toString() == "") {
                 Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
             }
             else{
-                // Se for administrador
+                // If the user is the administrator
                 if (email.text.toString() == "admin@ipca.pt" && password.text.toString() == "admin")
                 {
                     retrolog.email = "admin@ipca.pt"
                     retrolog.password = "admin"
 
+                    //Retrofit to validate the login
                     Utils.instance.login(retrolog)
                     .enqueue(object: Callback<String>{
                         override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -113,6 +117,8 @@ class LoginActivity : AppCompatActivity() {
                                 val loginbody = response.body()
                                 Toast.makeText(applicationContext,"Welcome!",
                                     Toast.LENGTH_SHORT).show()
+
+                                //Save the token
                                 val sap = getSharedPreferences(this@LoginActivity)
                                 sap.edit().putString("tokenA", loginbody).commit()
 
@@ -130,7 +136,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                     })
             }
-                // Se for um user normal
+                // If the user is normal
                 else
                 {
                     retrolog.email = email.text.toString()
@@ -161,11 +167,9 @@ class LoginActivity : AppCompatActivity() {
                                         })
 
                                     val loginbody = response.body()
-                                    //val token = loginbody?.token
-
                                     Toast.makeText(applicationContext,"Welcome!",
                                         Toast.LENGTH_SHORT).show()
-
+                                    //Save the token
                                     val sap = getSharedPreferences(this@LoginActivity)
                                     sap.edit().putString("token", loginbody).commit()
 
@@ -188,6 +192,8 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    //Don't go back without click on back button
     override fun onBackPressed() {}
 
     //usar quando chamar os token
