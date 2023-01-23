@@ -142,6 +142,5 @@ interface NetworkManager {
 
     //Delete Sector
     @DELETE("api/Setor/{id}")
-    fun deleteSector(@Path("id") id: Int,
-                    @Header("Authorization") token: String) : Call<Nothing>
+    fun deleteSector(@Path("id") id: Int) : Call<String>
 }

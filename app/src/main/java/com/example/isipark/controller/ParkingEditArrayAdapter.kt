@@ -16,8 +16,8 @@ import retrofit2.Response
 class ParkingEditArrayAdapter(context: Context, list: List<RetroSetor>):
     ArrayAdapter<RetroSetor>(context, -1) {
 
-    private var id: SharedPreferences? = null
     private var token: SharedPreferences? = null
+
     val mList : List<RetroSetor> = list
 
     override fun getItem(position: Int): RetroSetor? {
@@ -38,19 +38,29 @@ class ParkingEditArrayAdapter(context: Context, list: List<RetroSetor>):
         val delete = view.findViewById<ImageView>(R.id.logo_cross)
         val edit = view.findViewById<ImageView>(R.id.logo_edit)
 
-        delete.setOnClickListener {
-            Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
-        }
-
         edit.setOnClickListener {
             Toast.makeText(context,"Edited", Toast.LENGTH_SHORT).show()
         }
 
         //para mandar para o layout
         val p = getItem(position)
+        val tok = token?.getString("token", null)
+
+        val idP = p?.id
 
         if (p != null) {
             sector.text = "Sector: ${p.sectorName}"
+        }
+        delete.setOnClickListener {
+            Utils.instance.deleteSector(idP!!)
+                .enqueue(object: Callback<String> {
+                    override fun onResponse(call: Call<String>,
+                                            response: Response<String>) {
+                    }
+                    override fun onFailure(call: Call<String>, t: Throwable) {
+                    }
+                })
+            Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
         }
         return view
     }

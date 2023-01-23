@@ -6,11 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.isipark.model.Interfaces.IAdminMessage
 import com.example.isipark.model.Interfaces.IHistory
+import com.example.isipark.model.Interfaces.ISetor
 
-@Database(entities = arrayOf(AdminMessage::class, History::class), version = 1)
+@Database(entities = arrayOf(Setor::class), version = 1)
 abstract class MyDatabase: RoomDatabase() {
-    abstract fun iAdminMessage(): IAdminMessage
-    abstract fun iHistory(): IHistory
+    abstract fun iSetor(): ISetor
 
     companion object {
         @Volatile
@@ -20,8 +20,6 @@ abstract class MyDatabase: RoomDatabase() {
             instance ?: buildDatabase(context).also { instance = it }
         }
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
-            context,
-            MyDatabase::class.java, "isipark.db"
-        ).build()
+            context, MyDatabase::class.java, "isipark.db").build()
     }
 }

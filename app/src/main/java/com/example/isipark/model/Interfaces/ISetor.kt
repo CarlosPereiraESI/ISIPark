@@ -1,6 +1,7 @@
 package com.example.isipark.model.Interfaces
 
 import androidx.room.*
+import com.example.isipark.model.RetroFit.RetroSetor
 import com.example.isipark.model.Setor
 
 @Dao

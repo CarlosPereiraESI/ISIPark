@@ -8,7 +8,7 @@ class Sector(val id: Int, val sectorName: String, val totalPlace: Int) {
 }*/
 
 @Entity(tableName = "setor")
-data class Setor(@PrimaryKey(autoGenerate = true)val id: Int=0,
-                 val sectorName: String?,
-                 val totalPlace: Int?){
+data class Setor(@PrimaryKey(autoGenerate = true) var id: Int=0,
+                 var sectorName: String?,
+                 var totalPlace: Int?){
 }

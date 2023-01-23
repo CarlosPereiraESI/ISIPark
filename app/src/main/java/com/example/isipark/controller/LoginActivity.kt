@@ -3,25 +3,73 @@ package com.example.isipark.controller
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.edit
-import com.example.isipark.model.RetroFit.RetroLogin
+import androidx.appcompat.app.AppCompatActivity
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
-import com.example.isipark.model.RetroFit.RetroUser
+import com.example.isipark.model.NotificationData
+import com.example.isipark.model.PushNotification
+import com.example.isipark.model.RetroFit.RetroFitInstance
+import com.example.isipark.model.RetroFit.RetroLogin
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+const val TOPIC = "/topics/myTopic"
+
 class LoginActivity : AppCompatActivity() {
     var retrolog = RetroLogin(email="", password = "")
+    val TAG = "LoginActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        MyFirebaseMessagingService.sharedPref = getSharedPreferences(
+            "sharedPref", Context.MODE_PRIVATE)
+        FirebaseMessaging.getInstance().token.addOnSuccessListener {
+            MyFirebaseMessagingService.token = it
+         }
+        FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
+
+        /*
+        val set = Setor(id=0, sectorName="", totalPlace=0)
+        val sp = getSharedPreferences(this@LoginActivity)
+        val token = sp.getString("tokenA", null)
+
+        val db = Room.databaseBuilder(applicationContext,
+            MyDatabase::class.java, "isipark.db").build()
+        GlobalScope.launch {
+            Utils.instance.getAllSectors("Bearer $token")
+                .enqueue(object : Callback<List<RetroSetor>> {
+                    override fun onResponse(
+                        call: Call<List<RetroSetor>>,
+                        response: Response<List<RetroSetor>>) {
+                        if (response.code() == 200) {
+                            val data = response.body()
+                            data?.forEach {
+                                set.id = it.id
+                                set.sectorName = it.sectorName
+                                set.totalPlace = it.totalPlace
+                                db.iSetor().insertAll(set)
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<List<RetroSetor>>, t: Throwable) {
+                        Toast.makeText(
+                            applicationContext, t.message,
+                            Toast.LENGTH_LONG).show()
+                    }
+                })
+        }*/
 
         val register = findViewById<Button>(R.id.login_create_btn)
         val login = findViewById<Button>(R.id.login_login_btn)
@@ -35,6 +83,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
+            val title = "Welcome to ISIPark"
+            val message = "You are logged in"
+
             if (email.text.toString() == "" || password.text.toString() == "") {
                 Toast.makeText(this, "It has empty fields!", Toast.LENGTH_SHORT).show()
             }
@@ -55,9 +106,9 @@ class LoginActivity : AppCompatActivity() {
                                                                 response: Response<Int>) {
                                             if(response.code() == 200){
                                                 val idUser = response.body()
-                                                val sp = getSharedPreferences(
+                                                val sap = getSharedPreferences(
                                                     this@LoginActivity)
-                                                sp.edit().putInt("idA", idUser!!).apply()
+                                                sap.edit().putInt("idA", idUser!!).apply()
                                             }
                                         }
                                         override fun onFailure(call: Call<Int>, t: Throwable) {
@@ -68,8 +119,8 @@ class LoginActivity : AppCompatActivity() {
                                 val loginbody = response.body()
                                 Toast.makeText(applicationContext,"Welcome!",
                                     Toast.LENGTH_SHORT).show()
-                                val sp = getSharedPreferences(this@LoginActivity)
-                                sp.edit().putString("tokenA", loginbody).commit()
+                                val sap = getSharedPreferences(this@LoginActivity)
+                                sap.edit().putString("tokenA", loginbody).commit()
 
                                 val intent = Intent(this@LoginActivity,
                                     DashboardGestorActivity::class.java)
@@ -104,10 +155,9 @@ class LoginActivity : AppCompatActivity() {
                                                                     response: Response<Int>) {
                                                 if(response.code() == 200){
                                                     val idUser = response.body()
-
-                                                    val sp = getSharedPreferences(
+                                                    val sap = getSharedPreferences(
                                                         this@LoginActivity)
-                                                    sp.edit().putInt("id", idUser!!).apply()
+                                                    sap.edit().putInt("id", idUser!!).apply()
                                                 }
                                             }
                                             override fun onFailure(call: Call<Int>, t: Throwable) {
@@ -121,9 +171,12 @@ class LoginActivity : AppCompatActivity() {
 
                                     Toast.makeText(applicationContext,"Welcome!",
                                         Toast.LENGTH_SHORT).show()
-
-                                    val sp = getSharedPreferences(this@LoginActivity)
-                                    sp.edit().putString("token", loginbody).commit()
+                                    PushNotification(NotificationData(title, message), TOPIC
+                                    ).also {
+                                        sendNotification(it)
+                                    }
+                                    val sap = getSharedPreferences(this@LoginActivity)
+                                    sap.edit().putString("token", loginbody).commit()
 
                                     val intent = Intent(this@LoginActivity,
                                         DashboardActivity::class.java)
@@ -150,5 +203,19 @@ class LoginActivity : AppCompatActivity() {
     fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(context.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
     }
+
+    private fun sendNotification(notification: PushNotification) = CoroutineScope(Dispatchers.IO)
+        .launch{
+            try{
+                val response = RetroFitInstance.api.postNotification(notification)
+                if(response.isSuccessful) {
+                    Log.d(TAG, "Response: ${Gson().toJson(response)}")
+                } else{
+                    Log.e(TAG, response.errorBody().toString())
+                }
+            } catch(e: Exception){
+                Log.e(TAG, e.toString())
+            }
+        }
 }
 

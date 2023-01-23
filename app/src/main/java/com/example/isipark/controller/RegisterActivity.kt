@@ -42,7 +42,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 retroUser.id = 0
                 retroUser.name=""
-                retroUser.nif = 0
+                retroUser.nif = 123456788
                 retroUser.birthDate = ""
                 retroUser.gender = ""
                 retroUser.typeUserID = 1

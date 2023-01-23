@@ -162,10 +162,8 @@ class ParkingEditActivity: AppCompatActivity() {
                                             call: Call<RetroSetor>,
                                             t: Throwable
                                         ) {
-                                            Toast.makeText(
-                                                applicationContext,
-                                                t.message, Toast.LENGTH_LONG
-                                            ).show()
+                                            Toast.makeText(applicationContext,
+                                                t.message, Toast.LENGTH_LONG).show()
                                         }
                                     })
                             }
@@ -180,7 +178,6 @@ class ParkingEditActivity: AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
         Utils.instance.getAllSectors("Bearer $token")
             .enqueue(object: Callback<List<RetroSetor>> {
                 override fun onResponse(call: Call<List<RetroSetor>>,
