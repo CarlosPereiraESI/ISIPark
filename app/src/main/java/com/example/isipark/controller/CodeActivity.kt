@@ -47,7 +47,6 @@ class CodeActivity : AppCompatActivity() {
                                         response: Response<String>) {
                     if(response.code() == 200) {
                         val responseBody = response.body()
-                        println(responseBody.toString())
                     }
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {

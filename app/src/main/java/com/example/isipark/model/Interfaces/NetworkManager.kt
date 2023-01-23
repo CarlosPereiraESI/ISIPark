@@ -146,4 +146,7 @@ interface NetworkManager {
 
     @GET("api/QRCode/getQRCode/{id}")
     fun getQRCode(@Path ("id") id: Int, @Header("Authorization") token: String) : Call<String>
+
+    @GET("api/PersonalData/email/{email}")
+    fun getDataByEmail(@Path ("email") email: String) : Call<RetroPersonData>
 }

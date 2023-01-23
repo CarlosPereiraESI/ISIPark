@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
+import com.example.isipark.model.RetroFit.RetroPersonData
 import com.example.isipark.model.RetroFit.RetroReport
 import com.example.isipark.model.RetroFit.RetroUser
 import retrofit2.Call
@@ -19,8 +20,9 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        var retroUser = RetroUser(id=0, name="", nif=0, birthDate="",
-            gender="", typeUserID = 0, addressID = 0, email="", password="")
+        val retroUser = RetroUser(id=0, name="", nif=0, birthDate="",
+            gender="", typeUserID = 0, addressID = 0, email="", password="",
+            passwordH = "", passwordS ="", tok="")
 
         val createBtn = findViewById<Button>(R.id.register_create_btn)
         val email = findViewById<EditText>(R.id.register_email_et)
@@ -39,32 +41,53 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this,"It has empty fields!", Toast.LENGTH_SHORT).show()
             }
             else{
-
-                retroUser.id = 0
-                retroUser.name=""
-                retroUser.nif = 123456788
-                retroUser.birthDate = ""
-                retroUser.gender = ""
-                retroUser.typeUserID = 1
-                retroUser.addressID = 1
-                retroUser.email = email.text.toString()
-                retroUser.password = confpassword.text.toString()
-
                 if(password.text.toString() == confpassword.text.toString()){
                     if (isCorrect(email.text.toString()) == true){
-                        Utils.instance.insertUser(retroUser)
-                            .enqueue(object : Callback<Boolean> {
-                                override fun onResponse(call: Call<Boolean>,
-                                                        response: Response<Boolean>) {
+                        Utils.instance.getDataByEmail(email.text.toString())
+                            .enqueue(object : Callback<RetroPersonData> {
+                                override fun onResponse(call: Call<RetroPersonData>,
+                                                        response: Response<RetroPersonData>) {
                                     if (response.code() == 200) {
-                                        Toast.makeText(this@RegisterActivity,
-                                            "Created!", Toast.LENGTH_LONG).show()
-                                        val intent = Intent(this@RegisterActivity,
-                                            DashboardActivity::class.java)
-                                        startActivity(intent)
+                                        val responseBody = response.body()
+                                        retroUser.id = responseBody!!.userID
+                                        retroUser.name = responseBody.name
+                                        retroUser.email = email.text.toString()
+                                        retroUser.typeUserID = 1
+                                        retroUser.addressID = 1
+                                        retroUser.nif = responseBody.nif
+                                        retroUser.password = confpassword.text.toString()
+                                        retroUser.birthDate = responseBody.birthDate
+                                        retroUser.gender = responseBody.gender
+
+                                        Utils.instance.insertUser(retroUser)
+                                            .enqueue(object: Callback<Boolean> {
+                                                override fun onResponse(call: Call<Boolean>,
+                                                                        response:
+                                                                        Response<Boolean>) {
+                                                    if(response.code() == 200) {
+                                                        Toast.makeText(
+                                                            this@RegisterActivity,
+                                                            "Created!",
+                                                            Toast.LENGTH_LONG
+                                                        ).show()
+
+                                                        val intent = Intent(
+                                                            this@RegisterActivity,
+                                                            DashboardActivity::class.java)
+                                                        startActivity(intent)
+                                                    }
+                                                }
+                                                override fun onFailure(call: Call<Boolean>,
+                                                                       t: Throwable) {
+                                                    Toast.makeText(
+                                                        applicationContext, t.message,
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
+                                                }
+                                            })
                                     }
                                 }
-                                override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                                override fun onFailure(call: Call<RetroPersonData>, t: Throwable) {
                                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG)
                                         .show()
                                 }
