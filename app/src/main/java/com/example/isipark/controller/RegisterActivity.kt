@@ -30,11 +30,13 @@ class RegisterActivity : AppCompatActivity() {
         val confpassword = findViewById<EditText>(R.id.register_conf_password_et)
         val back = findViewById<Button>(R.id.back_register_btn)
 
+        //Back button, go to login page
         back.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
+        //Make a register
         createBtn.setOnClickListener {
             if ( email.text.toString() == "" || password.text.toString() == "" ||
                 confpassword.text.toString() == ""){
@@ -108,6 +110,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+    // Function to validate an email
     private fun isCorrect(string: String): Boolean {
         return string.matches("(([a-zA-Z0-9.])+[@](alunos.)?ipca.pt)".toRegex())
     }
