@@ -39,7 +39,7 @@ class ParkingEditActivity: AppCompatActivity() {
 
         // Button Create
         create.setOnClickListener {
-            val retroSector = RetroSetor(id = 0, sectorName = "", totalPlace = 0)
+            val retroSector = RetroSetor(id = 0, sectorName = "", totalPlace = 0, hide = 0)
             val retroPlace = RetroPlace(placeId = 0, idsetorSetor = 0, placeTypeID = 0,
                                         state = false, licensePlate = "")
 

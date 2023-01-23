@@ -5,11 +5,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.example.isipark.R
 import com.example.isipark.model.InterfacesRetroFit.Utils
 import com.example.isipark.model.RetroFit.RetroPlaceFree
 import com.example.isipark.model.RetroFit.RetroSetorDis
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +28,21 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+
+        fun getPushToken() {
+            FirebaseMessaging.getInstance().token
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Log.w("Main", "getInstanceId failed", task.exception)
+                        return@OnCompleteListener
+                    }
+
+                    val token = task.result
+                    val msg = "InstanceID Token: "+token
+                    Log.d("Main", msg)
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                })
+        }
 
         //---------------------------- Buttons -------------------------------------
 

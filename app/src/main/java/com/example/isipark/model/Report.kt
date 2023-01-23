@@ -12,6 +12,6 @@ class Report(val id: Int, val description: String, val userID: Int,
 @Entity(tableName = "report")
 data class Report(@PrimaryKey(autoGenerate = true)val id: Int,
                   val description: String?, val userID: Int?,
-                  val date: Date?, val licensePlate: String?,
+                  val date: String?, val licensePlate: String?,
                   val sector: String?) {
 }

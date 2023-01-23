@@ -44,10 +44,10 @@ class HistoryArrayAdapter(context: Context, list: List<RetroHistory>):
         }
 
         if (p != null) {
-            entry.text = p?.entryTime
+            entry.text = p.entryTime
         }
         if (p != null) {
-            exit.text = p?.exitTime
+            exit.text = p.exitTime
         }
 
         if (p != null) {

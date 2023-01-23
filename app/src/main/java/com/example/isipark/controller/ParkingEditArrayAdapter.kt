@@ -1,6 +1,7 @@
 package com.example.isipark.controller
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
@@ -36,18 +37,11 @@ class ParkingEditArrayAdapter(context: Context, list: List<RetroSetor>):
         //layout parking edit
         val sector = view.findViewById<TextView>(R.id.sector)
         val delete = view.findViewById<ImageView>(R.id.logo_cross)
-        val edit = view.findViewById<ImageView>(R.id.logo_edit)
-
-        edit.setOnClickListener {
-            Toast.makeText(context,"Edited", Toast.LENGTH_SHORT).show()
-        }
 
         //para mandar para o layout
         val p = getItem(position)
-        val tok = token?.getString("token", null)
 
         val idP = p?.id
-
         if (p != null) {
             sector.text = "Sector: ${p.sectorName}"
         }

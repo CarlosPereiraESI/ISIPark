@@ -25,7 +25,6 @@ class Add_VehicleActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.addVehicle_back)
         val spinner = findViewById<Spinner>(R.id.addvehicletype)
         val licensePlate = findViewById<EditText>(R.id.AddVehicleRegistration)
-        val licenseP = licensePlate.text.toString()
 
         val sp = getSharedPreferences(this@Add_VehicleActivity)
         val token = sp.getString("token", null)
@@ -76,7 +75,7 @@ class Add_VehicleActivity : AppCompatActivity() {
         save.setOnClickListener{
 
             println(X)
-            var retroSP = RetroUserVehicleType(userID=0, vehicleTypeID = 0, licensePlate = "")
+            val retroSP = RetroUserVehicleType(userID=0, vehicleTypeID = 0, licensePlate = "")
 
             if (isValidLicensePlate(licensePlate.text.toString())==true){
                 //mandar para a base de dados
@@ -111,10 +110,9 @@ class Add_VehicleActivity : AppCompatActivity() {
                 val intent = Intent(this@Add_VehicleActivity,
                     VehiclesActivity::class.java)
                 startActivity(intent)
-            }else{
-                Toast.makeText(this,"Registration Invalid ",Toast.LENGTH_LONG).show()
+            }else {
+                Toast.makeText(this, "Registration Invalid ", Toast.LENGTH_LONG).show()
             }
-
         }
 
         //Button back
