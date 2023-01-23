@@ -20,7 +20,7 @@ interface NetworkManager {
     fun login(@Body log: RetroLogin): Call<String>
 
     @POST("api/Auth/register")
-    fun insertUser(user: RetroUser): Call<RetroUser>
+    fun insertUser(@Body request: RetroUser): Call<Boolean>
 
     //ROUTAS USER LUGARES LIVRES
     //todos utilizador

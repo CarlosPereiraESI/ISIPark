@@ -21,7 +21,8 @@ import java.util.*
 
 class ReportsActivity : AppCompatActivity() {
 
-    var retroR = RetroReport(id=0, description="", userID=0, date="", licensePlate="", sector="", name="")
+    var retroR = RetroReport(id=0, description="", userID=0, date="",
+        licensePlate="", sector="", name="")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,14 +67,12 @@ class ReportsActivity : AppCompatActivity() {
                         .enqueue(object : Callback<String> {
                             override fun onResponse(
                                 call: Call<String>,
-                                response: Response<String>
-                            ) {
+                                response: Response<String>) {
                                 if (response.code() == 201) {
                                     val userInf = response.body()
                                     val intent = Intent(
                                         this@ReportsActivity,
-                                        DashboardActivity::class.java
-                                    )
+                                        DashboardActivity::class.java)
                                     startActivity(intent)
                                 }
                             }

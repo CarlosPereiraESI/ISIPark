@@ -60,15 +60,12 @@ class ParkingEditActivity: AppCompatActivity() {
                             if (response.code() == 200) {
                                 Toast.makeText(
                                     this@ParkingEditActivity,
-                                    "Created New Sector! ", Toast.LENGTH_LONG
-                                ).show()
+                                    "Created New Sector! ", Toast.LENGTH_LONG).show()
                                 Utils.instance.getSectorID(
                                     retroSector.sectorName,
-                                    "Bearer $token"
-                                )
+                                    "Bearer $token")
                                     .enqueue(object : Callback<RetroSetor> {
-                                        override fun onResponse(
-                                            call: Call<RetroSetor>,
+                                        override fun onResponse(call: Call<RetroSetor>,
                                             response: Response<RetroSetor>) {
                                             if (response.code() == 200) {
                                                 val responseBody = response.body()
